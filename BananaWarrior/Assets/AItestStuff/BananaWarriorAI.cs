@@ -4,43 +4,32 @@ using UnityEngine;
 
 public class BananaWarriorAI : MonoBehaviour {
 
-    private float fullLife = 20;
+    private float fullLife = 10.0f;
     private float lifeforce;
-    private bool alive;
+    private bool alive = true;
     private SpriteRenderer spriteRenderer;
-    private float sightRange;
+    private float sightRange = 5.0f;
+    private bool attacking = false;
 
 	// Use this for initialization
 	void Start () {
-        lifeforce = 20.0f;
-        alive = true;
+        lifeforce = fullLife;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        sightRange = 5.0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         lifeforce -= Time.deltaTime;
-        if(lifeforce < fullLife * -0.15)
+
+        if (lifeforce <= 0.0)
         {
-            Destroy(gameObject);
+            StartCoroutine(Die());
         }
-        else if(lifeforce <= 0.0)
+
+        spriteRenderer.color = Color.Lerp(Color.red, Color.yellow, lifeforce / fullLife);
+        if (!attacking)
         {
-            spriteRenderer.color = Color.red;
-            alive = false;
-        }
-        else if (lifeforce < fullLife * 0.25)
-        {
-            spriteRenderer.color = new Color(1, 0.25f, 0, 1);
-        }
-        else if (lifeforce < fullLife * 0.5)
-        {
-            spriteRenderer.color = new Color(1, 0.5f, 0, 1);
-        }
-        else if (lifeforce < fullLife * 0.75)
-        {
-            spriteRenderer.color = new Color(1, 0.75f, 0, 1);
+            GameObject toAttack = whatToAttack();
         }
     }
 
@@ -69,5 +58,13 @@ public class BananaWarriorAI : MonoBehaviour {
     public bool isAlive()
     {
         return alive;
+    }
+
+    private IEnumerator Die()
+    {
+        alive = false;
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(fullLife * 0.15f);
+        Destroy(gameObject);
     }
 }

@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RottenBananaAI : MonoBehaviour {
-    private int life;
-    private bool attacking;
-    private float sightRange;
+    private int life = 3;
+    private bool attacking = false;
+    private float sightRange = 5.0f;
 
 	// Use this for initialization
 	void Start () {
-        life = 3;
-        attacking = false;
-        sightRange = 5.0f;
 	}
 	
 	// Update is called once per frame
@@ -19,7 +16,6 @@ public class RottenBananaAI : MonoBehaviour {
         if (!attacking)
         {
             GameObject toAttack = whatToAttack();
-            Debug.Log(toAttack);
         }
 	}
 
