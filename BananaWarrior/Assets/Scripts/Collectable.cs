@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour {
 
+    private const float GOLDENBANANA_HEAL = 0.1f; // 10%
+
 	// Use this for initialization
 	void Start () {
 		
@@ -28,7 +30,12 @@ public class Collectable : MonoBehaviour {
             }
             else if (this.gameObject.tag == "GoldenBanana")
             {
-                Debug.Log("GoldenBanana korjati üles, aga vist implementatsiooni ei ole et elusid suurendada");
+
+           //     if(other.gameObject.GetComponent<InventoryController>().CurrentHP <= 0.9f)
+          //      {
+          //          other.gameObject.GetComponent<InventoryController>().CurrentHP += GOLDENBANANA_HEAL;
+          //      }
+         //       Debug.Log("GoldenBanana korjati üles, aga vist implementatsiooni ei ole et elusid suurendada");
             }
             Destroy(this.gameObject);
 

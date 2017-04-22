@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField]
     private MoveController mc;
+    private float life = 100.0f;
+
     public MoveController movementController
     {
         get { return mc; }
@@ -32,4 +34,23 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 		
 	}
+
+
+    //returns if the unit was killed
+    public bool onHit()
+    {
+        life -= 5;
+        if (life <= 0)
+        {
+            Die();
+            return true;
+        }
+        return false;
+    }
+
+    private void Die()
+    {
+        //End of game
+    }
+
 }
