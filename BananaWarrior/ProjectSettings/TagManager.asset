@@ -11,6 +11,7 @@ TagManager:
   - Rotten
   - Menu
   - UI
+  - YellowBanana
   layers:
   - Default
   - TransparentFX
