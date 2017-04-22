@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BananaWarriorAI : MonoBehaviour {
 
+    private Vector3 patrolPlace;
+
     private float fullLife = 40.0f;
     private float lifeforce;
     private bool alive = true;
@@ -24,6 +26,7 @@ public class BananaWarriorAI : MonoBehaviour {
         lifeforce = fullLife;
         spriteRenderer = GetComponent<SpriteRenderer>();
         moveController = GetComponent<MoveController>();
+        patrolPlace = transform.position;
 	}
 	
 	
@@ -45,8 +48,13 @@ public class BananaWarriorAI : MonoBehaviour {
             toAttack = whatToAttack();
             if (toAttack != null)
             {
+                moveController.stopMoving();
                 attacking = true;
                 timer = 0;
+            }
+            else if(patrolPlace != transform.position)
+            {
+                moveController.move(patrolPlace);
             }
         }
         else
@@ -60,6 +68,7 @@ public class BananaWarriorAI : MonoBehaviour {
             }
             else if (timer <= 0)
             {
+                moveController.stopMoving();
                 bool killed = true;
                 if (toAttack != null)
                 {
@@ -70,6 +79,10 @@ public class BananaWarriorAI : MonoBehaviour {
                     attacking = false;
                 }
                 timer = attackspeed;
+            }
+            else if (timer > 0 && toAttack == null)
+            {
+                moveController.stopMoving();
             }
         }
     }
@@ -117,5 +130,10 @@ public class BananaWarriorAI : MonoBehaviour {
     {
         alive = false;
         Destroy(gameObject);
+    }
+
+    public void changePatrolPlace(Vector3 newPlace)
+    {
+        patrolPlace = newPlace;
     }
 }

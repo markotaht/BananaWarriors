@@ -46,7 +46,7 @@ public class InventoryController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        // ei tee vist midagi see osa
         Debug.Log(collision.gameObject.tag);
         if(collision.gameObject.tag == "GreenBanana")
         {
