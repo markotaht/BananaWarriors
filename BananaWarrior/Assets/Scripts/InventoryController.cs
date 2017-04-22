@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour {
 
-    private int greenBanana = 0;
-    private int yellowbanana = 0;
+    private int greenBanana
+    {
+        get { return greenBanana; }
+        set { greenBanana = value; }
+    }
+    public int yellowbanana
+    {
+        get { return yellowbanana; }
+        set { yellowbanana = value; }
+    }
 	// Use this for initialization
 	void Start () {
-		
+        greenBanana = 0;
+        yellowbanana = 0;
 	}
 	
 	// Update is called once per frame
