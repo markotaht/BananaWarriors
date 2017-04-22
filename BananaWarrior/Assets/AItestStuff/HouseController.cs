@@ -5,15 +5,16 @@ using UnityEngine;
 public class HouseController : MonoBehaviour {
     private float lifeTime;
     private float maxLifeTime = 60.0f;
+
     private SpriteRenderer spriteRenderer;
 
-    // Use this for initialization
+    
     void Start () {
         lifeTime = maxLifeTime;
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 	
-	// Update is called once per frame
+	
 	void Update () {
         lifeTime -= Time.deltaTime;
 
@@ -35,14 +36,13 @@ public class HouseController : MonoBehaviour {
         }
     }
 
-    //returns if it killed the unit
+    //returns if the unit was killed
     public bool onHit()
     {
         lifeTime -= 5;
         if (lifeTime <= 0)
         {
             Die();
-            Debug.Log("killed");
             return true;
         }
         return false;

@@ -7,17 +7,26 @@ public class BananaWarriorAI : MonoBehaviour {
     private float fullLife = 40.0f;
     private float lifeforce;
     private bool alive = true;
+
+    private MoveController moveController;
     private SpriteRenderer spriteRenderer;
+
     private float sightRange = 20.0f;
     private bool attacking = false;
+    private float attackspeed = 2.0f;
+    private float attackRange = 1.0f;
 
-	// Use this for initialization
-	void Start () {
+    private GameObject toAttack;
+    private float timer;
+    
+    
+    void Start () {
         lifeforce = fullLife;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        moveController = GetComponent<MoveController>();
 	}
 	
-	// Update is called once per frame
+	
 	void Update () {
         lifeforce -= Time.deltaTime;
 
@@ -33,7 +42,33 @@ public class BananaWarriorAI : MonoBehaviour {
         //Attacking
         if (!attacking)
         {
-            GameObject toAttack = whatToAttack();
+            toAttack = whatToAttack();
+            if (toAttack != null)
+            {
+                attacking = true;
+                timer = 0;
+            }
+        }
+        else
+        {
+            timer -= Time.deltaTime;
+            if (toAttack != null && Vector3.Distance(transform.position, toAttack.transform.position) > attackRange)
+            {
+                moveController.move(toAttack.transform.position);
+            }
+            else if (timer <= 0)
+            {
+                bool killed = true;
+                if (toAttack != null)
+                {
+                    killed = toAttack.GetComponent<RottenBananaAI>().onHit();
+                }
+                if (killed)
+                {
+                    attacking = false;
+                }
+                timer = attackspeed;
+            }
         }
     }
 
@@ -59,13 +94,12 @@ public class BananaWarriorAI : MonoBehaviour {
         return null;
     }
 
-    //returns if it killed the unit
+    //returns if the unit was killed
     public bool onHit()
     {
         lifeforce -= 5;
         if (lifeforce <= 0)
         {
-            Debug.Log("killed");
             Die();
             return true;
         }

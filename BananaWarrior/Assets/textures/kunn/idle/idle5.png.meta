@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: e4a9e80de46452649bf48db77050f058
 timeCreated: 1492865194
+=======
+guid: f5a0539d6689a18458cccd84b7c80b68
+timeCreated: 1492865150
+>>>>>>> 291a2f5f25598065ec0c230b2c9afc18b2c3b1f0
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
