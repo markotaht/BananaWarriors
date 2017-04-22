@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HouseController : MonoBehaviour {
+    private bool alive = true;
     private float lifeTime;
     private float maxLifeTime = 60.0f;
 
@@ -17,6 +18,10 @@ public class HouseController : MonoBehaviour {
 	
 	void Update () {
         lifeTime -= Time.deltaTime;
+        if (!alive)
+        {
+            return;
+        }
 
         //Color
         if(lifeTime / maxLifeTime > 0.5)
@@ -50,7 +55,14 @@ public class HouseController : MonoBehaviour {
 
     private void Die()
     {
-        Destroy(gameObject);
+        alive = false;
+        GetComponent<Animator>().SetBool("Dead", true);
+        Destroy(gameObject, 4);
+    }
+
+    public bool isAlive()
+    {
+        return alive;
     }
 
 }
