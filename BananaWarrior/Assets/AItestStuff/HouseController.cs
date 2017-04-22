@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HouseController : MonoBehaviour {
     private float lifeTime;
-    private float maxLifeTime = 20.0f;
+    private float maxLifeTime = 60.0f;
     private SpriteRenderer spriteRenderer;
 
     // Use this for initialization
@@ -16,7 +16,8 @@ public class HouseController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         lifeTime -= Time.deltaTime;
-        Debug.Log(lifeTime / maxLifeTime);
+
+        //Color
         if(lifeTime / maxLifeTime > 0.5)
         {
             spriteRenderer.color = Color.Lerp(Color.yellow, Color.green, (lifeTime / maxLifeTime - 0.5f) * 2);
@@ -25,11 +26,26 @@ public class HouseController : MonoBehaviour {
         {
             spriteRenderer.color = Color.Lerp(Color.red, Color.yellow, (lifeTime / maxLifeTime)*2);
         }
+
+        //Death
         if (lifeTime <= 0.0)
         {
             spriteRenderer.color = Color.red;
             Die();
         }
+    }
+
+    //returns if it killed the unit
+    public bool onHit()
+    {
+        lifeTime -= 5;
+        if (lifeTime <= 0)
+        {
+            Die();
+            Debug.Log("killed");
+            return true;
+        }
+        return false;
     }
 
     private void Die()

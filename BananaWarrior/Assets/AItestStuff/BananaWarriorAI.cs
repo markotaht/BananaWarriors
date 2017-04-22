@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BananaWarriorAI : MonoBehaviour {
 
-    private float fullLife = 10.0f;
+    private float fullLife = 40.0f;
     private float lifeforce;
     private bool alive = true;
     private SpriteRenderer spriteRenderer;
-    private float sightRange = 5.0f;
+    private float sightRange = 20.0f;
     private bool attacking = false;
 
 	// Use this for initialization
@@ -21,12 +21,16 @@ public class BananaWarriorAI : MonoBehaviour {
 	void Update () {
         lifeforce -= Time.deltaTime;
 
+        //Color
+        spriteRenderer.color = Color.Lerp(Color.red, Color.yellow, lifeforce / fullLife);
+
+        //Death
         if (lifeforce <= 0.0)
         {
-            StartCoroutine(Die());
+            Die();
         }
 
-        spriteRenderer.color = Color.Lerp(Color.red, Color.yellow, lifeforce / fullLife);
+        //Attacking
         if (!attacking)
         {
             GameObject toAttack = whatToAttack();
@@ -55,16 +59,27 @@ public class BananaWarriorAI : MonoBehaviour {
         return null;
     }
 
+    //returns if it killed the unit
+    public bool onHit()
+    {
+        lifeforce -= 5;
+        if (lifeforce <= 0)
+        {
+            Debug.Log("killed");
+            Die();
+            return true;
+        }
+        return false;
+    }
+
     public bool isAlive()
     {
         return alive;
     }
 
-    private IEnumerator Die()
+    private void Die()
     {
         alive = false;
-        spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(fullLife * 0.15f);
         Destroy(gameObject);
     }
 }
