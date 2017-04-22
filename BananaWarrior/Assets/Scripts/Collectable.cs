@@ -21,13 +21,26 @@ public class Collectable : MonoBehaviour {
     {
         if(other.gameObject.tag == "Player")
         {
-            if(this.gameObject.tag == "GreenBanana")
+            if(this.gameObject.tag == "GreenBanana" )
             {
-                other.gameObject.GetComponent<InventoryController>().GreenBanana++;
+                if (other.gameObject.GetComponent<InventoryController>().GreenBanana <
+                    other.gameObject.GetComponent<InventoryController>().GREENBANANA_MAX)
+                {
+                    other.gameObject.GetComponent<InventoryController>().GreenBanana++;
+                }
+                return; // üle limiidi
+
             }
             else if(this.gameObject.tag == "YellowBanana")
             {
-                other.gameObject.GetComponent<InventoryController>().YellowBanana++;
+                if (other.gameObject.GetComponent<InventoryController>().YellowBanana <
+                    other.gameObject.GetComponent<InventoryController>().YELLOWBANANA_MAX)
+                {
+                    other.gameObject.GetComponent<InventoryController>().YellowBanana++;
+                }
+                return; // üle limiidi
+
+
             }
             else if (this.gameObject.tag == "GoldenBanana")
             {
@@ -37,7 +50,7 @@ public class Collectable : MonoBehaviour {
                     other.gameObject.GetComponent<PlayerController>().Life += GOLDENBANANA_HEAL;
                     
                 }
-             //   Debug.Log("GoldenBanana korjati üles, aga vist implementatsiooni ei ole et elusid suurendada");
+             //   Debug.Log("GoldenBanana korjati üles, aga vist implementatsiooni ei ole et elusid suurendada :/");
             }
             Destroy(this.gameObject);
 
