@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BananaWarriorAI : MonoBehaviour {
 
+    private Vector3 patrolPlace;
+
     private float fullLife = 40.0f;
     private float lifeforce;
     private bool alive = true;
@@ -24,6 +26,7 @@ public class BananaWarriorAI : MonoBehaviour {
         lifeforce = fullLife;
         spriteRenderer = GetComponent<SpriteRenderer>();
         moveController = GetComponent<MoveController>();
+        patrolPlace = transform.position;
 	}
 	
 	
@@ -45,19 +48,27 @@ public class BananaWarriorAI : MonoBehaviour {
             toAttack = whatToAttack();
             if (toAttack != null)
             {
+                moveController.stopMoving();
                 attacking = true;
                 timer = 0;
+            }
+            else if(patrolPlace != transform.position)
+            {
+                moveController.move(patrolPlace);
             }
         }
         else
         {
             timer -= Time.deltaTime;
-            if (toAttack != null && Vector3.Distance(transform.position, toAttack.transform.position) > attackRange)
+            if (toAttack != null && Vector2.Distance(transform.position, toAttack.transform.position) > attackRange)
             {
-                moveController.move(toAttack.transform.position);
+                float distance = Vector3.Distance(transform.position, toAttack.transform.position) - attackRange;
+                Vector3 direction = (toAttack.transform.position - transform.position).normalized;
+                moveController.move(transform.position + direction * distance);
             }
             else if (timer <= 0)
             {
+                moveController.stopMoving();
                 bool killed = true;
                 if (toAttack != null)
                 {
@@ -68,6 +79,10 @@ public class BananaWarriorAI : MonoBehaviour {
                     attacking = false;
                 }
                 timer = attackspeed;
+            }
+            else if (timer > 0 && toAttack == null)
+            {
+                moveController.stopMoving();
             }
         }
     }
@@ -115,5 +130,10 @@ public class BananaWarriorAI : MonoBehaviour {
     {
         alive = false;
         Destroy(gameObject);
+    }
+
+    public void changePatrolPlace(Vector3 newPlace)
+    {
+        patrolPlace = newPlace;
     }
 }
