@@ -1,6 +1,11 @@
 fileFormatVersion: 2
-guid: 545db3c4bfdfd78468933f0f311f36df
-timeCreated: 1492861630
+<<<<<<< HEAD:BananaWarrior/Assets/textures/bananawarrior/warrior/idle/ani/idle1.png.meta
+guid: 35e4898a0b294184880fb88d82597b25
+timeCreated: 1492861060
+=======
+guid: c849912ccc91d1444a867f7d36baa201
+timeCreated: 1492861039
+>>>>>>> c00e7a8f52eda1dfe186188bfa182883bc38f2d4:BananaWarrior/Assets/textures/bananawarrior/warrior/idle/ani/idle1.png.meta
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
