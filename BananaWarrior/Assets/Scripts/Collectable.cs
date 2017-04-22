@@ -26,6 +26,10 @@ public class Collectable : MonoBehaviour {
             {
                 other.gameObject.GetComponent<InventoryController>().YellowBanana++;
             }
+            else if (this.gameObject.tag == "GoldenBanana")
+            {
+                Debug.Log("GoldenBanana korjati üles, aga vist implementatsiooni ei ole et elusid suurendada");
+            }
             Destroy(this.gameObject);
 
         }
