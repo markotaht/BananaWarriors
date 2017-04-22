@@ -35,7 +35,8 @@ public class UIController : MonoBehaviour {
 
     void handleHP()
     {
-        hp.fillAmount = fillAmount;
+       
+        hp.fillAmount = GetComponent<PlayerController>().Life / 100.0f;
     }
 
     void handleText()

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114416962107937150}
   - component: {fileID: 50483323132114936}
   - component: {fileID: 61917215484698628}
-  - component: {fileID: 122816813404456066}
+  - component: {fileID: 122238417719513002}
   m_Layer: 0
   m_Name: goldenbanana
   m_TagString: GoldenBanana
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1754219891155964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.48, y: 2.71, z: 0}
+  m_LocalPosition: {x: 1.45, y: 2.47, z: 0}
   m_LocalScale: {x: 0.108798645, y: 0.108798645, z: 0.108798645}
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b699a0368a4bd4408f2336d8173a863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!122 &122816813404456066
+--- !u!122 &122238417719513002
 Halo:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -109,7 +109,7 @@ Halo:
   m_Enabled: 1
   m_Color:
     serializedVersion: 2
-    rgba: 4278255590
+    rgba: 4281522896
   m_Size: 0.6
 --- !u!212 &212260581078186176
 SpriteRenderer:

@@ -75,10 +75,15 @@ public class RottenBananaAI : MonoBehaviour {
         life -= 1;
         if(life <= 0)
         {
-            Destroy(gameObject);
+            Die();
             return true;
         }
         return false;
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 
     //Chooses the next target
