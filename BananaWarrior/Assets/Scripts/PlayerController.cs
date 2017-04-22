@@ -6,26 +6,51 @@ using UnityEngine;
 [RequireComponent (typeof(InventoryController))]
 public class PlayerController : MonoBehaviour {
 
+    [SerializeField]
+    private MoveController mc;
+    private float life = 100.0f;
+
     public MoveController movementController
     {
-        get { return movementController; }
-        set { movementController = value; }
+        get { return mc; }
+        set { mc = value; }
     }
 
+    [SerializeField]
+    private InventoryController ic;
     public InventoryController inventoryController
     {
-        get { return inventoryController; }
-        set { inventoryController = value; }
+        get { return ic; }
+        set { ic = value; }
     }
 
 	// Use this for initialization
 	void Start () {
-        movementController = GetComponent<MoveController>();
-        inventoryController = GetComponent<InventoryController>();
+        mc = GetComponent<MoveController>();
+        ic = GetComponent<InventoryController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+
+    //returns if the unit was killed
+    public bool onHit()
+    {
+        life -= 5;
+        if (life <= 0)
+        {
+            Die();
+            return true;
+        }
+        return false;
+    }
+
+    private void Die()
+    {
+        //End of game
+    }
+
 }

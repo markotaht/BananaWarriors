@@ -108,6 +108,54 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &134267367 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114244864630222114, guid: 399afaa93d950e14783a69a14fb11272,
+    type: 2}
+  m_PrefabInternal: {fileID: 230389221}
+  m_Script: {fileID: 11500000, guid: 78b51aba164e2da4e9ee6a3e61112e3b, type: 3}
+--- !u!1001 &230389221
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4681755111080972, guid: 399afaa93d950e14783a69a14fb11272, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 4681755111080972, guid: 399afaa93d950e14783a69a14fb11272, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -4.547031
+      objectReference: {fileID: 0}
+    - target: {fileID: 4681755111080972, guid: 399afaa93d950e14783a69a14fb11272, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4681755111080972, guid: 399afaa93d950e14783a69a14fb11272, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4681755111080972, guid: 399afaa93d950e14783a69a14fb11272, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4681755111080972, guid: 399afaa93d950e14783a69a14fb11272, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4681755111080972, guid: 399afaa93d950e14783a69a14fb11272, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4681755111080972, guid: 399afaa93d950e14783a69a14fb11272, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 399afaa93d950e14783a69a14fb11272, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &416575786
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +397,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54cf00e2f4ba0934cb9bbef50124e074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  greenBanana: 0
+  yellowBanana: 0
 --- !u!95 &495956435
 Animator:
   serializedVersion: 3
@@ -665,7 +715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e3a056246d9dd4dbb78c04ae1e6e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentActor: {fileID: 495956428}
+  currentActor: {fileID: 134267367}
 --- !u!1 &1469219960
 GameObject:
   m_ObjectHideFlags: 0
