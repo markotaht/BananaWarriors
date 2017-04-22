@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 95106142492980802}
   - component: {fileID: 114609607893536944}
   m_Layer: 0
-  m_Name: Maja
+  m_Name: maja
   m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

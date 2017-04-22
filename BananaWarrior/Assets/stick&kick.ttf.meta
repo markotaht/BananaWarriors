@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: ccaf9ed3dc0da394884a7452add949b6
+timeCreated: 1492887369
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 300
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: stick&kick
+  fontNames:
+  - stick&kick
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
