@@ -23,10 +23,9 @@ GameObject:
   - component: {fileID: 114808709064554570}
   - component: {fileID: 50332801726786924}
   - component: {fileID: 61012190712000854}
-  - component: {fileID: 122057232917140406}
   m_Layer: 0
   m_Name: yellowbanana
-  m_TagString: GoldenBanana
+  m_TagString: YellowBanana
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,17 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b699a0368a4bd4408f2336d8173a863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!122 &122057232917140406
-Halo:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1521061309988578}
-  m_Enabled: 1
-  m_Color:
-    serializedVersion: 2
-    rgba: 4278255590
-  m_Size: 0.6
 --- !u!212 &212108034226626418
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -12,6 +12,7 @@ TagManager:
   - Menu
   - UI
   - YellowBanana
+  - GoldenBanana
   layers:
   - Default
   - TransparentFX

@@ -6,6 +6,7 @@ public class MoveController : MonoBehaviour {
 
     public Vector3 target;
 
+    [SerializeField]
     private Animator anim;
     int idleHash = Animator.StringToHash("idle");
     int moveHash = Animator.StringToHash("Move");
