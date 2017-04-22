@@ -7,7 +7,11 @@ public class InputHandler : MonoBehaviour {
     [SerializeField]
     private MoveController currentActor;
 
+    private Event current = new Event();
+    private KeyCode currentKey;
+    private List<KeyCode> keysDown = new List<KeyCode>();
 
+    bool build = false;
 	// Use this for initialization
 	void Start () {
 		
@@ -19,8 +23,18 @@ public class InputHandler : MonoBehaviour {
         Collider2D hit = Physics2D.OverlapPoint(point);
         //Kuhu klikkisime
 
+        current = new Event();
+        Event.PopEvent(current);
+        currentKey = ReadKeyCode();
+
         if (Input.GetMouseButton(0))
         {
+            if (build)
+            {
+                //Pane maja
+                build = false;
+                return;
+            }
             if (hit && hit.gameObject.tag == "Player")
             {
                 currentActor = hit.gameObject.GetComponent<MoveController>();
@@ -30,5 +44,23 @@ public class InputHandler : MonoBehaviour {
                 currentActor.move(point);
             }
         }
+
+        if(currentKey == KeyCode.B)
+        {
+            build = true;
+        }
 	}
+
+    protected KeyCode ReadKeyCode()
+    {
+        if(current.type == EventType.keyDown && !keysDown.Contains(current.keyCode))
+        {
+            keysDown.Add(current.keyCode);
+            return current.keyCode;
+        }else if(current.type == EventType.KeyUp)
+        {
+            keysDown.Remove(current.keyCode);
+        }
+        return KeyCode.None;
+    }
 }
