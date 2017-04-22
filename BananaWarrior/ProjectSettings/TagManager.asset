@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Banana
   - GreenBanana
+  - Warrior
+  - House
+  - Rotten
   layers:
   - Default
   - TransparentFX
