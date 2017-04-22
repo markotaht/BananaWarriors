@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 public class InputHandler : MonoBehaviour {
 
     [SerializeField]
@@ -22,6 +22,8 @@ public class InputHandler : MonoBehaviour {
 	void Update () {
         Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Collider2D hit = Physics2D.OverlapPoint(point);
+
+        if (EventSystem.current.IsPointerOverGameObject()) return;
         //Kuhu klikkisime
 
         current = new Event();
