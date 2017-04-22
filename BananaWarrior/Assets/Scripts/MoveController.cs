@@ -6,14 +6,12 @@ public class MoveController : MonoBehaviour {
 
     public Vector3 target;
 
-    private Vector3 velocity = Vector3.zero;
-
     [SerializeField]
     private float speed = 1.0f;
 
 	// Use this for initialization
 	void Start () {
-		
+        target = transform.position;
 	}
 	
 	// Update is called once per frame

@@ -30,7 +30,7 @@ public class UIController : MonoBehaviour {
 	void Update () {
         handleHP();
         handleText();
-        fillAmount -= 0.001f;
+
 	}
 
     void handleHP()

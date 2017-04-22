@@ -5,9 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Banana
+  - GreenBanana
   - Warrior
   - House
   - Rotten
+  - Menu
+  - UI
   layers:
   - Default
   - TransparentFX
