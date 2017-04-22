@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class RottenBananaAI : MonoBehaviour {
     private int life = 3;
-    private bool attacking = false;
-    private GameObject toAttack;
     private float sightRange = 30.0f;
     private float attackspeed = 2.0f;
-    private float timer;
     private float attackRange = 1.0f;
+
     private MoveController moveController;
 
-	// Use this for initialization
+    private bool attacking = false;
+    private GameObject toAttack;
+    private float timer;
+    
+	
 	void Start () {
         moveController = GetComponent<MoveController>();
 	}
 	
-	// Update is called once per frame
+	
 	void Update () {
-        //Debug.Log(toAttack);
-
+        
         //Attacking
         if (!attacking)
         {
@@ -33,14 +34,16 @@ public class RottenBananaAI : MonoBehaviour {
         }
         else
         {
-            
             timer -= Time.deltaTime;
             if(toAttack != null && Vector3.Distance(transform.position, toAttack.transform.position) > attackRange)
             {
-                moveController.move(toAttack.transform.position);
+                float distance = Vector3.Distance(transform.position, toAttack.transform.position) - attackRange;
+                Vector3 direction = (toAttack.transform.position - transform.position).normalized;
+                moveController.move(transform.position + direction*distance);
             }
             else if (timer <= 0)
             {
+                moveController.stopMoving();
                 bool killed = true;
                 if (toAttack != null)
                 {
@@ -59,23 +62,26 @@ public class RottenBananaAI : MonoBehaviour {
                 }
                 timer = attackspeed;
             }
+            else if (timer > 0 && toAttack == null)
+            {
+                moveController.stopMoving();
+            }
         }
-        
 	}
 
-    //returns if it killed the unit
+    //returns if the unit was killed
     public bool onHit()
     {
         life -= 1;
         if(life <= 0)
         {
             Destroy(gameObject);
-            Debug.Log("killed");
             return true;
         }
         return false;
     }
 
+    //Chooses the next target
     private GameObject whatToAttack()
     {
         GameObject[] houses;

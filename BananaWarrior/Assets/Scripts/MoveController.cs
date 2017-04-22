@@ -14,7 +14,7 @@ public class MoveController : MonoBehaviour {
 
     public int sortingOrder = 0;
     [SerializeField]
-    private float speed = 1.0f;
+    private float speed = 2.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -53,5 +53,10 @@ public class MoveController : MonoBehaviour {
             scale.x *= scale.x > 0 ? 1 : -1;
         }
         transform.localScale = scale;
+    }
+
+    public void stopMoving()
+    {
+        target = transform.position;
     }
 }

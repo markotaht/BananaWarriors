@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour {
 
+    [SerializeField]
     private int greenBanana = 0;
     public int GreenBanana
     {
         get { return greenBanana; }
         set { greenBanana = value; }
     }
-
+    [SerializeField]
     private int yellowBanana = 0;
     public int YellowBanana
     {
@@ -31,7 +32,6 @@ public class InventoryController : MonoBehaviour {
     
     }
 
-
     private const int greenbanana_max = 10;
 
     public int GREENBANANA_MAX
@@ -46,11 +46,13 @@ public class InventoryController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "GreenBanana")
+        // ei tee vist midagi see osa
+        Debug.Log(collision.gameObject.tag);
+        if(collision.gameObject.tag == "GreenBanana")
         {
             greenBanana = greenBanana + 1;
         }
-        else if(collision.tag == "YellowBanana")
+        else if(collision.gameObject.tag == "YellowBanana")
         {
             yellowBanana = yellowBanana + 1;
         }
