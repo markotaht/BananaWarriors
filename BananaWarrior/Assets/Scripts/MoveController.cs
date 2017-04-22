@@ -30,7 +30,7 @@ public class MoveController : MonoBehaviour {
         if (Vector3.Distance(transform.position, target) > 0.01)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-            Debug.Log(speed * Time.deltaTime);
+            //Debug.Log(speed * Time.deltaTime);
             anim.SetFloat("Speed", speed * Time.deltaTime);
         }
         else

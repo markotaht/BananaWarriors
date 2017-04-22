@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RottenBananaAI : MonoBehaviour {
+    private bool alive = true;
     private int life = 3;
     private float sightRange = 30.0f;
     private float attackspeed = 2.0f;
@@ -21,7 +22,10 @@ public class RottenBananaAI : MonoBehaviour {
 	
 	
 	void Update () {
-        
+        if (!alive)
+        {
+            return;
+        }
         //Attacking
         if (!attacking)
         {
@@ -35,7 +39,7 @@ public class RottenBananaAI : MonoBehaviour {
         else
         {
             timer -= Time.deltaTime;
-            if(toAttack != null && Vector3.Distance(transform.position, toAttack.transform.position) > attackRange)
+            if (toAttack != null && Vector3.Distance(transform.position, toAttack.transform.position) - 0.1 >= attackRange)
             {
                 float distance = Vector3.Distance(transform.position, toAttack.transform.position) - attackRange;
                 Vector3 direction = (toAttack.transform.position - transform.position).normalized;
@@ -47,6 +51,16 @@ public class RottenBananaAI : MonoBehaviour {
                 bool killed = true;
                 if (toAttack != null)
                 {
+                    Vector3 scale = transform.localScale;
+                    if (toAttack.transform.position.x < transform.position.x)
+                    {
+                        scale.x *= scale.x < 0 ? 1 : -1;
+                    }
+                    else
+                    {
+                        scale.x *= scale.x > 0 ? 1 : -1;
+                    }
+                    transform.localScale = scale;
                     if (toAttack.tag == "Warrior")
                     {
                         killed = toAttack.GetComponent<BananaWarriorAI>().onHit();
@@ -55,10 +69,15 @@ public class RottenBananaAI : MonoBehaviour {
                     {
                         killed = toAttack.GetComponent<HouseController>().onHit();
                     }
+                    else if (toAttack.tag == "Player")
+                    {
+                        killed = toAttack.GetComponent<PlayerController>().onHit();
+                    }
                 }
                 if (killed)
                 {
                     attacking = false;
+                    toAttack = null;
                 }
                 timer = attackspeed;
             }
@@ -83,7 +102,9 @@ public class RottenBananaAI : MonoBehaviour {
 
     private void Die()
     {
-        Destroy(gameObject);
+        alive = false;
+        GetComponent<Animator>().SetBool("Dead", true);
+        Destroy(gameObject, 3);
     }
 
     //Chooses the next target
@@ -98,6 +119,10 @@ public class RottenBananaAI : MonoBehaviour {
         Vector3 position = transform.position;
         foreach (GameObject house in houses)
         {
+            if (!house.GetComponent<HouseController>().isAlive())
+            {
+                continue;
+            }
             Vector3 diff = house.transform.position - position;
             float curDistance = diff.sqrMagnitude;
             if (curDistance < distance)
@@ -119,6 +144,12 @@ public class RottenBananaAI : MonoBehaviour {
                 closest = warrior;
                 distance = curDistance;
             }
+        }
+        if(closest == null)
+        {
+            closest = GameObject.FindGameObjectsWithTag("Player")[0];
+            Vector3 diff = closest.transform.position - position;
+            distance = diff.sqrMagnitude;
         }
         if(distance <= sightRange)
             return closest;
