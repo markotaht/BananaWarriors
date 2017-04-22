@@ -26,7 +26,6 @@ public class RottenBananaAI : MonoBehaviour {
         {
             return;
         }
-
         //Attacking
         if (!attacking)
         {
@@ -78,6 +77,7 @@ public class RottenBananaAI : MonoBehaviour {
                 if (killed)
                 {
                     attacking = false;
+                    toAttack = null;
                 }
                 timer = attackspeed;
             }
@@ -119,6 +119,10 @@ public class RottenBananaAI : MonoBehaviour {
         Vector3 position = transform.position;
         foreach (GameObject house in houses)
         {
+            if (!house.GetComponent<HouseController>().isAlive())
+            {
+                continue;
+            }
             Vector3 diff = house.transform.position - position;
             float curDistance = diff.sqrMagnitude;
             if (curDistance < distance)
