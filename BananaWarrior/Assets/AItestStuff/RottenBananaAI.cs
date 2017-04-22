@@ -115,7 +115,6 @@ public class RottenBananaAI : MonoBehaviour {
                 distance = curDistance;
             }
         }
-        Debug.Log(distance);
         if(distance <= sightRange)
             return closest;
         return null;

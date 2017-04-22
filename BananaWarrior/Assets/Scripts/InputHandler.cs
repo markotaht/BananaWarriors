@@ -6,6 +6,7 @@ public class InputHandler : MonoBehaviour {
 
     [SerializeField]
     private MoveController currentActor;
+    private BananaWarriorAI bananaAI;
 
     private Event current = new Event();
     private KeyCode currentKey;
@@ -39,9 +40,21 @@ public class InputHandler : MonoBehaviour {
             {
                 currentActor = hit.gameObject.GetComponent<MoveController>();
             }
-            else
+            else if (hit && hit.gameObject.tag == "Warrior")
             {
-                currentActor.move(point);
+                currentActor = hit.gameObject.GetComponent<MoveController>();
+                bananaAI = hit.gameObject.GetComponent<BananaWarriorAI>();
+            }
+            else if (currentActor != null)
+            {
+                if(currentActor.gameObject.tag == "Warrior")
+                {
+                    bananaAI.changePatrolPlace(point);
+                }
+                else
+                {
+                    currentActor.move(point);
+                }
             }
         }
 
