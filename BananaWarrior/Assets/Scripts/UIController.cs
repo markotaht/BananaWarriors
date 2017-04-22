@@ -17,9 +17,9 @@ public class UIController : MonoBehaviour {
     [SerializeField]
     private Text greenBananaText;
 
-    private int counter = 0;
+    [SerializeField]
+    private InventoryController inventoryController;
 
-    private int counter2 = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -46,11 +46,11 @@ public class UIController : MonoBehaviour {
 
     void handleYellowText()
     {
-        yellowBananaText.text = counter++ + "/" + counter++;
+        yellowBananaText.text = inventoryController.yellowbanana + "/" + inventoryController.yellowbanana;
     }
     
     void handleGreenText()
     {
-        greenBananaText.text = counter-- + "/" + counter++;
+        greenBananaText.text = "/";
     }
 }
