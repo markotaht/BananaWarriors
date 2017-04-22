@@ -22,7 +22,23 @@ public class InventoryController : MonoBehaviour {
      //   greenBanana = 0;
      //   yellowbanana = 0;
 	}
-	
+
+    private const int yellowbanana_max = 10;
+
+    public int YELLOWBANANA_MAX
+    {
+        get { return yellowbanana_max; }
+    
+    }
+
+
+    private const int greenbanana_max = 10;
+
+    public int GREENBANANA_MAX
+    {
+        get { return greenbanana_max;  }
+    }
+
 	// Update is called once per frame
 	void Update () {
 		
