@@ -10,7 +10,7 @@ public class MoveController : MonoBehaviour {
 
     public int sortingOrder = 0;
     [SerializeField]
-    private float speed = 1.0f;
+    private float speed = 2.5f;
 
 	// Use this for initialization
 	void Start () {
