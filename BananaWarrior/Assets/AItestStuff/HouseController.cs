@@ -21,11 +21,11 @@ public class HouseController : MonoBehaviour {
         //Color
         if(lifeTime / maxLifeTime > 0.5)
         {
-            spriteRenderer.color = Color.Lerp(Color.yellow, Color.green, (lifeTime / maxLifeTime - 0.5f) * 2);
+            spriteRenderer.color = Color.Lerp(new Color(1, 1, 0, 1), Color.green, (lifeTime / maxLifeTime - 0.5f) * 2);
         }
         else
         {
-            spriteRenderer.color = Color.Lerp(Color.red, Color.yellow, (lifeTime / maxLifeTime)*2);
+            spriteRenderer.color = Color.Lerp(new Color(1, 0.4f, 0, 1), new Color(1, 1, 0, 1), (lifeTime / maxLifeTime)*2);
         }
 
         //Death

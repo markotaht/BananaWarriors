@@ -6,7 +6,7 @@ public class BananaWarriorAI : MonoBehaviour {
 
     private Vector3 patrolPlace;
 
-    private float fullLife = 40.0f;
+    private float fullLife = 20.0f;
     private float lifeforce;
     private bool alive = true;
 
@@ -34,7 +34,7 @@ public class BananaWarriorAI : MonoBehaviour {
         lifeforce -= Time.deltaTime;
 
         //Color
-        spriteRenderer.color = Color.Lerp(Color.red, Color.yellow, lifeforce / fullLife);
+        spriteRenderer.color = Color.Lerp(new Color(0.5f, 0.26f, 0, 1), Color.white, lifeforce / fullLife);
 
         //Death
         if (lifeforce <= 0.0)
