@@ -507,6 +507,11 @@ Prefab:
       propertyPath: m_Name
       value: BananaWarrior (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 61424092267677142, guid: c73a12f0dca4a354cb1e660efd2968d5,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c73a12f0dca4a354cb1e660efd2968d5, type: 2}
   m_IsPrefabParent: 0
@@ -706,6 +711,7 @@ GameObject:
   - component: {fileID: 1763098217}
   - component: {fileID: 1763098216}
   - component: {fileID: 1763098215}
+  - component: {fileID: 1763098220}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -784,6 +790,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1763098220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1763098214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e3a056246d9dd4dbb78c04ae1e6e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentActor: {fileID: 0}
 --- !u!1001 &1871814739
 Prefab:
   m_ObjectHideFlags: 0
