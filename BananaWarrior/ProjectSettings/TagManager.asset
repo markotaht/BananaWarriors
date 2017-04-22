@@ -9,6 +9,8 @@ TagManager:
   - Warrior
   - House
   - Rotten
+  - Menu
+  - UI
   layers:
   - Default
   - TransparentFX
