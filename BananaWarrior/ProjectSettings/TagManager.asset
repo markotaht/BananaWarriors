@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Banana
+  - Warrior
+  - House
+  - Rotten
   layers:
   - Default
   - TransparentFX
