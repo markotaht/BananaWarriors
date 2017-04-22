@@ -55,6 +55,10 @@ public class RottenBananaAI : MonoBehaviour {
                     {
                         killed = toAttack.GetComponent<HouseController>().onHit();
                     }
+                    else if (toAttack.tag == "Player")
+                    {
+                        killed = toAttack.GetComponent<PlayerController>().onHit();
+                    }
                 }
                 if (killed)
                 {
@@ -119,6 +123,12 @@ public class RottenBananaAI : MonoBehaviour {
                 closest = warrior;
                 distance = curDistance;
             }
+        }
+        if(closest == null)
+        {
+            closest = GameObject.FindGameObjectsWithTag("Player")[0];
+            Vector3 diff = closest.transform.position - position;
+            distance = diff.sqrMagnitude;
         }
         if(distance <= sightRange)
             return closest;
