@@ -4,22 +4,41 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour {
 
-    private int greenBanana
+    private int greenBanana = 0;
+    public int GreenBanana
     {
         get { return greenBanana; }
         set { greenBanana = value; }
     }
-    public int yellowbanana
+
+    private int yellowBanana = 0;
+    public int YellowBanana
     {
-        get { return yellowbanana; }
-        set { yellowbanana = value; }
+        get { return yellowBanana; }
+        set { yellowBanana = value; }
     }
 	// Use this for initialization
 	void Start () {
-        greenBanana = 0;
-        yellowbanana = 0;
+     //   greenBanana = 0;
+     //   yellowbanana = 0;
 	}
-	
+
+    private const int yellowbanana_max = 10;
+
+    public int YELLOWBANANA_MAX
+    {
+        get { return yellowbanana_max; }
+    
+    }
+
+
+    private const int greenbanana_max = 10;
+
+    public int GREENBANANA_MAX
+    {
+        get { return greenbanana_max;  }
+    }
+
 	// Update is called once per frame
 	void Update () {
 		
@@ -29,11 +48,11 @@ public class InventoryController : MonoBehaviour {
     {
         if(collision.tag == "GreenBanana")
         {
-            greenBanana += 1;
+            greenBanana = greenBanana + 1;
         }
         else if(collision.tag == "YellowBanana")
         {
-            yellowbanana += 1;
+            yellowBanana = yellowBanana + 1;
         }
     }
 

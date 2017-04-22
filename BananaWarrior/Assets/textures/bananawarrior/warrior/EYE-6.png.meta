@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:BananaWarrior/Assets/textures/bananawarrior/warrior/EYE-6.png.meta
 guid: ecfe1c761fcb1f34bba2c81e760cfb43
 timeCreated: 1492861061
+=======
+guid: 8d243bdc7ec811e4bb8f48209c5fad1d
+timeCreated: 1492861038
+>>>>>>> c00e7a8f52eda1dfe186188bfa182883bc38f2d4:BananaWarrior/Assets/textures/bananawarrior/warrior/EYE-6.png.meta
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}

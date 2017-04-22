@@ -46,11 +46,11 @@ public class UIController : MonoBehaviour {
 
     void handleYellowText()
     {
-        yellowBananaText.text = inventoryController.yellowbanana + "/" + inventoryController.yellowbanana;
+        yellowBananaText.text = inventoryController.YellowBanana + "/" + inventoryController.YELLOWBANANA_MAX;
     }
     
     void handleGreenText()
     {
-        greenBananaText.text = "/";
+        greenBananaText.text = inventoryController.GreenBanana + "/" + inventoryController.GREENBANANA_MAX;
     }
 }
