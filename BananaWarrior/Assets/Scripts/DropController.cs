@@ -20,15 +20,17 @@ public class DropController : MonoBehaviour {
         if (!isOnCoolDown)
         {
             float randomNumber = Random.Range(0f, 1f);
-
+            float randomWidth = Random.Range(10, Screen.width);
+            float randomHeight = Random.Range(10, Screen.height);
             if (randomNumber < RATE_GOLDEN)
             {
-                GameObject goldenBanana = (GameObject)Instantiate(Resources.Load("goldenbanana"), new Vector2(10, 10), Quaternion.identity);
+
+                GameObject goldenBanana = (GameObject)Instantiate(Resources.Load("goldenbanana"), new Vector2(randomWidth, randomHeight), Quaternion.identity);
                 //Instantiate(greenbanana, new Vector2(0, 0), Quaternion.identity);
             }
             else if (randomNumber < RATE_NORMAL)
             {
-                GameObject goldenBanana = (GameObject)Instantiate(Resources.Load("greenbanana"));
+                GameObject goldenBanana = (GameObject)Instantiate(Resources.Load("greenbanana"), new Vector2(randomWidth,randomHeight),Quaternion.identity);
             }
             StartCoroutine(coolDown());
         }
