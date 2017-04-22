@@ -32,7 +32,10 @@ public class BananaWarriorAI : MonoBehaviour {
 	
 	void Update () {
         lifeforce -= Time.deltaTime;
-
+        if (!alive)
+        {
+            return;
+        }
         //Color
         spriteRenderer.color = Color.Lerp(new Color(0.5f, 0.26f, 0, 1), Color.white, lifeforce / fullLife);
 
@@ -139,7 +142,8 @@ public class BananaWarriorAI : MonoBehaviour {
     private void Die()
     {
         alive = false;
-        Destroy(gameObject);
+        GetComponent<Animator>().SetBool("Dead", true);
+        Destroy(gameObject, 3);
     }
 
     public void changePatrolPlace(Vector3 newPlace)

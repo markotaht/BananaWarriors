@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RottenBananaAI : MonoBehaviour {
+    private bool alive = true;
     private int life = 3;
     private float sightRange = 30.0f;
     private float attackspeed = 2.0f;
@@ -21,7 +22,11 @@ public class RottenBananaAI : MonoBehaviour {
 	
 	
 	void Update () {
-        
+        if (!alive)
+        {
+            return;
+        }
+
         //Attacking
         if (!attacking)
         {
@@ -97,7 +102,9 @@ public class RottenBananaAI : MonoBehaviour {
 
     private void Die()
     {
-        Destroy(gameObject);
+        alive = false;
+        GetComponent<Animator>().SetBool("Dead", true);
+        Destroy(gameObject, 3);
     }
 
     //Chooses the next target
