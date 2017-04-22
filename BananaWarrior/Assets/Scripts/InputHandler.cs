@@ -23,7 +23,12 @@ public class InputHandler : MonoBehaviour {
         Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Collider2D hit = Physics2D.OverlapPoint(point);
 
-        if (EventSystem.current.IsPointerOverGameObject()) return;
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            if(Input.GetMouseButton(0))
+                build = true;
+            return;
+        }
         //Kuhu klikkisime
 
         current = new Event();
@@ -32,8 +37,15 @@ public class InputHandler : MonoBehaviour {
 
         if (Input.GetMouseButton(0))
         {
+
             if (build)
             {
+
+                GameObject goldenBanana =
+                (GameObject)Instantiate(Resources.Load("maja"),
+                Camera.main.ScreenToWorldPoint(Input.mousePosition),
+                 Quaternion.identity);
+                Debug.Log("panin maja maha");
                 //Pane maja
                 build = false;
                 return;
@@ -59,6 +71,8 @@ public class InputHandler : MonoBehaviour {
                 }
             }
         }
+
+        
 
         if(currentKey == KeyCode.B)
         {
