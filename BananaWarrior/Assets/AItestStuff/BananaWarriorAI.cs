@@ -72,6 +72,16 @@ public class BananaWarriorAI : MonoBehaviour {
                 bool killed = true;
                 if (toAttack != null)
                 {
+                    Vector3 scale = transform.localScale;
+                    if (toAttack.transform.position.x < transform.position.x)
+                    {
+                        scale.x *= scale.x < 0 ? 1 : -1;
+                    }
+                    else
+                    {
+                        scale.x *= scale.x > 0 ? 1 : -1;
+                    }
+                    transform.localScale = scale;
                     killed = toAttack.GetComponent<RottenBananaAI>().onHit();
                 }
                 if (killed)

@@ -35,7 +35,7 @@ public class RottenBananaAI : MonoBehaviour {
         else
         {
             timer -= Time.deltaTime;
-            if(toAttack != null && Vector3.Distance(transform.position, toAttack.transform.position) > attackRange)
+            if (toAttack != null && Vector3.Distance(transform.position, toAttack.transform.position) - 0.1 >= attackRange)
             {
                 float distance = Vector3.Distance(transform.position, toAttack.transform.position) - attackRange;
                 Vector3 direction = (toAttack.transform.position - transform.position).normalized;
@@ -47,6 +47,16 @@ public class RottenBananaAI : MonoBehaviour {
                 bool killed = true;
                 if (toAttack != null)
                 {
+                    Vector3 scale = transform.localScale;
+                    if (toAttack.transform.position.x < transform.position.x)
+                    {
+                        scale.x *= scale.x < 0 ? 1 : -1;
+                    }
+                    else
+                    {
+                        scale.x *= scale.x > 0 ? 1 : -1;
+                    }
+                    transform.localScale = scale;
                     if (toAttack.tag == "Warrior")
                     {
                         killed = toAttack.GetComponent<BananaWarriorAI>().onHit();
