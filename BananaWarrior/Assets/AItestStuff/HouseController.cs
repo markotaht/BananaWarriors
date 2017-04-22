@@ -36,7 +36,6 @@ public class HouseController : MonoBehaviour {
         //Death
         if (lifeTime <= 0.0)
         {
-            spriteRenderer.color = Color.red;
             Die();
         }
     }

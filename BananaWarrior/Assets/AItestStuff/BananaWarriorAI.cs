@@ -63,7 +63,7 @@ public class BananaWarriorAI : MonoBehaviour {
         else
         {
             timer -= Time.deltaTime;
-            if (toAttack != null && Vector2.Distance(transform.position, toAttack.transform.position) > attackRange)
+            if (toAttack != null && Vector2.Distance(transform.position, toAttack.transform.position) - 0.1 >= attackRange)
             {
                 float distance = Vector3.Distance(transform.position, toAttack.transform.position) - attackRange;
                 Vector3 direction = (toAttack.transform.position - transform.position).normalized;
@@ -90,6 +90,7 @@ public class BananaWarriorAI : MonoBehaviour {
                 if (killed)
                 {
                     attacking = false;
+                    toAttack = null;
                 }
                 timer = attackspeed;
             }
@@ -109,6 +110,10 @@ public class BananaWarriorAI : MonoBehaviour {
         Vector3 position = transform.position;
         foreach (GameObject rot in rottens)
         {
+            if (!rot.GetComponent<RottenBananaAI>().isAlive())
+            {
+                continue;
+            }
             Vector3 diff = rot.transform.position - position;
             float curDistance = diff.sqrMagnitude;
             if (curDistance < distance)

@@ -9,7 +9,7 @@ public class ItemController : MonoBehaviour
 {
     public Button sampleButton;                         // sample button prefab
     private List<ContextMenuItem> contextMenuItems;     // list of items in menu
-
+    Vector3 pos;
     void Awake()
     {
 
@@ -28,7 +28,7 @@ public class ItemController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
+            pos = Camera.main.WorldToScreenPoint(transform.position);
             ContextMenu.Instance.CreateContextMenu(contextMenuItems, new Vector2(pos.x, pos.y));
         }
 
@@ -36,12 +36,21 @@ public class ItemController : MonoBehaviour
 
     void BuildHouse(Image contextPanel)
     {
+        Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Collider2D hit = Physics2D.OverlapPoint(point);
+
+        Debug.Log(Input.mousePosition);
+        GameObject goldenBanana =
+            (GameObject)Instantiate(Resources.Load("Maja"),
+            point,
+            Quaternion.identity);
         Debug.Log("Maja");
         Destroy(contextPanel.gameObject);
     }
 
     void BuildSoldier(Image contextPanel)
     {
+
         Debug.Log("Sõdur");
         Destroy(contextPanel.gameObject);
     }
