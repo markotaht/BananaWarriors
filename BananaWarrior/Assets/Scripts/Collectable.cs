@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Collectable : MonoBehaviour {
 
-    private const float GOLDENBANANA_HEAL = 0.1f; // 10%
+    private const float GOLDENBANANA_HEAL = 10.0f; // 10%
 
 	// Use this for initialization
 	void Start () {
@@ -20,22 +21,36 @@ public class Collectable : MonoBehaviour {
     {
         if(other.gameObject.tag == "Player")
         {
-            if(this.gameObject.tag == "GreenBanana")
+            if(this.gameObject.tag == "GreenBanana" )
             {
-                other.gameObject.GetComponent<InventoryController>().GreenBanana++;
+                if (other.gameObject.GetComponent<InventoryController>().GreenBanana <
+                    other.gameObject.GetComponent<InventoryController>().GREENBANANA_MAX)
+                {
+                    other.gameObject.GetComponent<InventoryController>().GreenBanana++;
+                }
+                return; // üle limiidi
+
             }
             else if(this.gameObject.tag == "YellowBanana")
             {
-                other.gameObject.GetComponent<InventoryController>().YellowBanana++;
+                if (other.gameObject.GetComponent<InventoryController>().YellowBanana <
+                    other.gameObject.GetComponent<InventoryController>().YELLOWBANANA_MAX)
+                {
+                    other.gameObject.GetComponent<InventoryController>().YellowBanana++;
+                }
+                return; // üle limiidi
+
+
             }
             else if (this.gameObject.tag == "GoldenBanana")
             {
 
-           //     if(other.gameObject.GetComponent<InventoryController>().CurrentHP <= 0.9f)
-          //      {
-          //          other.gameObject.GetComponent<InventoryController>().CurrentHP += GOLDENBANANA_HEAL;
-          //      }
-         //       Debug.Log("GoldenBanana korjati üles, aga vist implementatsiooni ei ole et elusid suurendada");
+                if(other.gameObject.GetComponent<PlayerController>().Life <= 100.0f - GOLDENBANANA_HEAL)
+                {
+                    other.gameObject.GetComponent<PlayerController>().Life += GOLDENBANANA_HEAL;
+                    
+                }
+             //   Debug.Log("GoldenBanana korjati üles, aga vist implementatsiooni ei ole et elusid suurendada :/");
             }
             Destroy(this.gameObject);
 
