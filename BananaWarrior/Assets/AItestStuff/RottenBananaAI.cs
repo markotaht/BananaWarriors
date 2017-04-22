@@ -37,10 +37,13 @@ public class RottenBananaAI : MonoBehaviour {
             timer -= Time.deltaTime;
             if(toAttack != null && Vector3.Distance(transform.position, toAttack.transform.position) > attackRange)
             {
-                moveController.move(toAttack.transform.position);
+                float distance = Vector3.Distance(transform.position, toAttack.transform.position) - attackRange;
+                Vector3 direction = (toAttack.transform.position - transform.position).normalized;
+                moveController.move(transform.position + direction*distance);
             }
             else if (timer <= 0)
             {
+                moveController.stopMoving();
                 bool killed = true;
                 if (toAttack != null)
                 {
@@ -58,6 +61,10 @@ public class RottenBananaAI : MonoBehaviour {
                     attacking = false;
                 }
                 timer = attackspeed;
+            }
+            else if (timer > 0 && toAttack == null)
+            {
+                moveController.stopMoving();
             }
         }
 	}

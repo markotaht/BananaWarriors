@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4498632717920350}
   - component: {fileID: 212559577221200086}
   - component: {fileID: 114324203574149920}
+  - component: {fileID: 114405822842093470}
   m_Layer: 0
   m_Name: RottenBanana
   m_TagString: Rotten
@@ -52,6 +53,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d007e27c10a0cb94fb1c71b5584f926a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114405822842093470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1664417833047162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b51aba164e2da4e9ee6a3e61112e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  sortingOrder: 0
+  speed: 1
 --- !u!212 &212559577221200086
 SpriteRenderer:
   m_ObjectHideFlags: 1

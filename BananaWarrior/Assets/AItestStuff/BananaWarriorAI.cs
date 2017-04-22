@@ -52,9 +52,11 @@ public class BananaWarriorAI : MonoBehaviour {
         else
         {
             timer -= Time.deltaTime;
-            if (toAttack != null && Vector3.Distance(transform.position, toAttack.transform.position) > attackRange)
+            if (toAttack != null && Vector2.Distance(transform.position, toAttack.transform.position) > attackRange)
             {
-                moveController.move(toAttack.transform.position);
+                float distance = Vector3.Distance(transform.position, toAttack.transform.position) - attackRange;
+                Vector3 direction = (toAttack.transform.position - transform.position).normalized;
+                moveController.move(transform.position + direction * distance);
             }
             else if (timer <= 0)
             {

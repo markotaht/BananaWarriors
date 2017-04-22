@@ -29,4 +29,9 @@ public class MoveController : MonoBehaviour {
         target = destination;
         target.z = 0;
     }
+
+    public void stopMoving()
+    {
+        target = transform.position;
+    }
 }
