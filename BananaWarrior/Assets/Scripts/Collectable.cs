@@ -28,7 +28,11 @@ public class Collectable : MonoBehaviour {
                 {
                     other.gameObject.GetComponent<InventoryController>().GreenBanana++;
                 }
-                return; // üle limiidi
+                else
+                {
+                    return; // üle limiidi
+                }
+
 
             }
             else if(this.gameObject.tag == "YellowBanana")
@@ -38,7 +42,10 @@ public class Collectable : MonoBehaviour {
                 {
                     other.gameObject.GetComponent<InventoryController>().YellowBanana++;
                 }
-                return; // üle limiidi
+                else
+                {
+                    return; // üle limiidi
+                }
 
 
             }
