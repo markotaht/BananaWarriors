@@ -43,7 +43,7 @@ public class RottenBananaAI : MonoBehaviour {
             {
                 float distance = Vector3.Distance(transform.position, toAttack.transform.position) - attackRange;
                 Vector3 direction = (toAttack.transform.position - transform.position).normalized;
-                moveController.move(transform.position + direction*distance);
+                moveController.move(transform.position + direction * distance);
             }
             else if (timer <= 0)
             {
@@ -155,4 +155,10 @@ public class RottenBananaAI : MonoBehaviour {
             return closest;
         return null;
     }
+
+    public bool isAlive()
+    {
+        return alive;
+    }
+
 }
