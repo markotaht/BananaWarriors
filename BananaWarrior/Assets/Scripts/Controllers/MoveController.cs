@@ -31,7 +31,7 @@ public class MoveController : MonoBehaviour {
         {
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
             //Debug.Log(speed * Time.deltaTime);
-            anim.SetFloat("Speed", speed * Time.deltaTime);
+            anim.SetFloat("Speed", 1);
         }
         else
         {

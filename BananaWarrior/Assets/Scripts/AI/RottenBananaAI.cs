@@ -147,7 +147,7 @@ public class RottenBananaAI : MonoBehaviour {
         }
         if(closest == null)
         {
-            closest = GameObject.FindGameObjectsWithTag("Player")[0];
+            closest = GameObject.FindGameObjectWithTag("Player");
             Vector3 diff = closest.transform.position - position;
             distance = diff.sqrMagnitude;
         }
