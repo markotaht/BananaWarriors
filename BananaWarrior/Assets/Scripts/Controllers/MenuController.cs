@@ -24,6 +24,8 @@ public class MenuController : MonoBehaviour{
     public void buttonContinue()
     {
         Debug.Log("Continue not implemented yet :((");
+        Application.LoadLevel("Scenes/Main");
+        Time.timeScale = 1;
     }
 
     public void buttonStartLevel()
