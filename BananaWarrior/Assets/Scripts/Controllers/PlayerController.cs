@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField]
     private MoveController mc;
-    private float life = 90.0f;
+    private float life = 100.0f;
 
     public float Life
     {
