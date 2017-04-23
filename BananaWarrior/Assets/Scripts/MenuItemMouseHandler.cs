@@ -19,7 +19,7 @@ public class MenuItemMouseHandler : MonoBehaviour, IPointerEnterHandler, IPointe
 
         startcolor = GetComponentInChildren<Text>().color;
                
-        GetComponentInChildren<Text>().color = Color.yellow;
+        GetComponentInChildren<Text>().color = new Color32(206,181,57,255);
 
         isOver = true;
 
