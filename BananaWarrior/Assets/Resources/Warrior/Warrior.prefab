@@ -89,6 +89,8 @@ GameObject:
   - component: {fileID: 114362625141920546}
   - component: {fileID: 50049425371065914}
   - component: {fileID: 61250593415646702}
+  - component: {fileID: 114988778529418166}
+  - component: {fileID: 210436572347508360}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Warrior
@@ -240,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {x: 0, y: 0, z: 0}
   anim: {fileID: 0}
-  sortingOrder: 0
+  sortingOrder: 8
   speed: 2.5
 --- !u!114 &114362625141920546
 MonoBehaviour:
@@ -253,6 +255,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb016b889a75e64a9af8fe6a765ef56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114988778529418166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1475265528293698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1498a737279e4d340856dae83c6ed0c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: 15
+--- !u!210 &210436572347508360
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1475265528293698}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!212 &212218263184611220
 SpriteRenderer:
   m_ObjectHideFlags: 1
