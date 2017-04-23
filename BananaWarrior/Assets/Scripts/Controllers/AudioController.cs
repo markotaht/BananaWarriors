@@ -48,7 +48,6 @@ public class AudioController : MonoBehaviour {
      * */
     public static void Play(string clipToPlay)
     {
-
         player.PlayOneShot(audios[clipToPlay]);
     }
 }
