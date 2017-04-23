@@ -25,7 +25,7 @@ public class DropController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isOnCoolDown);
+   //     Debug.Log(isOnCoolDown);
         if (!isOnCoolDown)
         {
             for (int i = 0; i < ONE_DROP_MAX; i++)
