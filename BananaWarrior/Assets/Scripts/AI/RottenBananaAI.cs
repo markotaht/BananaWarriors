@@ -21,7 +21,7 @@ public class RottenBananaAI : MonoBehaviour {
         moveController = GetComponent<MoveController>();
 	}
 	
-	
+
 	void Update () {
         if (!alive)
         {
@@ -30,6 +30,7 @@ public class RottenBananaAI : MonoBehaviour {
         //Attacking
         if (!attacking)
         {
+
             toAttack = whatToAttack();
             if (toAttack != null)
             {
@@ -146,6 +147,7 @@ public class RottenBananaAI : MonoBehaviour {
     //returns if the unit was killed
     public bool onHit()
     {
+        AudioController.Play("attack");
         life -= 1;
         if(life <= 0)
         {
@@ -159,6 +161,7 @@ public class RottenBananaAI : MonoBehaviour {
     {
         alive = false;
         moveController.stopMoving();
+        AudioController.Play("nDeath");
         GetComponent<SortingGroup>().sortingOrder = -9998;
         GetComponent<Animator>().SetBool("Dead", true);
         Destroy(gameObject, 3);

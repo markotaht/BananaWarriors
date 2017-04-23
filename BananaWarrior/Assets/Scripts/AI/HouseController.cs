@@ -45,6 +45,7 @@ public class HouseController : MonoBehaviour {
     //returns if the unit was killed
     public bool onHit()
     {
+        AudioController.Play("attack");
         lifeTime -= 5;
         if (lifeTime <= 0)
         {
@@ -57,6 +58,8 @@ public class HouseController : MonoBehaviour {
     private void Die()
     {
         alive = false;
+
+        AudioController.Play("nDeath");
         GetComponent<Animator>().SetBool("Dead", true);
         GetComponent<SortingGroup>().sortingOrder = -9999;
         Destroy(gameObject, 4);
