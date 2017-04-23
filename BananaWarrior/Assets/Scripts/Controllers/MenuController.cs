@@ -22,7 +22,6 @@ public class MenuController : MonoBehaviour{
 		
 	}
 
-    private Color startcolor;
 
 
     public void buttonContinue()
@@ -32,7 +31,7 @@ public class MenuController : MonoBehaviour{
 
     public void buttonStartLevel()
     {
-        Application.LoadLevel("Main");
+        Application.LoadLevel("Scenes/Main");
     }
 
     public void buttonExit()
