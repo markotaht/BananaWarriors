@@ -30,12 +30,9 @@ public class MoveController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //Debug.Log(stopped);
-        //Debug.Log(Vector3.Distance(transform.position, target));
         if (!stopped && Vector3.Distance(transform.position, target) > 0.01)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-            //Debug.Log(speed * Time.deltaTime);
             anim.SetFloat("Speed", 1);
         }
         else
@@ -48,7 +45,6 @@ public class MoveController : MonoBehaviour {
 
     public void move(Vector3 destination)
     {
-        //Debug.Log("GO");
         stopped = false;
         target = destination;
         target.z = 0;
@@ -67,8 +63,6 @@ public class MoveController : MonoBehaviour {
     public void stopMoving()
     {
         stopped = true;
-        Debug.Log("STOP");
         target = transform.position;
-        Debug.Log(target + ", " + transform.position);
     }
 }
