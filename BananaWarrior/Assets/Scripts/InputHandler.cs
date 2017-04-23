@@ -13,9 +13,13 @@ public class InputHandler : MonoBehaviour {
     private KeyCode currentKey;
     private List<KeyCode> keysDown = new List<KeyCode>();
 
+    private GameObject indicator;
+    private Color currentColor;
+
     bool build = false;
-	// Use this for initialization
-	void Start () {
+    bool makeKebab = false;
+    // Use this for initialization
+    void Start () {
         currentActor = playerController;
     }
 	
@@ -23,13 +27,15 @@ public class InputHandler : MonoBehaviour {
 	void Update () {
         Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Collider2D hit = Physics2D.OverlapPoint(point);
-        /*
+        
+        if(indicator != null)
+        {
+            indicator.transform.position = new Vector3(point.x, point.y, 0);
+        }
         if (EventSystem.current.IsPointerOverGameObject())
         {
-            if(Input.GetMouseButton(0))
-                build = true;
             return;
-        }*/
+        }
         //Kuhu klikkisime
 
         current = new Event();
@@ -41,19 +47,24 @@ public class InputHandler : MonoBehaviour {
             currentActor = playerController;
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
 
-            if (build)
+            if (build || makeKebab)
             {
 
-                GameObject goldenBanana =
-                (GameObject)Instantiate(Resources.Load("maja"),
-                Camera.main.ScreenToWorldPoint(Input.mousePosition),
-                 Quaternion.identity);
-                Debug.Log("panin maja maha");
+                /*  GameObject maja =
+                  (GameObject)Instantiate(Resources.Load("House/Maja"),
+                  Camera.main.ScreenToWorldPoint(Input.mousePosition),
+                   Quaternion.identity);*/
+                indicator.GetComponent<Renderer>().material.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1f);
+                Vector3 pos = Input.mousePosition;
+         //       maja.transform.position = new Vector3(pos.x,pos.y,0);
+           //     maja.transform.position = 
                 //Pane maja
                 build = false;
+                makeKebab = false;
+                indicator = null;
                 return;
             }
             if (hit && hit.gameObject.tag == "Player")
@@ -85,6 +96,28 @@ public class InputHandler : MonoBehaviour {
             build = true;
         }
 	}
+
+    public void buildHouse()
+    {
+        build = true;
+        indicator = (GameObject)Instantiate(Resources.Load("House/Maja"),
+                Camera.main.ScreenToWorldPoint(Input.mousePosition),
+                 Quaternion.identity);
+        //  indicator.GetComponent<SpriteRenderer>().color = Color.red;
+        currentColor = indicator.GetComponent<Renderer>().material.color;
+        indicator.GetComponent<Renderer>().material.color = new Color(currentColor.r, currentColor.g, currentColor.b, 0.4f);
+    }
+
+    public void makeBanana()
+    {
+        makeKebab = true;
+        indicator = (GameObject)Instantiate(Resources.Load("Warrior/Warrior"),
+                Camera.main.ScreenToWorldPoint(Input.mousePosition),
+                 Quaternion.identity);
+        //  indicator.GetComponent<SpriteRenderer>().color = Color.red;
+        currentColor = indicator.GetComponent<Renderer>().material.color;
+        indicator.GetComponent<Renderer>().material.color = new Color(currentColor.r, currentColor.g, currentColor.b, 0.4f);
+    }
 
     protected KeyCode ReadKeyCode()
     {
