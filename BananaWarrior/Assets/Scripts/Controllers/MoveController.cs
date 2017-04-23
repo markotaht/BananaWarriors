@@ -42,7 +42,6 @@ public class MoveController : MonoBehaviour {
         if(sg.sortingOrder > -9000)
         { 
             sg.sortingOrder = (int)((transform.position.y- spriteRenderer.bounds.size.y) * -10) + sortingOrder;
-            spriteRenderer.sortingOrder = (int)((transform.position.y - spriteRenderer.bounds.size.y) * -10)+ sortingOrder;
         }
     }
 

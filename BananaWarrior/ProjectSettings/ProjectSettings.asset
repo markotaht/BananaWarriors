@@ -10,7 +10,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: 2games2easy
   productName: BananaWarrior
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -23,7 +23,7 @@ PlayerSettings:
   m_SplashScreenDrawMode: 0
   m_SplashScreenBackgroundAnimationZoom: 1
   m_SplashScreenLogoAnimationZoom: 1
-  m_SplashScreenBackgroundLandscapeAspect: 1
+  m_SplashScreenBackgroundLandscapeAspect: 1.7777778
   m_SplashScreenBackgroundPortraitAspect: 1
   m_SplashScreenBackgroundLandscapeUvs:
     serializedVersion: 2
@@ -41,8 +41,9 @@ PlayerSettings:
   - logo: {fileID: 21300000, guid: c20a45b8a0f31d24e8c0b8b52a87be4b, type: 3}
     duration: 3
   - logo: {fileID: 21300000, guid: a9ba5765c7849e84e9c462ba4c86f722, type: 3}
-    duration: 5
-  m_SplashScreenBackgroundLandscape: {fileID: 0}
+    duration: 4
+  m_SplashScreenBackgroundLandscape: {fileID: 1, guid: 00000000000000000000000000000000,
+    type: 0}
   m_SplashScreenBackgroundPortrait: {fileID: 0}
   m_VirtualRealitySplashScreen: {fileID: 2800000, guid: b4010a5d2ab165f48bb7b0c3e7adbef8,
     type: 3}
@@ -227,7 +228,13 @@ PlayerSettings:
   androidGamepadSupportLevel: 0
   resolutionDialogBanner: {fileID: 2800000, guid: a9ba5765c7849e84e9c462ba4c86f722,
     type: 3}
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - serializedVersion: 2
+      m_Icon: {fileID: 2800000, guid: c20a45b8a0f31d24e8c0b8b52a87be4b, type: 3}
+      m_Width: 128
+      m_Height: 128
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
   m_BuildTargetVRSettings: []
