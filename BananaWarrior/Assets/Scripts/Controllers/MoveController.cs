@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class MoveController : MonoBehaviour {
 
@@ -12,6 +13,7 @@ public class MoveController : MonoBehaviour {
     int moveHash = Animator.StringToHash("Move");
 
     private SpriteRenderer spriteRenderer;
+    private SortingGroup sg;
 
     public int sortingOrder = 0;
     [SerializeField]
@@ -22,6 +24,7 @@ public class MoveController : MonoBehaviour {
         anim = GetComponent<Animator>();
         target = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        sg = GetComponent<SortingGroup>();
 	}
 	
 	// Update is called once per frame
@@ -37,8 +40,9 @@ public class MoveController : MonoBehaviour {
         {
             anim.SetFloat("Speed", 0.0f);
         }
-        spriteRenderer.sortingOrder = (int)((transform.position.y- spriteRenderer.bounds.size.y) * -10);
-	}
+        sg.sortingOrder = (int)((transform.position.y- spriteRenderer.bounds.size.y) * -10) + sortingOrder;
+        spriteRenderer.sortingOrder = (int)((transform.position.y - spriteRenderer.bounds.size.y) * -10)+ sortingOrder;
+    }
 
     public void move(Vector3 destination)
     {

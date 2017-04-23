@@ -1,13 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Rendering;
 
 public class RenderOrderSetter : MonoBehaviour {
     private SpriteRenderer spriteRenderer;
-    
+    private SortingGroup sortingGroup;
+
+    [SerializeField]
+    private int offset = 0;
     private void Start()
     {
+
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sortingOrder = (int)((transform.position.y- spriteRenderer.bounds.size.y/2) * -10);
+        sortingGroup = GetComponent<SortingGroup>();
+        sortingGroup.sortingOrder = (int)((transform.position.y) * -10) + offset;
+        Debug.Log(sortingGroup.sortingOrder);
+        Debug.Log(transform.position.y);
+        Debug.Log(transform.position.y - spriteRenderer.bounds.size.y/2);
     }
 }
