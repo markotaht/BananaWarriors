@@ -1,10 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System;
 
-public class MenuController : MonoBehaviour {
+public class MenuController : MonoBehaviour{
 
+    public bool isOver;
 
+    public Text text1;
+    public Text text2;
+    public Text text3;
 	// Use this for initialization
 	void Start () {
 		
@@ -15,6 +22,14 @@ public class MenuController : MonoBehaviour {
 		
 	}
 
+    private Color startcolor;
+
+
+    public void buttonContinue()
+    {
+        Debug.Log("Continue not implemented yet :((");
+    }
+
     public void buttonStartLevel()
     {
         Application.LoadLevel("Main");
@@ -24,4 +39,6 @@ public class MenuController : MonoBehaviour {
     {
         Application.Quit();
     }
+
+
 }
