@@ -24,7 +24,7 @@ PlayerSettings:
   m_SplashScreenBackgroundAnimationZoom: 1
   m_SplashScreenLogoAnimationZoom: 1
   m_SplashScreenBackgroundLandscapeAspect: 1.7777778
-  m_SplashScreenBackgroundPortraitAspect: 1
+  m_SplashScreenBackgroundPortraitAspect: 1.7777778
   m_SplashScreenBackgroundLandscapeUvs:
     serializedVersion: 2
     x: 0
@@ -44,7 +44,8 @@ PlayerSettings:
     duration: 4
   m_SplashScreenBackgroundLandscape: {fileID: 1, guid: 00000000000000000000000000000000,
     type: 0}
-  m_SplashScreenBackgroundPortrait: {fileID: 0}
+  m_SplashScreenBackgroundPortrait: {fileID: 1, guid: 00000000000000000000000000000000,
+    type: 0}
   m_VirtualRealitySplashScreen: {fileID: 2800000, guid: a9ba5765c7849e84e9c462ba4c86f722,
     type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}

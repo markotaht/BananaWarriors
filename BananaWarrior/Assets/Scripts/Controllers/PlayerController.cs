@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour {
     //returns if the unit was killed
     public bool onHit()
     {
+        AudioController.Play("attack");
         life -= 5;
         if (life <= 0)
         {
@@ -57,6 +58,7 @@ public class PlayerController : MonoBehaviour {
     private void Die()
     {
         //End of game
+        AudioController.Play("gameover");
         movementController.stopMoving();
         GetComponent<SortingGroup>().sortingOrder = -9997;
         GetComponent<Animator>().SetBool("Dead", true);

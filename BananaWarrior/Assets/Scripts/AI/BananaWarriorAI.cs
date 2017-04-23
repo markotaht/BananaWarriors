@@ -134,6 +134,7 @@ public class BananaWarriorAI : MonoBehaviour {
     //returns if the unit was killed
     public bool onHit()
     {
+        AudioController.Play("nAttack");
         lifeforce -= 5;
         if (lifeforce <= 0)
         {
@@ -145,6 +146,7 @@ public class BananaWarriorAI : MonoBehaviour {
 
     private void Die()
     {
+        AudioController.Play("nDeath");
         alive = false;
         GetComponent<Animator>().SetBool("Dead", true);
         moveController.stopMoving();
