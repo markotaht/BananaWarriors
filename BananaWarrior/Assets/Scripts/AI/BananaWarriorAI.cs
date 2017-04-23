@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 
 public class BananaWarriorAI : MonoBehaviour {
 
-    private Vector3 patrolPlace;
+    public Vector3 patrolPlace;
 
     private float fullLife = 20.0f;
     private float lifeforce;
