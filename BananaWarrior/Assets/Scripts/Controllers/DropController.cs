@@ -58,6 +58,7 @@ public class DropController : MonoBehaviour {
                         Quaternion.identity);
                     GameObject.FindGameObjectWithTag("bTree").GetComponent<Animator>().SetTrigger("Spawn");
                     greenBanana.GetComponent<DroppingController>().setTarget(loc);
+                    GameObject.FindGameObjectWithTag("bTree").GetComponent<Animator>().SetTrigger("Spawn");
                 }
             }
             StartCoroutine(coolDown());
@@ -71,6 +72,6 @@ public class DropController : MonoBehaviour {
         isOnCoolDown = true;
         yield return new WaitForSeconds(DROP_COOLDOWN);
         isOnCoolDown = false;
-        GameObject.FindGameObjectWithTag("bTree").GetComponent<Animator>().SetTrigger("Spawn");
+        
     }
 }
