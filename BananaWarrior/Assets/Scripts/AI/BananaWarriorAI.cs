@@ -10,6 +10,7 @@ public class BananaWarriorAI : MonoBehaviour {
     private float fullLife = 20.0f;
     private float lifeforce;
     private bool alive = true;
+    private bool indicator = true;
 
     private MoveController moveController;
     private SpriteRenderer spriteRenderer;
@@ -159,5 +160,15 @@ public class BananaWarriorAI : MonoBehaviour {
     public void changePatrolPlace(Vector3 newPlace)
     {
         patrolPlace = new Vector3(newPlace.x, newPlace.y, 0);
+    }
+
+    public bool isIndicator()
+    {
+        return indicator;
+    }
+
+    public void setIndicator(bool isIndicator)
+    {
+        indicator = isIndicator;
     }
 }

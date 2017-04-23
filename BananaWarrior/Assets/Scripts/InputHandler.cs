@@ -37,10 +37,10 @@ public class InputHandler : MonoBehaviour {
             indicator.transform.position = new Vector3(point.x, point.y, 0);
             indicator.GetComponent<SortingGroup>().sortingOrder = 1000;
         }
-       /* if (EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
-        }*/
+        }
         //Kuhu klikkisime
 
         current = new Event();
@@ -61,6 +61,11 @@ public class InputHandler : MonoBehaviour {
                 {
                     indicator.GetComponent<BananaWarriorAI>().changePatrolPlace(point);
                     indicator.GetComponent<MoveController>().enabled = true;
+                    indicator.GetComponent<BananaWarriorAI>().setIndicator(false);
+                }
+                else if (indicator.tag == "House")
+                {
+                    indicator.GetComponent<HouseController>().setIndicator(false);
                 }
                 indicator.GetComponent<RenderOrderSetter>().SetOrder();
                 indicator.GetComponent<Renderer>().material.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1f);

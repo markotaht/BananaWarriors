@@ -10,6 +10,7 @@ public class HouseController : MonoBehaviour {
 
     private SpriteRenderer spriteRenderer;
 
+    private bool indicator = true;
     
     void Start () {
         lifeTime = maxLifeTime;
@@ -64,6 +65,16 @@ public class HouseController : MonoBehaviour {
     public bool isAlive()
     {
         return alive;
+    }
+
+    public bool isIndicator()
+    {
+        return indicator;
+    }
+
+    public void setIndicator(bool isIndicator)
+    {
+        indicator = isIndicator;
     }
 
 }

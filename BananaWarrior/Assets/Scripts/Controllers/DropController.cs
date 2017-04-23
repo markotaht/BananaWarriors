@@ -6,7 +6,7 @@ public class DropController : MonoBehaviour {
 
     private const float RATE_GOLDEN = 0.01f;
     private const float RATE_NORMAL = 0.5f;
-    public const int DROP_COOLDOWN = 10;
+    public const int DROP_COOLDOWN = 1;
     public const float MAX_RANGE_FROM_TREE = 10.0f;
     private bool isOnCoolDown;
 
