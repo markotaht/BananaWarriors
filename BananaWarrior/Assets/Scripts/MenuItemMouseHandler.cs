@@ -8,6 +8,9 @@ using UnityEngine.EventSystems;
 
 public class MenuItemMouseHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    bool isOver;
+    Color startcolor;
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         foreach (var obj in eventData.hovered) Debug.Log(obj);
@@ -23,7 +26,7 @@ public class MenuItemMouseHandler : MonoBehaviour, IPointerEnterHandler, IPointe
     public void OnPointerExit(PointerEventData eventData)
     {
         isOver = false;
-        text1.color = startcolor;
+      //  text1.color = startcolor;
     }
 
 }
