@@ -39,8 +39,11 @@ public class MoveController : MonoBehaviour {
         {
             anim.SetFloat("Speed", 0.0f);
         }
-        sg.sortingOrder = (int)((transform.position.y- spriteRenderer.bounds.size.y) * -10) + sortingOrder;
-        spriteRenderer.sortingOrder = (int)((transform.position.y - spriteRenderer.bounds.size.y) * -10)+ sortingOrder;
+        if(sg.sortingOrder > -9000)
+        { 
+            sg.sortingOrder = (int)((transform.position.y- spriteRenderer.bounds.size.y) * -10) + sortingOrder;
+            spriteRenderer.sortingOrder = (int)((transform.position.y - spriteRenderer.bounds.size.y) * -10)+ sortingOrder;
+        }
     }
 
     public void move(Vector3 destination)

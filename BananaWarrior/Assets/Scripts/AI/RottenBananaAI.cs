@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class RottenBananaAI : MonoBehaviour {
     private bool alive = true;
@@ -153,6 +154,7 @@ public class RottenBananaAI : MonoBehaviour {
     {
         alive = false;
         moveController.stopMoving();
+        GetComponent<SortingGroup>().sortingOrder = -9998;
         GetComponent<Animator>().SetBool("Dead", true);
         Destroy(gameObject, 3);
     }

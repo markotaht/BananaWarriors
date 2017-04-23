@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class BananaWarriorAI : MonoBehaviour {
 
@@ -59,7 +60,6 @@ public class BananaWarriorAI : MonoBehaviour {
             }
             else if(Vector3.Distance(transform.position, patrolPlace) > 0.01)
             {
-                Debug.Log("Too far " + patrolPlace + ", " + transform.position);
                 moveController.move(patrolPlace);
             }
         }
@@ -147,6 +147,7 @@ public class BananaWarriorAI : MonoBehaviour {
         alive = false;
         GetComponent<Animator>().SetBool("Dead", true);
         moveController.stopMoving();
+        GetComponent<SortingGroup>().sortingOrder = -9998;
         Destroy(gameObject, 3);
     }
 
