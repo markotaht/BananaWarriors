@@ -20,6 +20,7 @@ public class InputHandler : MonoBehaviour {
 
     bool build = false;
     bool makeKebab = false;
+    float bananaHeal = 10;
 
     bool dancing = false;
     
@@ -88,12 +89,6 @@ public class InputHandler : MonoBehaviour {
             dancing = !dancing;
             GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetBool("Dance", dancing);
         }
-
-        if(currentKey == KeyCode.Escape)
-        {
-            Time.timeScale = 0;
-            Application.LoadLevel("Scenes/MainMenu - Copy");
-        }
 	}
 
     public void buildHouse()
@@ -127,6 +122,14 @@ public class InputHandler : MonoBehaviour {
         indicator.GetComponent<Renderer>().material.color = new Color(currentColor.r, currentColor.g, currentColor.b, 0.4f);
         indicator.GetComponent<MoveController>().enabled = false;
         indicator.GetComponent<SortingGroup>().sortingOrder = 1000;
+    }
+
+    public void heal()
+    {
+        if (player.useYellow(player.HEAL_COST))
+        {
+            player.gameObject.GetComponent<PlayerController>().Life += bananaHeal;
+        }
     }
 
     protected KeyCode ReadKeyCode()
