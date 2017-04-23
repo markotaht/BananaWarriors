@@ -10,6 +10,7 @@ public class InputHandler : MonoBehaviour {
     private MoveController playerController;
     private MoveController currentActor;
     private BananaWarriorAI bananaAI;
+    InventoryController player;
 
     private Event current = new Event();
     private KeyCode currentKey;
@@ -22,6 +23,7 @@ public class InputHandler : MonoBehaviour {
     bool makeKebab = false;
     
     void Start () {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryController>();
         currentActor = playerController;
     }
 	
@@ -35,10 +37,10 @@ public class InputHandler : MonoBehaviour {
             indicator.transform.position = new Vector3(point.x, point.y, 0);
             indicator.GetComponent<SortingGroup>().sortingOrder = 1000;
         }
-        if (EventSystem.current.IsPointerOverGameObject())
+       /* if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
-        }
+        }*/
         //Kuhu klikkisime
 
         current = new Event();
@@ -101,6 +103,11 @@ public class InputHandler : MonoBehaviour {
 
     public void buildHouse()
     {
+        if (!player.useGreen(player.HOUSE_COST))
+        {
+            return;
+        }
+        player.useGreen((player.HOUSE_COST));
         build = true;
         indicator = (GameObject)Instantiate(Resources.Load("House/Maja"),
                 Camera.main.ScreenToWorldPoint(Input.mousePosition),
@@ -112,6 +119,13 @@ public class InputHandler : MonoBehaviour {
 
     public void makeBanana()
     {
+
+
+        if (!player.useYellow(player.KEBAB_COST))
+        {
+            return;
+        }
+        player.useYellow(player.KEBAB_COST);
         makeKebab = true;
         indicator = (GameObject)Instantiate(Resources.Load("Warrior/Warrior"),
                 Camera.main.ScreenToWorldPoint(Input.mousePosition),
