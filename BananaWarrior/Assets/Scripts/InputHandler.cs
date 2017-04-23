@@ -23,12 +23,12 @@ public class InputHandler : MonoBehaviour {
         Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Collider2D hit = Physics2D.OverlapPoint(point);
 
-        if (EventSystem.current.IsPointerOverGameObject())
+     /*   if (EventSystem.current.IsPointerOverGameObject())
         {
             if(Input.GetMouseButton(0))
                 build = true;
             return;
-        }
+        }*/
         //Kuhu klikkisime
 
         current = new Event();
