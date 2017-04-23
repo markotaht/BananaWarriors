@@ -38,7 +38,7 @@ public class DropController : MonoBehaviour {
             {
 
                 GameObject goldenBanana = 
-                    (GameObject)Instantiate(Resources.Load("goldenbanana"), 
+                    (GameObject)Instantiate(Resources.Load("Collectible/goldenbanana"), 
                     loc,
                     Quaternion.identity);
                 //Instantiate(greenbanana, new Vector2(0, 0), Quaternion.identity);
@@ -46,7 +46,7 @@ public class DropController : MonoBehaviour {
             else if (randomNumber < RATE_NORMAL)
             {
                 GameObject goldenBanana = 
-                    (GameObject)Instantiate(Resources.Load("greenbanana"),
+                    (GameObject)Instantiate(Resources.Load("Collectible/greenbanana"),
                     loc,
                     Quaternion.identity);
             }
