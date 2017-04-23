@@ -16,14 +16,14 @@ public class MenuItemMouseHandler : MonoBehaviour, IPointerEnterHandler, IPointe
         //       startcolor = text1.color;
         //     text1.color = Color.red;
         //  }
-        isOver = true;
+        //isOver = true;
 
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        isOver = false;
-        text1.color = startcolor;
+        //isOver = false;
+    //    text1.color = startcolor;
     }
 
 }
