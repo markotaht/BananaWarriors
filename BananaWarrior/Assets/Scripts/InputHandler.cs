@@ -120,7 +120,7 @@ public class InputHandler : MonoBehaviour {
         {
             return;
         }
-        player.useGreen((player.HOUSE_COST));
+     //   player.useGreen((player.HOUSE_COST));
         build = true;
         indicator = (GameObject)Instantiate(Resources.Load("House/Maja"),
                 Camera.main.ScreenToWorldPoint(Input.mousePosition),
@@ -138,7 +138,7 @@ public class InputHandler : MonoBehaviour {
         {
             return;
         }
-        player.useYellow(player.KEBAB_COST);
+     //   player.useYellow(player.KEBAB_COST);
         makeKebab = true;
         indicator = (GameObject)Instantiate(Resources.Load("Warrior/Warrior"),
                 Camera.main.ScreenToWorldPoint(Input.mousePosition),
