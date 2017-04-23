@@ -24,8 +24,13 @@ public class UIController : MonoBehaviour {
     private InventoryController inventoryController;
 
 
-	// Use this for initialization
-	void Start () {
+    public Image yellowButton;
+    public Image greenButton;
+    public Image goldenButton;
+
+
+    // Use this for initialization
+    void Start () {
         fillAmount = 1.0f;	
 	}
 	
