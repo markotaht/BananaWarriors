@@ -6,7 +6,7 @@ public class DroppingController : MonoBehaviour {
 
     private Vector3 target;
     private Vector3 start;
-
+    private int level = 1;
     public float speed = 2.5f;
     private float startTime;
 
@@ -26,6 +26,7 @@ public class DroppingController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        Debug.Log(Time.time);
         Vector3 center = (start + target) * 0.5f - new Vector3(0,2,0);
 
         Vector3 startRelC = start - center;
