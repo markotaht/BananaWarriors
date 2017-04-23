@@ -10,6 +10,12 @@ public class RenderOrderSetter : MonoBehaviour {
     private void Start()
     {
 
+        SetOrder();
+    }
+
+    public void SetOrder()
+    {
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         sortingGroup = GetComponent<SortingGroup>();
         sortingGroup.sortingOrder = (int)((transform.position.y) * -10) + offset;

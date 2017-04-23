@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbb016b889a75e64a9af8fe6a765ef56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patrolPlace: {x: 0, y: 0, z: 0}
 --- !u!114 &114988778529418166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -266,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1498a737279e4d340856dae83c6ed0c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: 15
+  offset: 20
 --- !u!210 &210436572347508360
 SortingGroup:
   m_ObjectHideFlags: 1
