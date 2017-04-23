@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering;
+
 public class InputHandler : MonoBehaviour {
 
     [SerializeField]
@@ -31,6 +33,7 @@ public class InputHandler : MonoBehaviour {
         if(indicator != null)
         {
             indicator.transform.position = new Vector3(point.x, point.y, 0);
+            indicator.GetComponent<SortingGroup>().sortingOrder = 1000;
         }
         if (EventSystem.current.IsPointerOverGameObject())
         {
@@ -55,7 +58,9 @@ public class InputHandler : MonoBehaviour {
                 if(indicator.tag == "Warrior")
                 {
                     indicator.GetComponent<BananaWarriorAI>().changePatrolPlace(point);
+                    indicator.GetComponent<MoveController>().enabled = true;
                 }
+                indicator.GetComponent<RenderOrderSetter>().SetOrder();
                 indicator.GetComponent<Renderer>().material.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1f);
                 Vector3 pos = Input.mousePosition;
 
@@ -102,6 +107,7 @@ public class InputHandler : MonoBehaviour {
                  Quaternion.identity);
         currentColor = indicator.GetComponent<Renderer>().material.color;
         indicator.GetComponent<Renderer>().material.color = new Color(currentColor.r, currentColor.g, currentColor.b, 0.4f);
+        indicator.GetComponent<SortingGroup>().sortingOrder = 1000;
     }
 
     public void makeBanana()
@@ -112,6 +118,8 @@ public class InputHandler : MonoBehaviour {
                  Quaternion.identity);
         currentColor = indicator.GetComponent<Renderer>().material.color;
         indicator.GetComponent<Renderer>().material.color = new Color(currentColor.r, currentColor.g, currentColor.b, 0.4f);
+        indicator.GetComponent<MoveController>().enabled = false;
+        indicator.GetComponent<SortingGroup>().sortingOrder = 1000;
     }
 
     protected KeyCode ReadKeyCode()
