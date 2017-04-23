@@ -5,17 +5,22 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class MenuItemMouseHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    bool isOver;
+    private Color startcolor;
+
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        foreach (var obj in eventData.hovered) Debug.Log(obj);
-        //  {
-        ///       Debug.Log("on");
-        //       startcolor = text1.color;
-        //     text1.color = Color.red;
-        //  }
+
+
+        startcolor = GetComponentInChildren<Text>().color;
+               
+        GetComponentInChildren<Text>().color = Color.yellow;
+
         isOver = true;
 
     }
@@ -23,7 +28,8 @@ public class MenuItemMouseHandler : MonoBehaviour, IPointerEnterHandler, IPointe
     public void OnPointerExit(PointerEventData eventData)
     {
         isOver = false;
-        text1.color = startcolor;
+        GetComponentInChildren<Text>().color = startcolor;
     }
+
 
 }
