@@ -18,11 +18,12 @@ public class MenuItemMouseHandler : MonoBehaviour, IPointerEnterHandler, IPointe
 
 
         startcolor = GetComponentInChildren<Text>().color;
-               
-        GetComponentInChildren<Text>().color = new Color32(206,181,57,255);
+
+        GetComponentInChildren<Text>().color = new Color32(206, 181, 57, 255);
+
 
         isOver = true;
-
+        
     }
 
     public void OnPointerExit(PointerEventData eventData)
