@@ -18,6 +18,9 @@ public class UIController : MonoBehaviour {
     private Text greenBananaText;
 
     [SerializeField]
+    private Text goldenBananaText;
+
+    [SerializeField]
     private InventoryController inventoryController;
 
 
@@ -43,6 +46,7 @@ public class UIController : MonoBehaviour {
     {
         handleYellowText();
         handleGreenText();
+        handleGoldenText();
     }
 
     void handleYellowText()
@@ -53,5 +57,10 @@ public class UIController : MonoBehaviour {
     void handleGreenText()
     {
         greenBananaText.text = inventoryController.GreenBanana + "/" + inventoryController.GREENBANANA_MAX;
+    }
+
+    void handleGoldenText()
+    {
+        goldenBananaText.text = inventoryController.GoldenBanana + "/" + inventoryController.GOLDENBANANA_MAX;
     }
 }

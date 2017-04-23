@@ -130,6 +130,14 @@ public class InputHandler : MonoBehaviour {
         indicator.GetComponent<SortingGroup>().sortingOrder = 1000;
     }
 
+    public void heal()
+    {
+        if (player.useGolden(player.GOLDEN_COST))
+        {
+            //Heal
+        }
+    }
+
     protected KeyCode ReadKeyCode()
     {
         if(current.type == EventType.keyDown && !keysDown.Contains(current.keyCode))
