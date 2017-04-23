@@ -21,6 +21,8 @@ public class InputHandler : MonoBehaviour {
 
     bool build = false;
     bool makeKebab = false;
+
+    bool dancing = false;
     
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryController>();
@@ -103,6 +105,12 @@ public class InputHandler : MonoBehaviour {
         if(currentKey == KeyCode.B)
         {
             build = true;
+        }
+
+        if(currentKey == KeyCode.D)
+        {
+            dancing = !dancing;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetBool("Dance", dancing);
         }
 	}
 
