@@ -470,6 +470,51 @@ Prefab:
       propertyPath: m_TagString
       value: buildHouseButton
       objectReference: {fileID: 0}
+    - target: {fileID: 114334361077837156, guid: 0bc129d489eccf847bdafa5df83176f5,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114334361077837156, guid: 0bc129d489eccf847bdafa5df83176f5,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114334361077837156, guid: 0bc129d489eccf847bdafa5df83176f5,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114334361077837156, guid: 0bc129d489eccf847bdafa5df83176f5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1562213436}
+    - target: {fileID: 114334361077837156, guid: 0bc129d489eccf847bdafa5df83176f5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: buildHouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 114334361077837156, guid: 0bc129d489eccf847bdafa5df83176f5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114068600242073208, guid: 0bc129d489eccf847bdafa5df83176f5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1562213436}
+    - target: {fileID: 114068600242073208, guid: 0bc129d489eccf847bdafa5df83176f5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: makeBanana
+      objectReference: {fileID: 0}
+    - target: {fileID: 114068600242073208, guid: 0bc129d489eccf847bdafa5df83176f5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0bc129d489eccf847bdafa5df83176f5, type: 2}
   m_IsPrefabParent: 0
