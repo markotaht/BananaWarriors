@@ -34,7 +34,7 @@ public class BananaWarriorAI : MonoBehaviour {
 	
 	void Update () {
         lifeforce -= Time.deltaTime;
-        if (!alive)
+        if (!alive || indicator)
         {
             return;
         }
