@@ -8,7 +8,6 @@ public class InputHandler : MonoBehaviour {
 
     [SerializeField]
     private MoveController playerController;
-    //private MoveController currentActor;
     private BananaWarriorAI bananaAI;
     InventoryController player;
 
@@ -26,7 +25,6 @@ public class InputHandler : MonoBehaviour {
     
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryController>();
-        //currentActor = playerController;
     }
 	
 	
@@ -49,11 +47,6 @@ public class InputHandler : MonoBehaviour {
         Event.PopEvent(current);
         currentKey = ReadKeyCode();
         
-        /*if(currentActor == null || bananaAI != null && !bananaAI.isAlive())
-        {
-            currentActor = playerController;
-        }
-        */
         if (Input.GetMouseButtonDown(0))
         {
             if (build || makeKebab)
@@ -76,26 +69,10 @@ public class InputHandler : MonoBehaviour {
                 makeKebab = false;
                 indicator = null;
                 return;
-            }/*
-            if (hit && hit.gameObject.tag == "Player")
-            {
-                currentActor = hit.gameObject.GetComponent<MoveController>();
             }
-            else if (hit && hit.gameObject.tag == "Warrior")
-            {
-                currentActor = hit.gameObject.GetComponent<MoveController>();
-                bananaAI = hit.gameObject.GetComponent<BananaWarriorAI>();
-            }*/
             else if (playerController != null)
             {
-                /*if(currentActor.gameObject.tag == "Warrior")
-                {
-                    bananaAI.changePatrolPlace(point);
-                }
-                else
-                {*/
-                    playerController.move(point);
-                //}
+                playerController.move(point);
             }
         }
 
@@ -119,7 +96,6 @@ public class InputHandler : MonoBehaviour {
         {
             return;
         }
-     //   player.useGreen((player.HOUSE_COST));
         build = true;
         indicator = (GameObject)Instantiate(Resources.Load("House/Maja"),
                 Camera.main.ScreenToWorldPoint(Input.mousePosition),
@@ -137,7 +113,6 @@ public class InputHandler : MonoBehaviour {
         {
             return;
         }
-     //   player.useYellow(player.KEBAB_COST);
         makeKebab = true;
         indicator = (GameObject)Instantiate(Resources.Load("Warrior/Warrior"),
                 Camera.main.ScreenToWorldPoint(Input.mousePosition),
