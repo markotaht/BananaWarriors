@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private MoveController mc;
     private float life = 100.0f;
+    private bool isWaiting = false;
     public float Life
     {
         get { return life; }
@@ -68,10 +69,18 @@ public class PlayerController : MonoBehaviour {
         movementController.stopMoving();
         GetComponent<SortingGroup>().sortingOrder = -9997;
         GetComponent<Animator>().SetBool("Dead", true);
+        StartCoroutine(WaitSeconds(5.0f));
 
 
     }
+    IEnumerator WaitSeconds(float amount)
+    {
+        isWaiting = true;
+        yield return new WaitForSeconds(5.0f);
+        isWaiting = false;
 
+        Application.LoadLevel("Scenes/DeathScreen");
+    }
     IEnumerator FadeToBlackOverSeconds(float amountOfSeconds)
     {
         Image blackRect = GameObject.FindGameObjectWithTag("deathScreen").GetComponent<Image>();
