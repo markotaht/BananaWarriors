@@ -7,7 +7,7 @@ public class MoveController : MonoBehaviour {
 
     public Vector3 target;
     private bool stopped = false;
-
+    
     [SerializeField]
     private Animator anim;
     int idleHash = Animator.StringToHash("idle");
@@ -20,6 +20,8 @@ public class MoveController : MonoBehaviour {
     [SerializeField]
     private float speed = 2.5f;
 
+    private float walk_cd = 0.350f;
+    private bool onWalkCD;
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
@@ -32,6 +34,12 @@ public class MoveController : MonoBehaviour {
 	void Update () {
         if (!stopped && Vector3.Distance(transform.position, target) > 0.01)
         {
+            if (!onWalkCD)
+            {
+                AudioController.Play("walk");
+                StartCoroutine(coolDown());
+            }
+
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
             anim.SetFloat("Speed", 1);
         }
@@ -44,6 +52,13 @@ public class MoveController : MonoBehaviour {
             sg.sortingOrder = (int)((transform.position.y- spriteRenderer.bounds.size.y) * -10) + sortingOrder;
             spriteRenderer.sortingOrder = (int)((transform.position.y - spriteRenderer.bounds.size.y) * -10)+ sortingOrder;
         }
+    }
+
+    IEnumerator coolDown()
+    {
+        onWalkCD = true;
+        yield return new WaitForSeconds(walk_cd);
+        onWalkCD = false;
     }
 
     public void move(Vector3 destination)

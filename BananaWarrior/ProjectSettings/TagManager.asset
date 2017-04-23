@@ -18,6 +18,7 @@ TagManager:
   - continueButton
   - buildHouseButton
   - buildSoldierButton
+  - SoundSystem
   layers:
   - Default
   - TransparentFX
