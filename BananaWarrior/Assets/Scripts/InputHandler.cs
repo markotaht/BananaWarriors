@@ -8,7 +8,7 @@ public class InputHandler : MonoBehaviour {
 
     [SerializeField]
     private MoveController playerController;
-    private MoveController currentActor;
+    //private MoveController currentActor;
     private BananaWarriorAI bananaAI;
     InventoryController player;
 
@@ -26,7 +26,7 @@ public class InputHandler : MonoBehaviour {
     
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryController>();
-        currentActor = playerController;
+        //currentActor = playerController;
     }
 	
 	
@@ -49,14 +49,13 @@ public class InputHandler : MonoBehaviour {
         Event.PopEvent(current);
         currentKey = ReadKeyCode();
         
-        if(currentActor == null || bananaAI != null && !bananaAI.isAlive())
+        /*if(currentActor == null || bananaAI != null && !bananaAI.isAlive())
         {
             currentActor = playerController;
         }
-
+        */
         if (Input.GetMouseButtonDown(0))
         {
-
             if (build || makeKebab)
             {
                 if(indicator.tag == "Warrior")
@@ -77,7 +76,7 @@ public class InputHandler : MonoBehaviour {
                 makeKebab = false;
                 indicator = null;
                 return;
-            }
+            }/*
             if (hit && hit.gameObject.tag == "Player")
             {
                 currentActor = hit.gameObject.GetComponent<MoveController>();
@@ -86,17 +85,17 @@ public class InputHandler : MonoBehaviour {
             {
                 currentActor = hit.gameObject.GetComponent<MoveController>();
                 bananaAI = hit.gameObject.GetComponent<BananaWarriorAI>();
-            }
-            else if (currentActor != null)
+            }*/
+            else if (playerController != null)
             {
-                if(currentActor.gameObject.tag == "Warrior")
+                /*if(currentActor.gameObject.tag == "Warrior")
                 {
                     bananaAI.changePatrolPlace(point);
                 }
                 else
-                {
-                    currentActor.move(point);
-                }
+                {*/
+                    playerController.move(point);
+                //}
             }
         }
 
