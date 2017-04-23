@@ -42,7 +42,6 @@ public class DroppedController : MonoBehaviour {
 
     private void Rot()
     {
-        Debug.Log("IzDead");
 
         GameObject newRottenBanana = (GameObject)Instantiate(Resources.Load("RottenBanana/RottenBanana 1"),
                 transform.position,
