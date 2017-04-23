@@ -42,7 +42,9 @@ public class MenuController : MonoBehaviour{
 
     public void buttonStartLevel()
     {
+        Application.UnloadLevel("Scenes/Main");
         Application.LoadLevel("Scenes/Main");
+        Time.timeScale = 1;
     }
 
     public void buttonExit()
