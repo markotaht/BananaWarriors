@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField]
     private MoveController mc;
-    private float life = 100.0f;
+    private float life = 90.0f;
 
     public float Life
     {
@@ -32,8 +32,8 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        mc = GetComponent<MoveController>();
-        ic = GetComponent<InventoryController>();
+     //   mc = GetComponent<MoveController>();
+      //  ic = GetComponent<InventoryController>();
 	}
 	
 	// Update is called once per frame
