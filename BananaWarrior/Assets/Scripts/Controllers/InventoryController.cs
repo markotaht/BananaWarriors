@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour {
 
-    private const float GOLDENBANANA_HEAL = 10.0f; // 10%
+    private int heal_cost = 1;
+    //private const float GOLDENBANANA_HEAL = 10.0f; // 10%
     private  int kebab_cost = 2; 
     private  int house_cost = 3;
     private int golden_cost = 1;
@@ -41,7 +42,6 @@ public class InventoryController : MonoBehaviour {
         get { return yellowBanana; }
         set { yellowBanana = value; }
     }
-
     [SerializeField]
     private int goldenBanana = 0;
     public int GoldenBanana
@@ -94,11 +94,11 @@ public class InventoryController : MonoBehaviour {
 
             yellowBanana = yellowBanana + 1;
         }
-        else if (collision.gameObject.tag == "GoldenBanana" &&
-            ((100.0f - GOLDENBANANA_HEAL) >= this.gameObject.GetComponent<PlayerController>().Life))
+        else if (collision.gameObject.tag == "GoldenBanana")
+            //((100.0f - GOLDENBANANA_HEAL) >= this.gameObject.GetComponent<PlayerController>().Life))
         {
             //this.gameObject.GetComponent<PlayerController>().Life += GOLDENBANANA_HEAL;
-            goldenBanana = goldenBanana + 1;
+            goldenBanana++;
         }
         else
         {

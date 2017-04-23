@@ -21,6 +21,7 @@ public class InputHandler : MonoBehaviour {
 
     bool build = false;
     bool makeKebab = false;
+    float bananaHeal = 10;
 
     bool dancing = false;
     
@@ -134,7 +135,7 @@ public class InputHandler : MonoBehaviour {
     {
         if (player.useGolden(player.GOLDEN_COST))
         {
-            //Heal
+            player.gameObject.GetComponent<PlayerController>().Life += bananaHeal;
         }
     }
 
