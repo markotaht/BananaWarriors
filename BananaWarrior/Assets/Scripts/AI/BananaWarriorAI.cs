@@ -7,7 +7,7 @@ public class BananaWarriorAI : MonoBehaviour {
 
     public Vector3 patrolPlace;
 
-    private float fullLife = 20.0f;
+    private float fullLife = 40.0f;
     private float lifeforce;
     private bool alive = true;
     private bool indicator = true;
@@ -34,7 +34,7 @@ public class BananaWarriorAI : MonoBehaviour {
 	
 	void Update () {
         lifeforce -= Time.deltaTime;
-        if (!alive)
+        if (!alive || indicator)
         {
             return;
         }
