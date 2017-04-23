@@ -10,19 +10,23 @@ public class DropController : MonoBehaviour {
     public const float MAX_RANGE_FROM_TREE = 10.0f;
     private bool isOnCoolDown;
 
-
+    Vector2 bananaTreeLocation;
 
     // Use this for initialization
     void Start () {
-		
-	}
+        bananaTreeLocation = GameObject.FindGameObjectWithTag("bTree").transform.position + Vector3.up * GameObject.FindGameObjectWithTag("bTree").GetComponent<SpriteRenderer>().size.y / 2;
+    }
 
+    private void Awake()
+    {
+        bananaTreeLocation = GameObject.FindGameObjectWithTag("bTree").transform.position + Vector3.up * GameObject.FindGameObjectWithTag("bTree").GetComponent<SpriteRenderer>().size.y / 2;
+    }
     // Update is called once per frame
     void Update()
     {
         if (!isOnCoolDown)
         {
-            Vector2 bananaTreeLocation = GameObject.FindGameObjectWithTag("bTree").transform.position;
+        //    Vector2 bananaTreeLocation = GameObject.FindGameObjectWithTag("bTree").transform.position;
             int randomAngle = (int) Random.Range(0f, 359f);
      
 
@@ -39,16 +43,19 @@ public class DropController : MonoBehaviour {
 
                 GameObject goldenBanana = 
                     (GameObject)Instantiate(Resources.Load("Collectible/goldenbanana"), 
-                    loc,
+                    bananaTreeLocation,
                     Quaternion.identity);
+
+                goldenBanana.GetComponent<DroppingController>().setTarget(loc);
                 //Instantiate(greenbanana, new Vector2(0, 0), Quaternion.identity);
             }
             else if (randomNumber < RATE_NORMAL)
             {
                 GameObject greenBanana = 
                     (GameObject)Instantiate(Resources.Load("Collectible/greenbanana"),
-                    loc,
+                    bananaTreeLocation,
                     Quaternion.identity);
+                greenBanana.GetComponent<DroppingController>().setTarget(loc);
             }
             StartCoroutine(coolDown());
         }
