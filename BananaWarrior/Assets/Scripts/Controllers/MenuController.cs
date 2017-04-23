@@ -9,16 +9,27 @@ using System;
 public class MenuController : MonoBehaviour{
 
     public bool isOver;
+    private Event current = new Event();
+    private KeyCode currentKey;
+    private List<KeyCode> keysDown = new List<KeyCode>();
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+    {
+        current = new Event();
+        Event.PopEvent(current);
+        currentKey = ReadKeyCode();
+
+        if (currentKey == KeyCode.Escape)
+        {
+            buttonExit();
+        }
+    }
 
 
 
@@ -39,5 +50,17 @@ public class MenuController : MonoBehaviour{
         Application.Quit();
     }
 
-
+    protected KeyCode ReadKeyCode()
+    {
+        if (current.type == EventType.keyDown && !keysDown.Contains(current.keyCode))
+        {
+            keysDown.Add(current.keyCode);
+            return current.keyCode;
+        }
+        else if (current.type == EventType.KeyUp)
+        {
+            keysDown.Remove(current.keyCode);
+        }
+        return KeyCode.None;
+    }
 }
