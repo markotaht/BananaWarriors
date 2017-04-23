@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using System;
 
 public class MenuController : MonoBehaviour{
@@ -23,8 +24,8 @@ public class MenuController : MonoBehaviour{
 
     public void buttonContinue()
     {
-        Debug.Log("Continue not implemented yet :((");
-        Application.LoadLevel("Scenes/Main");
+        
+        Application.UnloadLevel("Scenes/MainMenu - Copy");
         Time.timeScale = 1;
     }
 

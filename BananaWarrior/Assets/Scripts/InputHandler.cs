@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class InputHandler : MonoBehaviour {
 
@@ -115,7 +116,7 @@ public class InputHandler : MonoBehaviour {
         if(currentKey == KeyCode.Escape)
         {
             Time.timeScale = 0;
-            Application.LoadLevel("Scenes/MainMenu - Copy");
+            Application.LoadLevelAdditive("Scenes/MainMenu - Copy");
         }
 	}
 
