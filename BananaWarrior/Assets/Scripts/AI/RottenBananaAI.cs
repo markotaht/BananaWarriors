@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 public class RottenBananaAI : MonoBehaviour {
     private bool alive = true;
     private int life = 3;
+    private float lifeTime = 30.0f;
     private float sightRange = 30.0f;
     private float attackspeed = 2.0f;
     private float attackRange = 1.0f;
@@ -15,18 +16,26 @@ public class RottenBananaAI : MonoBehaviour {
     private bool attacking = false;
     private GameObject toAttack;
     private float timer;
-    private float patrolTimer = 10;
+    private float patrolTimer = 5;
 	
 	void Start () {
         moveController = GetComponent<MoveController>();
 	}
 	
 
-	void Update () {
+	void Update ()
+    {
+        lifeTime -= Time.deltaTime;
+        if(lifeTime <= 0)
+        {
+            Die();
+        }
         if (!alive)
         {
             return;
         }
+
+
         //Attacking
         if (!attacking)
         {
