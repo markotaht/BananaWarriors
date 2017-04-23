@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour {
     private void Die()
     {
         //End of game
+        movementController.stopMoving();
         GetComponent<Animator>().SetBool("Dead", true);
     }
 
