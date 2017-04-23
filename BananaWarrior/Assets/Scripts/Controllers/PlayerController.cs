@@ -30,13 +30,13 @@ public class PlayerController : MonoBehaviour {
         set { ic = value; }
     }
 
-	// Use this for initialization
+	
 	void Start () {
         mc = GetComponent<MoveController>();
         ic = GetComponent<InventoryController>();
 	}
 	
-	// Update is called once per frame
+	
 	void Update () {
 
 	}

@@ -88,26 +88,6 @@ public class RottenBananaAI : MonoBehaviour {
         }
 	}
 
-    //returns if the unit was killed
-    public bool onHit()
-    {
-        life -= 1;
-        if(life <= 0)
-        {
-            Die();
-            return true;
-        }
-        return false;
-    }
-
-    private void Die()
-    {
-        alive = false;
-        moveController.stopMoving();
-        GetComponent<Animator>().SetBool("Dead", true);
-        Destroy(gameObject, 3);
-    }
-
     //Chooses the next target
     private GameObject whatToAttack()
     {
@@ -134,7 +114,7 @@ public class RottenBananaAI : MonoBehaviour {
         }
         foreach (GameObject warrior in warriors)
         {
-            if(!warrior.GetComponent<BananaWarriorAI>().isAlive())
+            if (!warrior.GetComponent<BananaWarriorAI>().isAlive())
             {
                 continue;
             }
@@ -146,15 +126,35 @@ public class RottenBananaAI : MonoBehaviour {
                 distance = curDistance;
             }
         }
-        if(closest == null)
+        if (closest == null)
         {
             closest = GameObject.FindGameObjectWithTag("Player");
             Vector3 diff = closest.transform.position - position;
             distance = diff.sqrMagnitude;
         }
-        if(distance <= sightRange)
+        if (distance <= sightRange)
             return closest;
         return null;
+    }
+
+    //returns if the unit was killed
+    public bool onHit()
+    {
+        life -= 1;
+        if(life <= 0)
+        {
+            Die();
+            return true;
+        }
+        return false;
+    }
+
+    private void Die()
+    {
+        alive = false;
+        moveController.stopMoving();
+        GetComponent<Animator>().SetBool("Dead", true);
+        Destroy(gameObject, 3);
     }
 
     public bool isAlive()

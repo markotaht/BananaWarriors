@@ -6,14 +6,16 @@ public class TreeController : MonoBehaviour {
     private PlayerController playerController;
     private SpriteRenderer spriteRenderer;
     
-	// Use this for initialization
+	
 	void Start () {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 	
-	// Update is called once per frame
+	
 	void Update () {
+
+        //Color
         float life = playerController.Life;
         if (life > 50)
         {
