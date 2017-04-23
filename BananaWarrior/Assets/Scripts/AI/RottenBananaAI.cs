@@ -103,6 +103,7 @@ public class RottenBananaAI : MonoBehaviour {
     private void Die()
     {
         alive = false;
+        moveController.stopMoving();
         GetComponent<Animator>().SetBool("Dead", true);
         Destroy(gameObject, 3);
     }

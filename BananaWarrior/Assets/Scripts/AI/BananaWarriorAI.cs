@@ -43,6 +43,7 @@ public class BananaWarriorAI : MonoBehaviour {
         if (lifeforce <= 0.0)
         {
             Die();
+            return;
         }
 
         //Attacking
@@ -55,8 +56,9 @@ public class BananaWarriorAI : MonoBehaviour {
                 attacking = true;
                 timer = 0;
             }
-            else if(patrolPlace != transform.position)
+            else if(Vector3.Distance(transform.position, patrolPlace) > 0.01)
             {
+                Debug.Log("Too far " + patrolPlace + ", " + transform.position);
                 moveController.move(patrolPlace);
             }
         }
@@ -146,13 +148,15 @@ public class BananaWarriorAI : MonoBehaviour {
 
     private void Die()
     {
+        Debug.Log("DIE");
         alive = false;
         GetComponent<Animator>().SetBool("Dead", true);
+        moveController.stopMoving();
         Destroy(gameObject, 3);
     }
 
     public void changePatrolPlace(Vector3 newPlace)
     {
-        patrolPlace = newPlace;
+        patrolPlace = new Vector3(newPlace.x, newPlace.y, 0);
     }
 }
