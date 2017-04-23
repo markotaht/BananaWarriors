@@ -214,7 +214,8 @@ Prefab:
       propertyPath: greenBananaText
       value: 
       objectReference: {fileID: 341323}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114929040419131272, guid: 96e83077c2db4784ebff0914ce60a674, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 96e83077c2db4784ebff0914ce60a674, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &174732509
@@ -990,6 +991,24 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 715d826999bccac4ab05712a4f985450, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1546618456 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1272914543922108, guid: 96e83077c2db4784ebff0914ce60a674,
+    type: 2}
+  m_PrefabInternal: {fileID: 140436729}
+--- !u!114 &1546618457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1546618456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4f90a1beaa77647aff559a18e66a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mc: {fileID: 0}
+  ic: {fileID: 0}
 --- !u!1001 &1667633756
 Prefab:
   m_ObjectHideFlags: 0
@@ -1268,7 +1287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e3a056246d9dd4dbb78c04ae1e6e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentActor: {fileID: 579494677}
+  playerController: {fileID: 579494677}
 --- !u!1001 &1835079476
 Prefab:
   m_ObjectHideFlags: 0

@@ -26,7 +26,6 @@ public class MoveController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
         if (Vector3.Distance(transform.position, target) > 0.01)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
