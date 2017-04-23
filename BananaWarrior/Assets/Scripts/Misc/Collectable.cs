@@ -19,6 +19,7 @@ public class Collectable : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        Debug.Log("COLL");
         if(other.gameObject.tag == "Player")
         {
             if(this.gameObject.tag == "GreenBanana" )
