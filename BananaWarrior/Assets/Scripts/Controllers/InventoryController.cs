@@ -50,6 +50,7 @@ public class InventoryController : MonoBehaviour {
         // ei tee vist midagi see osa
         if(collision.gameObject.tag == "GreenBanana")
         {
+ 
             greenBanana = greenBanana + 1;
         }
         else if(collision.gameObject.tag == "YellowBanana")

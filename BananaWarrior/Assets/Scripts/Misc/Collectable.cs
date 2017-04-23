@@ -30,6 +30,7 @@ public class Collectable : MonoBehaviour {
                 }
                 else
                 {
+
                     return; // üle limiidi
                 }
 
@@ -44,6 +45,7 @@ public class Collectable : MonoBehaviour {
                 }
                 else
                 {
+        
                     return; // üle limiidi
                 }
 
