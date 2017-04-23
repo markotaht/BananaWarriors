@@ -34,10 +34,10 @@ public class InputHandler : MonoBehaviour {
         {
             indicator.transform.position = new Vector3(point.x, point.y, 0);
         }
-        if (EventSystem.current.IsPointerOverGameObject())
+       /* if (EventSystem.current.IsPointerOverGameObject())
         {
             return;
-        }
+        }*/
         //Kuhu klikkisime
 
         current = new Event();
