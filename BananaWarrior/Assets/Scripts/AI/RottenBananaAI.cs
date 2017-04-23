@@ -15,7 +15,7 @@ public class RottenBananaAI : MonoBehaviour {
     private bool attacking = false;
     private GameObject toAttack;
     private float timer;
-    
+    private float patrolTimer = 10;
 	
 	void Start () {
         moveController = GetComponent<MoveController>();
@@ -34,8 +34,23 @@ public class RottenBananaAI : MonoBehaviour {
             toAttack = whatToAttack();
             if (toAttack != null)
             {
+                //patrolTimer = 50;
                 attacking = true;
                 timer = 0;
+            }
+            else
+            {
+                patrolTimer -= Time.deltaTime;
+                if (patrolTimer <= 0)
+                {
+                    int randomAngle = (int)Random.Range(0f, 359f);
+                    float randomWidth = Random.Range(2, 10);
+                    Vector3 vec = Quaternion.AngleAxis(randomAngle, Vector3.back) * (Vector3.up * randomWidth);
+                    Vector2 direction = new Vector2(vec.x, vec.y);
+                    Vector2 loc = new Vector2(transform.position.x, transform.position.y) + direction;
+                    moveController.move(loc);
+                    patrolTimer = 10;
+                }
             }
         }
         else
