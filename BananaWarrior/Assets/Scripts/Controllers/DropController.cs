@@ -36,6 +36,7 @@ public class DropController : MonoBehaviour {
             Vector3 vec = Quaternion.AngleAxis(randomAngle, Vector3.back) * (Vector3.up * randomWidth);
             Vector2 direction = new Vector2(vec.x, vec.y);
             Vector2 loc = bananaTreeLocation + direction;
+            loc.y -= GameObject.FindGameObjectWithTag("bTree").GetComponent<SpriteRenderer>().size.y / 2;
 
             //     Debug.Log(randomWidth + " " + randomHeight);
             if (randomNumber < RATE_GOLDEN)
