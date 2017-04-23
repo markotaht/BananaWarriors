@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour {
 
+    private const float GOLDENBANANA_HEAL = 10.0f; // 10%
 
     [SerializeField]
     private int greenBanana = 0;
@@ -21,7 +22,7 @@ public class InventoryController : MonoBehaviour {
     }
 	// Use this for initialization
 	void Start () {
-     //   greenBanana = 0;
+     //   greenBanana = 0; ärge palun de-kommenteerige neid asju 
      //   yellowbanana = 0;
 	}
 
@@ -47,17 +48,28 @@ public class InventoryController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // ei tee vist midagi see osa
-        if(collision.gameObject.tag == "GreenBanana")
+        if (collision.gameObject.tag == "GreenBanana" && GreenBanana < GREENBANANA_MAX)
         {
+
             greenBanana = greenBanana + 1;
         }
-        else if(collision.gameObject.tag == "YellowBanana")
+        else if (collision.gameObject.tag == "YellowBanana" && YellowBanana < YELLOWBANANA_MAX)
         {
+
             yellowBanana = yellowBanana + 1;
         }
-    }
+        else if (collision.gameObject.tag == "GoldenBanana" &&
+            ((100.0f - GOLDENBANANA_HEAL) >= this.gameObject.GetComponent<PlayerController>().Life))
+        {
+            this.gameObject.GetComponent<PlayerController>().Life += GOLDENBANANA_HEAL;
+        }
+        else
+        {
+            return;// liiga palju / nõuded pole täidetud
+        }
+        Destroy(collision.gameObject);
 
+    }
     public void useBananas()
     {
         //Midagi teha banaanidega

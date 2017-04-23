@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private MoveController mc;
     private float life = 100.0f;
-
     public float Life
     {
         get { return life; }
@@ -30,15 +29,15 @@ public class PlayerController : MonoBehaviour {
         set { ic = value; }
     }
 
-	// Use this for initialization
+	
 	void Start () {
-        mc = GetComponent<MoveController>();
-        ic = GetComponent<InventoryController>();
+    //    mc = GetComponent<MoveController>();
+    //    ic = GetComponent<InventoryController>();
 	}
 	
-	// Update is called once per frame
+	
 	void Update () {
-		
+
 	}
 
 
@@ -57,6 +56,7 @@ public class PlayerController : MonoBehaviour {
     private void Die()
     {
         //End of game
+        movementController.stopMoving();
         GetComponent<Animator>().SetBool("Dead", true);
     }
 

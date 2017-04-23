@@ -36,6 +36,7 @@ public class BananaWarriorAI : MonoBehaviour {
         {
             return;
         }
+
         //Color
         spriteRenderer.color = Color.Lerp(new Color(0.5f, 0.26f, 0, 1), Color.white, lifeforce / fullLife);
 
@@ -43,6 +44,7 @@ public class BananaWarriorAI : MonoBehaviour {
         if (lifeforce <= 0.0)
         {
             Die();
+            return;
         }
 
         //Attacking
@@ -55,8 +57,9 @@ public class BananaWarriorAI : MonoBehaviour {
                 attacking = true;
                 timer = 0;
             }
-            else if(patrolPlace != transform.position)
+            else if(Vector3.Distance(transform.position, patrolPlace) > 0.01)
             {
+                Debug.Log("Too far " + patrolPlace + ", " + transform.position);
                 moveController.move(patrolPlace);
             }
         }
@@ -139,20 +142,21 @@ public class BananaWarriorAI : MonoBehaviour {
         return false;
     }
 
-    public bool isAlive()
-    {
-        return alive;
-    }
-
     private void Die()
     {
         alive = false;
         GetComponent<Animator>().SetBool("Dead", true);
+        moveController.stopMoving();
         Destroy(gameObject, 3);
     }
 
+    public bool isAlive()
+    {
+        return alive;
+    }
+    
     public void changePatrolPlace(Vector3 newPlace)
     {
-        patrolPlace = newPlace;
+        patrolPlace = new Vector3(newPlace.x, newPlace.y, 0);
     }
 }

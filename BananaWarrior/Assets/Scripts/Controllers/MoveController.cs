@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 public class MoveController : MonoBehaviour {
 
     public Vector3 target;
+    private bool stopped = false;
 
     [SerializeField]
     private Animator anim;
@@ -29,8 +30,9 @@ public class MoveController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (Vector3.Distance(transform.position, target) > 0.01)
+        //Debug.Log(stopped);
+        //Debug.Log(Vector3.Distance(transform.position, target));
+        if (!stopped && Vector3.Distance(transform.position, target) > 0.01)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
             //Debug.Log(speed * Time.deltaTime);
@@ -46,6 +48,8 @@ public class MoveController : MonoBehaviour {
 
     public void move(Vector3 destination)
     {
+        //Debug.Log("GO");
+        stopped = false;
         target = destination;
         target.z = 0;
         Vector3 scale = transform.localScale;
@@ -62,6 +66,9 @@ public class MoveController : MonoBehaviour {
 
     public void stopMoving()
     {
+        stopped = true;
+        Debug.Log("STOP");
         target = transform.position;
+        Debug.Log(target + ", " + transform.position);
     }
 }

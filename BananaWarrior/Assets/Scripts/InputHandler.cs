@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 public class InputHandler : MonoBehaviour {
 
     [SerializeField]
+    private MoveController playerController;
     private MoveController currentActor;
     private BananaWarriorAI bananaAI;
 
@@ -15,8 +16,8 @@ public class InputHandler : MonoBehaviour {
     bool build = false;
 	// Use this for initialization
 	void Start () {
-		
-	}
+        currentActor = playerController;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -34,6 +35,11 @@ public class InputHandler : MonoBehaviour {
         current = new Event();
         Event.PopEvent(current);
         currentKey = ReadKeyCode();
+        
+        if(currentActor == null || bananaAI != null && !bananaAI.isAlive())
+        {
+            currentActor = playerController;
+        }
 
         if (Input.GetMouseButton(0))
         {
