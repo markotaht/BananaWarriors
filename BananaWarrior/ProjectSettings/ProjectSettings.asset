@@ -45,7 +45,7 @@ PlayerSettings:
   m_SplashScreenBackgroundLandscape: {fileID: 1, guid: 00000000000000000000000000000000,
     type: 0}
   m_SplashScreenBackgroundPortrait: {fileID: 0}
-  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: b4010a5d2ab165f48bb7b0c3e7adbef8,
+  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: a9ba5765c7849e84e9c462ba4c86f722,
     type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
@@ -232,7 +232,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: c20a45b8a0f31d24e8c0b8b52a87be4b, type: 3}
+      m_Icon: {fileID: 2800000, guid: a9ba5765c7849e84e9c462ba4c86f722, type: 3}
       m_Width: 128
       m_Height: 128
   m_BuildTargetBatching: []
@@ -492,7 +492,8 @@ PlayerSettings:
   psmSplashimage: {fileID: 0}
   splashScreenBackgroundSourceLandscape: {fileID: 21300000, guid: c29d05070fad37b46963eac3e7e863b6,
     type: 3}
-  splashScreenBackgroundSourcePortrait: {fileID: 0}
+  splashScreenBackgroundSourcePortrait: {fileID: 21300000, guid: c29d05070fad37b46963eac3e7e863b6,
+    type: 3}
   spritePackerPolicy: 
   webGLMemorySize: 256
   webGLExceptionSupport: 1
