@@ -19,13 +19,13 @@ public class InputHandler : MonoBehaviour {
 
     bool build = false;
     bool makeKebab = false;
-    // Use this for initialization
+    
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryController>();
         currentActor = playerController;
     }
 	
-	// Update is called once per frame
+	
 	void Update () {
         Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Collider2D hit = Physics2D.OverlapPoint(point);
@@ -54,16 +54,13 @@ public class InputHandler : MonoBehaviour {
 
             if (build || makeKebab)
             {
-
-                /*  GameObject maja =
-                  (GameObject)Instantiate(Resources.Load("House/Maja"),
-                  Camera.main.ScreenToWorldPoint(Input.mousePosition),
-                   Quaternion.identity);*/
+                if(indicator.tag == "Warrior")
+                {
+                    indicator.GetComponent<BananaWarriorAI>().changePatrolPlace(point);
+                }
                 indicator.GetComponent<Renderer>().material.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1f);
                 Vector3 pos = Input.mousePosition;
-         //       maja.transform.position = new Vector3(pos.x,pos.y,0);
-           //     maja.transform.position = 
-                //Pane maja
+
                 build = false;
                 makeKebab = false;
                 indicator = null;
@@ -110,7 +107,6 @@ public class InputHandler : MonoBehaviour {
         indicator = (GameObject)Instantiate(Resources.Load("House/Maja"),
                 Camera.main.ScreenToWorldPoint(Input.mousePosition),
                  Quaternion.identity);
-        //  indicator.GetComponent<SpriteRenderer>().color = Color.red;
         currentColor = indicator.GetComponent<Renderer>().material.color;
         indicator.GetComponent<Renderer>().material.color = new Color(currentColor.r, currentColor.g, currentColor.b, 0.4f);
     }
@@ -128,7 +124,6 @@ public class InputHandler : MonoBehaviour {
         indicator = (GameObject)Instantiate(Resources.Load("Warrior/Warrior"),
                 Camera.main.ScreenToWorldPoint(Input.mousePosition),
                  Quaternion.identity);
-        //  indicator.GetComponent<SpriteRenderer>().color = Color.red;
         currentColor = indicator.GetComponent<Renderer>().material.color;
         indicator.GetComponent<Renderer>().material.color = new Color(currentColor.r, currentColor.g, currentColor.b, 0.4f);
     }
