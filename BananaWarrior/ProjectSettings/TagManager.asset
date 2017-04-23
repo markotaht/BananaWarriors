@@ -15,6 +15,7 @@ TagManager:
   - GoldenBanana
   - HPbar
   - bTree
+  - continueButton
   layers:
   - Default
   - TransparentFX
