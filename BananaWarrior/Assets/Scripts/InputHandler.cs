@@ -111,6 +111,12 @@ public class InputHandler : MonoBehaviour {
             dancing = !dancing;
             GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetBool("Dance", dancing);
         }
+
+        if(currentKey == KeyCode.Escape)
+        {
+            Time.timeScale = 0;
+            Application.LoadLevel("Scenes/MainMenu - Copy");
+        }
 	}
 
     public void buildHouse()
