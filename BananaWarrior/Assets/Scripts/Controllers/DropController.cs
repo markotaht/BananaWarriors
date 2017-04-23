@@ -58,7 +58,6 @@ public class DropController : MonoBehaviour {
                         Quaternion.identity);
                     GameObject.FindGameObjectWithTag("bTree").GetComponent<Animator>().SetTrigger("Spawn");
                     greenBanana.GetComponent<DroppingController>().setTarget(loc);
-                    GameObject.FindGameObjectWithTag("bTree").GetComponent<Animator>().SetTrigger("Spawn");
                 }
             }
             StartCoroutine(coolDown());
