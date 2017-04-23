@@ -5,28 +5,37 @@ using UnityEngine.EventSystems;
 public class InputHandler : MonoBehaviour {
 
     [SerializeField]
+    private MoveController playerController;
     private MoveController currentActor;
     private BananaWarriorAI bananaAI;
+    InventoryController player;
 
     private Event current = new Event();
     private KeyCode currentKey;
     private List<KeyCode> keysDown = new List<KeyCode>();
 
+    private GameObject indicator;
+    private Color currentColor;
+
     bool build = false;
-	// Use this for initialization
-	void Start () {
-		
-	}
+    bool makeKebab = false;
+    
+    void Start () {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryController>();
+        currentActor = playerController;
+    }
 	
-	// Update is called once per frame
+	
 	void Update () {
         Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Collider2D hit = Physics2D.OverlapPoint(point);
-        /*
-        if (EventSystem.current.IsPointerOverGameObject())
+        
+        if(indicator != null)
         {
-            if(Input.GetMouseButton(0))
-                build = true;
+            indicator.transform.position = new Vector3(point.x, point.y, 0);
+        }
+       /* if (EventSystem.current.IsPointerOverGameObject())
+        {
             return;
         }*/
         //Kuhu klikkisime
@@ -34,20 +43,27 @@ public class InputHandler : MonoBehaviour {
         current = new Event();
         Event.PopEvent(current);
         currentKey = ReadKeyCode();
+        
+        if(currentActor == null || bananaAI != null && !bananaAI.isAlive())
+        {
+            currentActor = playerController;
+        }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
 
-            if (build)
+            if (build || makeKebab)
             {
+                if(indicator.tag == "Warrior")
+                {
+                    indicator.GetComponent<BananaWarriorAI>().changePatrolPlace(point);
+                }
+                indicator.GetComponent<Renderer>().material.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1f);
+                Vector3 pos = Input.mousePosition;
 
-                GameObject goldenBanana =
-                (GameObject)Instantiate(Resources.Load("maja"),
-                Camera.main.ScreenToWorldPoint(Input.mousePosition),
-                 Quaternion.identity);
-                Debug.Log("panin maja maha");
-                //Pane maja
                 build = false;
+                makeKebab = false;
+                indicator = null;
                 return;
             }
             if (hit && hit.gameObject.tag == "Player")
@@ -79,6 +95,38 @@ public class InputHandler : MonoBehaviour {
             build = true;
         }
 	}
+
+    public void buildHouse()
+    {
+        if (!player.useGreen(player.HOUSE_COST))
+        {
+            return;
+        }
+        player.useGreen((player.HOUSE_COST));
+        build = true;
+        indicator = (GameObject)Instantiate(Resources.Load("House/Maja"),
+                Camera.main.ScreenToWorldPoint(Input.mousePosition),
+                 Quaternion.identity);
+        currentColor = indicator.GetComponent<Renderer>().material.color;
+        indicator.GetComponent<Renderer>().material.color = new Color(currentColor.r, currentColor.g, currentColor.b, 0.4f);
+    }
+
+    public void makeBanana()
+    {
+
+
+        if (!player.useYellow(player.KEBAB_COST))
+        {
+            return;
+        }
+        player.useYellow(player.KEBAB_COST);
+        makeKebab = true;
+        indicator = (GameObject)Instantiate(Resources.Load("Warrior/Warrior"),
+                Camera.main.ScreenToWorldPoint(Input.mousePosition),
+                 Quaternion.identity);
+        currentColor = indicator.GetComponent<Renderer>().material.color;
+        indicator.GetComponent<Renderer>().material.color = new Color(currentColor.r, currentColor.g, currentColor.b, 0.4f);
+    }
 
     protected KeyCode ReadKeyCode()
     {

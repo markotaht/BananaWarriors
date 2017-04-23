@@ -16,6 +16,8 @@ TagManager:
   - HPbar
   - bTree
   - continueButton
+  - buildHouseButton
+  - buildSoldierButton
   layers:
   - Default
   - TransparentFX

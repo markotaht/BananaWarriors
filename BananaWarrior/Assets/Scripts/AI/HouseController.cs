@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class HouseController : MonoBehaviour {
     private bool alive = true;
@@ -56,6 +57,7 @@ public class HouseController : MonoBehaviour {
     {
         alive = false;
         GetComponent<Animator>().SetBool("Dead", true);
+        GetComponent<SortingGroup>().sortingOrder = -9999;
         Destroy(gameObject, 4);
     }
 
