@@ -32,8 +32,8 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-     //   mc = GetComponent<MoveController>();
-      //  ic = GetComponent<InventoryController>();
+        mc = GetComponent<MoveController>();
+        ic = GetComponent<InventoryController>();
 	}
 	
 	// Update is called once per frame
