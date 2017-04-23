@@ -8,6 +8,7 @@ public class InputHandler : MonoBehaviour {
     private MoveController playerController;
     private MoveController currentActor;
     private BananaWarriorAI bananaAI;
+    InventoryController player;
 
     private Event current = new Event();
     private KeyCode currentKey;
@@ -20,6 +21,7 @@ public class InputHandler : MonoBehaviour {
     bool makeKebab = false;
     // Use this for initialization
     void Start () {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryController>();
         currentActor = playerController;
     }
 	
@@ -99,6 +101,11 @@ public class InputHandler : MonoBehaviour {
 
     public void buildHouse()
     {
+        if (!player.useGreen(player.HOUSE_COST))
+        {
+            return;
+        }
+        player.useGreen((player.HOUSE_COST));
         build = true;
         indicator = (GameObject)Instantiate(Resources.Load("House/Maja"),
                 Camera.main.ScreenToWorldPoint(Input.mousePosition),
@@ -110,6 +117,13 @@ public class InputHandler : MonoBehaviour {
 
     public void makeBanana()
     {
+
+
+        if (!player.useYellow(player.KEBAB_COST))
+        {
+            return;
+        }
+        player.useYellow(player.KEBAB_COST);
         makeKebab = true;
         indicator = (GameObject)Instantiate(Resources.Load("Warrior/Warrior"),
                 Camera.main.ScreenToWorldPoint(Input.mousePosition),
