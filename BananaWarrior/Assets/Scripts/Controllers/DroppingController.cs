@@ -6,8 +6,8 @@ public class DroppingController : MonoBehaviour {
 
     private Vector3 target;
     private Vector3 start;
-
-    public float speed = 2.5f;
+    private int level = 1;
+    private float speed = 5.5f;
     private float startTime;
 
     private float duration = 1;

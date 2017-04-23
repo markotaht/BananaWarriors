@@ -38,5 +38,6 @@ public class TreeController : MonoBehaviour {
     private void Die()
     {
         GetComponent<SortingGroup>().sortingOrder = -9999;
+        GetComponent<Animator>().SetBool("Dead", true);
     }
 }

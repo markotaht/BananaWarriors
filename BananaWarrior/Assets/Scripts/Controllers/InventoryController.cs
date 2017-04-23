@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour {
 
-    private const float GOLDENBANANA_HEAL = 10.0f; // 10%
+    private int heal_cost = 1;
+    //private const float GOLDENBANANA_HEAL = 10.0f; // 10%
     private  int kebab_cost = 2; 
     private  int house_cost = 3;
+    private int golden_cost = 1;
 
 
     public int KEBAB_COST
@@ -18,6 +20,11 @@ public class InventoryController : MonoBehaviour {
     {
         get { return house_cost; }
         set { house_cost = value; }
+    }
+    public int GOLDEN_COST
+    {
+        get { return golden_cost; }
+        set { golden_cost = value; }
     }
 
 
@@ -35,8 +42,15 @@ public class InventoryController : MonoBehaviour {
         get { return yellowBanana; }
         set { yellowBanana = value; }
     }
-	// Use this for initialization
-	void Start () {
+    [SerializeField]
+    private int goldenBanana = 0;
+    public int GoldenBanana
+    {
+        get { return goldenBanana; }
+        set { goldenBanana = value; }
+    }
+    // Use this for initialization
+    void Start () {
      //   greenBanana = 0; ärge palun de-kommenteerige neid asju 
      //   yellowbanana = 0;
 	}
@@ -56,6 +70,13 @@ public class InventoryController : MonoBehaviour {
         get { return greenbanana_max;  }
     }
 
+    private const int goldenbanana_max = 10;
+
+    public int GOLDENBANANA_MAX
+    {
+        get { return goldenbanana_max; }
+    }
+
 	// Update is called once per frame
 	void Update () {
 		
@@ -73,10 +94,11 @@ public class InventoryController : MonoBehaviour {
 
             yellowBanana = yellowBanana + 1;
         }
-        else if (collision.gameObject.tag == "GoldenBanana" &&
-            ((100.0f - GOLDENBANANA_HEAL) >= this.gameObject.GetComponent<PlayerController>().Life))
+        else if (collision.gameObject.tag == "GoldenBanana")
+            //((100.0f - GOLDENBANANA_HEAL) >= this.gameObject.GetComponent<PlayerController>().Life))
         {
-            this.gameObject.GetComponent<PlayerController>().Life += GOLDENBANANA_HEAL;
+            //this.gameObject.GetComponent<PlayerController>().Life += GOLDENBANANA_HEAL;
+            goldenBanana++;
         }
         else
         {
@@ -107,9 +129,17 @@ public class InventoryController : MonoBehaviour {
         }
         return false;
         // return (YellowBanana -= bananaCountToRemove) >= 0? true : false;
-
-
-
         //Midagi teha banaanidega
+    }
+
+    public bool useGolden(int bananaCountToRemove)
+    {
+        if (GoldenBanana - bananaCountToRemove >= 0)
+        {
+            GoldenBanana -= bananaCountToRemove;
+            return true;
+
+        }
+        return false;
     }
 }

@@ -8,8 +8,10 @@ public class DropController : MonoBehaviour {
     private const float RATE_NORMAL = 0.5f;
     private const int ONE_DROP_MAX = 10;
     public const int DROP_COOLDOWN = 10;
-    public const float MAX_RANGE_FROM_TREE = 15.0f;
+    public const float MAX_RANGE_FROM_TREE = 7.0f;
     private bool isOnCoolDown;
+
+    private int level = 1;
 
     Vector2 bananaTreeLocation;
 
@@ -25,14 +27,18 @@ public class DropController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-   //     Debug.Log(isOnCoolDown);
+        if (Time.time / 30 > level)
+        {
+            level++;
+            //DROP_COOLDOWN *= 0.9f;
+        }
         if (!isOnCoolDown)
         {
             for (int i = 0; i < ONE_DROP_MAX; i++)
             {
                 float randomNumber = Random.Range(0f, 1f);
-                float randomWidth = Random.Range(2, MAX_RANGE_FROM_TREE) * ((Random.Range(0f,1f) > 0.5)?1:-1);
-                float randomheight = Random.Range(2, MAX_RANGE_FROM_TREE) * ((Random.Range(0f, 1f) > 0.5) ? 1 : -1);
+                float randomWidth = Random.Range(0, MAX_RANGE_FROM_TREE*2) * ((Random.Range(0f,1f) > 0.5)?1:-1);
+                float randomheight = Random.Range(0, MAX_RANGE_FROM_TREE) * ((Random.Range(0f, 1f) > 0.5) ? 1 : -1);
                 Vector2 direction = new Vector2(randomWidth, randomheight);
                 Vector2 loc = bananaTreeLocation + direction;
                 loc.y -= GameObject.FindGameObjectWithTag("bTree").GetComponent<SpriteRenderer>().size.y / 2;
@@ -71,6 +77,6 @@ public class DropController : MonoBehaviour {
         isOnCoolDown = true;
         yield return new WaitForSeconds(DROP_COOLDOWN);
         isOnCoolDown = false;
-        GameObject.FindGameObjectWithTag("bTree").GetComponent<Animator>().SetTrigger("Spawn");
+        
     }
 }
