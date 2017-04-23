@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4831834219908290}
   - component: {fileID: 212307906521285454}
-  - component: {fileID: 114815420528312668}
   - component: {fileID: 50721506878371624}
   - component: {fileID: 61189309440207794}
+  - component: {fileID: 114179655396972044}
   m_Layer: 0
   m_Name: greenbanana
   m_TagString: GreenBanana
@@ -88,7 +88,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.77, y: 5.68}
   m_EdgeRadius: 0
---- !u!114 &114815420528312668
+--- !u!114 &114179655396972044
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1716727632460556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b699a0368a4bd4408f2336d8173a863, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a3afc2ec8716754d9c5946fbf1b8864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212307906521285454
