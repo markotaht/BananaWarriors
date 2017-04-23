@@ -8,7 +8,7 @@ public class DropController : MonoBehaviour {
     private const float RATE_NORMAL = 0.5f;
     private const int ONE_DROP_MAX = 10;
     public const int DROP_COOLDOWN = 10;
-    public const float MAX_RANGE_FROM_TREE = 15.0f;
+    public const float MAX_RANGE_FROM_TREE = 7.0f;
     private bool isOnCoolDown;
 
     Vector2 bananaTreeLocation;
