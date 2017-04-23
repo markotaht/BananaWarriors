@@ -39,6 +39,11 @@ public class RottenBananaAI : MonoBehaviour {
         }
         else
         {
+            if(toAttack != null && toAttack.tag == "Player")
+            {
+                toAttack = whatToAttack();
+
+            }
             timer -= Time.deltaTime;
             if (toAttack != null && Vector3.Distance(transform.position, toAttack.transform.position) - 0.1 >= attackRange)
             {
@@ -101,7 +106,7 @@ public class RottenBananaAI : MonoBehaviour {
         Vector3 position = transform.position;
         foreach (GameObject house in houses)
         {
-            if (!house.GetComponent<HouseController>().isAlive())
+            if (!house.GetComponent<HouseController>().isAlive() || house.GetComponent<HouseController>().isIndicator())
             {
                 continue;
             }
@@ -115,7 +120,7 @@ public class RottenBananaAI : MonoBehaviour {
         }
         foreach (GameObject warrior in warriors)
         {
-            if (!warrior.GetComponent<BananaWarriorAI>().isAlive())
+            if (!warrior.GetComponent<BananaWarriorAI>().isAlive() || warrior.GetComponent<BananaWarriorAI>().isIndicator())
             {
                 continue;
             }
