@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private MoveController mc;
     private float life = 100.0f;
-
     public float Life
     {
         get { return life; }
@@ -32,8 +31,8 @@ public class PlayerController : MonoBehaviour {
 
 	
 	void Start () {
-        mc = GetComponent<MoveController>();
-        ic = GetComponent<InventoryController>();
+    //    mc = GetComponent<MoveController>();
+    //    ic = GetComponent<InventoryController>();
 	}
 	
 	
