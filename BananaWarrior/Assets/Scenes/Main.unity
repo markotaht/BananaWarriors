@@ -431,11 +431,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1282f632c65d0cf41a6822f7ab8ea202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bananaAttack: {fileID: 8300000, guid: ea86be4767ef2f245b504aa67e497ed6, type: 3}
-  bananaGoneBad: {fileID: 8300000, guid: 5796bbe31574c3d459a6ff9b6587bf63, type: 3}
+  bananaAttack: {fileID: 8300000, guid: 57f6761920708a3409733145871038ad, type: 3}
+  bananaGoneBad: {fileID: 8300000, guid: 9cae4223a3849cc4a8ba17d66ac19888, type: 3}
   bananaDeath: {fileID: 8300000, guid: a1fb99abb9e92694ab56e5c67771d68d, type: 3}
   bananaWalk: {fileID: 8300000, guid: 5c86219b29300a7448800eb45cdf581c, type: 3}
-  bananaFall: {fileID: 8300000, guid: 4438ec8d67a30b84099b214abac2af42, type: 3}
+  bananaFall: {fileID: 8300000, guid: 0a4c8f8f168be4649bc52c7d9b8306fd, type: 3}
   gameOver: {fileID: 8300000, guid: e8b3b07cac26b6f4c836739127028707, type: 3}
   kingBananaDeath: {fileID: 8300000, guid: e62399e546692a047bbddb3dc9027e36, type: 3}
 --- !u!82 &332517121
@@ -505,7 +505,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
