@@ -10,6 +10,8 @@ public class InventoryController : MonoBehaviour {
     private  int house_cost = 3;
     private int golden_cost = 1;
 
+    public UIController ui;
+
 
     public int KEBAB_COST
     {
@@ -88,11 +90,19 @@ public class InventoryController : MonoBehaviour {
         {
 
             greenBanana = greenBanana + 1;
+            if(greenBanana >= house_cost)
+            {
+                ui.greenButton.sprite = Resources.Load<Sprite>("nupud/maja/majaaktiivne");
+            }
         }
         else if (collision.gameObject.tag == "YellowBanana" && YellowBanana < YELLOWBANANA_MAX)
         {
 
             yellowBanana = yellowBanana + 1;
+            if (yellowBanana >= kebab_cost)
+            {
+                ui.yellowButton.sprite = Resources.Load<Sprite>("nupud/soldier/soldieraktiivne");
+            }
         }
         else if (collision.gameObject.tag == "GoldenBanana")
             //((100.0f - GOLDENBANANA_HEAL) >= this.gameObject.GetComponent<PlayerController>().Life))
@@ -112,6 +122,10 @@ public class InventoryController : MonoBehaviour {
         if(GreenBanana - bananaCountToRemove >= 0)
         {
             GreenBanana -= bananaCountToRemove;
+            if (greenBanana < house_cost)
+            {
+                ui.greenButton.sprite = Resources.Load<Sprite>("nupud/maja/majapuudulik");
+            }
             return true;
 
         }
@@ -124,6 +138,10 @@ public class InventoryController : MonoBehaviour {
         if (YellowBanana - bananaCountToRemove >= 0)
         {
             YellowBanana -= bananaCountToRemove;
+            if (yellowBanana < kebab_cost)
+            {
+                ui.yellowButton.sprite = Resources.Load<Sprite>("nupud/soldier/soldierpuudulik");
+            }
             return true;
 
         }

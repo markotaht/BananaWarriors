@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 [RequireComponent (typeof(MoveController))]
 [RequireComponent (typeof(InventoryController))]
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour {
 
 	
 	void Start () {
+
     //    mc = GetComponent<MoveController>();
     //    ic = GetComponent<InventoryController>();
 	}
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 
 	}
+
 
 
     //returns if the unit was killed
@@ -58,10 +61,42 @@ public class PlayerController : MonoBehaviour {
     private void Die()
     {
         //End of game
+
+        StartCoroutine(FadeToBlackOverSeconds(4.0f));
         AudioController.Play("gameover");
+
         movementController.stopMoving();
         GetComponent<SortingGroup>().sortingOrder = -9997;
         GetComponent<Animator>().SetBool("Dead", true);
+
+
     }
+
+    IEnumerator FadeToBlackOverSeconds(float amountOfSeconds)
+    {
+        Image blackRect = GameObject.FindGameObjectWithTag("deathScreen").GetComponent<Image>();
+
+        float current = 0.0f;
+      //  float speed = 1.0f / (amountOfSeconds);
+
+
+        // setalpha + crossfadealpha + while loop on VAJALIKUD et asi toimiks:))
+        blackRect.canvasRenderer.SetAlpha(0f);
+        blackRect.CrossFadeAlpha(1f, amountOfSeconds, false);
+        while (current < 1f)
+
+        {
+            var color = blackRect.color;
+            color.a = current;
+   //         Debug.Log(color.a);
+            blackRect.color = color;
+            current += 0.01f ;
+
+        }
+        yield return null;
+
+    }
+
+
 
 }
