@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [RequireComponent (typeof(MoveController))]
 [RequireComponent (typeof(InventoryController))]
@@ -57,6 +58,7 @@ public class PlayerController : MonoBehaviour {
     {
         //End of game
         movementController.stopMoving();
+        GetComponent<SortingGroup>().sortingOrder = -9997;
         GetComponent<Animator>().SetBool("Dead", true);
     }
 

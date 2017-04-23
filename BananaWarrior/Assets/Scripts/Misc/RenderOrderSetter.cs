@@ -13,8 +13,5 @@ public class RenderOrderSetter : MonoBehaviour {
         spriteRenderer = GetComponent<SpriteRenderer>();
         sortingGroup = GetComponent<SortingGroup>();
         sortingGroup.sortingOrder = (int)((transform.position.y) * -10) + offset;
-        Debug.Log(sortingGroup.sortingOrder);
-        Debug.Log(transform.position.y);
-        Debug.Log(transform.position.y - spriteRenderer.bounds.size.y/2);
     }
 }
