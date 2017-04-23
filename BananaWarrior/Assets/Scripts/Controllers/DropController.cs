@@ -45,7 +45,7 @@ public class DropController : MonoBehaviour {
             }
             else if (randomNumber < RATE_NORMAL)
             {
-                GameObject goldenBanana = 
+                GameObject greenBanana = 
                     (GameObject)Instantiate(Resources.Load("Collectible/greenbanana"),
                     loc,
                     Quaternion.identity);
