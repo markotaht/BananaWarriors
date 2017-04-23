@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 61249103894282596}
   - component: {fileID: 108938792202020436}
   - component: {fileID: 114099032964342310}
+  - component: {fileID: 114185639870139814}
   m_Layer: 0
   m_Name: goldenbanana
   m_TagString: GoldenBanana
@@ -134,7 +135,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1220349729528330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b699a0368a4bd4408f2336d8173a863, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a3afc2ec8716754d9c5946fbf1b8864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114099032964342310
@@ -151,6 +152,18 @@ MonoBehaviour:
   maxGlow: 2
   minGlow: 0.7
   glowStep: 0.05
+--- !u!114 &114185639870139814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1220349729528330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23589dea543c60429c893ec02bca8fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2.5
 --- !u!212 &212275714658383218
 SpriteRenderer:
   m_ObjectHideFlags: 1

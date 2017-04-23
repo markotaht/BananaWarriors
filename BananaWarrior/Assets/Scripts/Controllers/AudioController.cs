@@ -10,6 +10,7 @@ public class AudioController : MonoBehaviour {
     public AudioClip bananaWalk;
     public AudioClip bananaFall;
     public AudioClip gameOver;
+    public AudioClip kingBananaDeath;
 
     private static Dictionary<string, AudioClip> audios;
 
@@ -20,7 +21,8 @@ public class AudioController : MonoBehaviour {
         audios = new Dictionary<string, AudioClip>();
         audios.Add("attack", bananaAttack);
         audios.Add("gonebad", bananaGoneBad);
-        audios.Add("death", bananaDeath);
+        audios.Add("nDeath", bananaDeath);
+        audios.Add("kDeath", kingBananaDeath);
         audios.Add("walk", bananaWalk);
         audios.Add("fall", bananaFall);
         audios.Add("gameover", gameOver);
@@ -37,9 +39,11 @@ public class AudioController : MonoBehaviour {
      * STRINGIDE NIMEKIRI
      * attack - banana Attack
      * gonebad - banana Bad
-     * death - banana Death
+     * nDeath - banana Death
+     * kDeath - king banana Death
      * walk - banana Walk
      * fall - banana Fall
+     * 
      * gameover - Game Over
      * */
     public static void Play(string clipToPlay)
