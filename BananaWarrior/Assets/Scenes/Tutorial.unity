@@ -404,7 +404,7 @@ MonoBehaviour:
   tut3: {fileID: 2800000, guid: 4bfe129e2fe513d4aa1d0d0d781fa01b, type: 3}
   tut4: {fileID: 2800000, guid: 1e627487a0b40d944be28eac5dbd28d5, type: 3}
   tut5: {fileID: 2800000, guid: c6191b24b00b6f44db48c9d767456ece, type: 3}
-  tut6: {fileID: 2800000, guid: dd664f10efc2acc47bcc6c106f475d2f, type: 3}
+  tut6: {fileID: 2800000, guid: 9b2255d767908a249a8f3a8abdc39b86, type: 3}
 --- !u!114 &793622304
 MonoBehaviour:
   m_ObjectHideFlags: 0
