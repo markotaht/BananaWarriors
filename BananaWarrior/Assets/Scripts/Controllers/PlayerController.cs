@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
     private MoveController mc;
     private float life = 100.0f;
     private bool isWaiting = false;
+
     public float Life
     {
         get { return life; }
@@ -54,6 +55,7 @@ public class PlayerController : MonoBehaviour {
     {
         AudioController.Play("attack");
         life -= 5;
+        StartCoroutine(Flash());
         if (life <= 0)
         {
             Die();
@@ -106,6 +108,14 @@ public class PlayerController : MonoBehaviour {
         }
         yield return null;
 
+    }
+
+    IEnumerator Flash()
+    {
+        Image hit = GameObject.FindGameObjectWithTag("Hit").GetComponent<Image>();
+        hit.enabled = true;
+        yield return new WaitForSeconds(0.2f);
+        hit.enabled = false;
     }
 
 

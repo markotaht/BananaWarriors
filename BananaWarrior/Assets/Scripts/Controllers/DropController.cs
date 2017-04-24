@@ -31,7 +31,6 @@ public class DropController : MonoBehaviour {
         {
             level++;
             DROP_COOLDOWN *= 0.9f;
-            Debug.Log(level + ", " + DROP_COOLDOWN);
         }
         if (!isOnCoolDown)
         {
