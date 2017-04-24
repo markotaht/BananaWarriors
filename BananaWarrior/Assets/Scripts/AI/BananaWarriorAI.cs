@@ -33,7 +33,14 @@ public class BananaWarriorAI : MonoBehaviour {
 	
 	
 	void Update () {
-        lifeforce -= Time.deltaTime;
+        if (isNearaHouse())
+        {
+            lifeforce -= Time.deltaTime/3;
+        }
+        else
+        {
+            lifeforce -= Time.deltaTime;
+        }
         if (!alive || indicator)
         {
             return;
@@ -172,5 +179,21 @@ public class BananaWarriorAI : MonoBehaviour {
     public void setIndicator(bool isIndicator)
     {
         indicator = isIndicator;
+    }
+
+    public bool isNearaHouse()
+    {
+        GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
+        foreach (GameObject house in houses)
+        {
+            if (house.GetComponent<HouseController>().isAlive() && !house.GetComponent<HouseController>().isIndicator())
+            {
+                if ((house.transform.position - transform.position).sqrMagnitude <= sightRange)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
