@@ -13,9 +13,11 @@ public class TuturialController : MonoBehaviour {
     public Texture2D tut5;
     public Texture2D tut6;
 
+
     List<Texture2D> tuts;
     // Use this for initialization
     void Start () {
+
         tuts = new List<Texture2D>();
         tuts.Add(tut1);
         tuts.Add(tut2);
@@ -28,9 +30,39 @@ public class TuturialController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        gameObject.GetComponent<Image>().material = tuts[currentTut];
+        gameObject.GetComponent<RawImage>().texture = tuts[currentTut];
+        if (currentTut == 0)
+        {
+    //        GameObject.FindGameObjectWithTag("backB").SetActive(false);
+            GameObject.FindGameObjectWithTag("menuB").SetActive(true);
+        }
+        else if (currentTut == 5)
+        {
+            GameObject.FindGameObjectWithTag("nextB").SetActive(false);
+            GameObject.FindGameObjectWithTag("startB").SetActive(true);
+        }
+        else
+        {
+            GameObject.FindGameObjectWithTag("nextB").SetActive(true);
+            GameObject.FindGameObjectWithTag("backB").SetActive(true);
+            GameObject.FindGameObjectWithTag("startB").SetActive(false);
+            GameObject.FindGameObjectWithTag("menuB").SetActive(false);
+        }
 	}
-
+    public void menuButton()
+    {
+        Application.LoadLevel("Scenes/MainMenu - Copy");
+    }
+    public void startButton()
+    {
+        Application.LoadLevel("Scenes/Main");
+        Time.timeScale = 1;
+        PlayerPrefs.SetInt("houses", 0);
+        PlayerPrefs.SetInt("warriors", 0);
+        PlayerPrefs.SetFloat("Time", 0);
+        PlayerPrefs.SetInt("Golden", 0);
+        PlayerPrefs.SetInt("bananas", 0);
+    }
     public void nextButton()
     {
         if (currentTut < 5) currentTut++;

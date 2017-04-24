@@ -20,6 +20,10 @@ TagManager:
   - buildSoldierButton
   - SoundSystem
   - deathScreen
+  - nextB
+  - backB
+  - menuB
+  - startB
   layers:
   - Default
   - TransparentFX
