@@ -13,6 +13,10 @@ public class RottenBananaAI : MonoBehaviour {
 
     private MoveController moveController;
 
+    private bool middleOfAttacking = false;
+    private float attackAnimDuration = 1.0f;
+    private float attackAnimCounter;
+
     private bool attacking = false;
     private GameObject toAttack;
     private float timer;
@@ -34,79 +38,23 @@ public class RottenBananaAI : MonoBehaviour {
         {
             return;
         }
-
-
-        //Attacking
-        if (!attacking)
+        if (middleOfAttacking)
         {
-
-            toAttack = whatToAttack();
-            if (toAttack != null)
+            attackAnimCounter -= Time.deltaTime;
+            if (attackAnimCounter <= 0)
             {
-                //patrolTimer = 50;
-                attacking = true;
-                timer = 0;
-            }
-            else
-            {
-                patrolTimer -= Time.deltaTime;
-                if (patrolTimer <= 0)
-                {
-                    int randomAngle = (int)Random.Range(0f, 359f);
-                    float randomWidth = Random.Range(2, 20);
-                    Vector3 vec = Quaternion.AngleAxis(randomAngle, Vector3.back) * (Vector3.up * randomWidth);
-                    Vector2 direction = new Vector2(vec.x, vec.y);
-                    Vector2 loc = new Vector2(transform.position.x, transform.position.y) + direction;
-                    moveController.move(loc);
-                    patrolTimer = 10;
-                }
-            }
-        }
-        else
-        {
-            if(toAttack != null && toAttack.tag == "Player")
-            {
-                toAttack = whatToAttack();
-
-            }
-            timer -= Time.deltaTime;
-            if (toAttack != null && Vector3.Distance(transform.position, toAttack.transform.position) - 0.1 >= attackRange)
-            {
-                float distance = Vector3.Distance(transform.position, toAttack.transform.position) - attackRange;
-                Vector3 direction = (toAttack.transform.position - transform.position).normalized;
-                moveController.move(transform.position + direction * distance);
-            }
-            else if (timer <= 0)
-            {
-                moveController.stopMoving();
                 bool killed = true;
-                if (toAttack != null)
+                if (toAttack.tag == "Warrior")
                 {
-                    Vector3 scale = transform.localScale;
-                    if (toAttack.transform.position.x < transform.position.x)
-                    {
-                        scale.x *= scale.x < 0 ? 1 : -1;
-                    }
-                    else
-                    {
-                        scale.x *= scale.x > 0 ? 1 : -1;
-                    }
-                    transform.localScale = scale;
-                    if (toAttack.tag == "Warrior")
-                    {
-                        GetComponent<Animator>().SetTrigger("Attack");
-                        killed = toAttack.GetComponent<BananaWarriorAI>().onHit();
-                    }
-                    else if (toAttack.tag == "House")
-                    {
-                        GetComponent<Animator>().SetTrigger("Attack");
-                        killed = toAttack.GetComponent<HouseController>().onHit();
-                    }
-                    else if (toAttack.tag == "Player")
-                    {
-                        GetComponent<Animator>().SetTrigger("Attack");
-                        killed = toAttack.GetComponent<PlayerController>().onHit();
-                    }
+                    killed = toAttack.GetComponent<BananaWarriorAI>().onHit();
+                }
+                else if (toAttack.tag == "House")
+                {
+                    killed = toAttack.GetComponent<HouseController>().onHit();
+                }
+                else if (toAttack.tag == "Player")
+                {
+                    killed = toAttack.GetComponent<PlayerController>().onHit();
                 }
                 if (killed)
                 {
@@ -114,10 +62,91 @@ public class RottenBananaAI : MonoBehaviour {
                     toAttack = null;
                 }
                 timer = attackspeed;
+                middleOfAttacking = false;
             }
-            else if (timer > 0 && toAttack == null)
+        }
+        else
+        {
+
+            //Attacking
+            if (!attacking)
             {
-                moveController.stopMoving();
+
+                toAttack = whatToAttack();
+                if (toAttack != null)
+                {
+                    //patrolTimer = 50;
+                    attacking = true;
+                    timer = 0;
+                }
+                else
+                {
+                    patrolTimer -= Time.deltaTime;
+                    if (patrolTimer <= 0)
+                    {
+                        int randomAngle = (int)Random.Range(0f, 359f);
+                        float randomWidth = Random.Range(2, 20);
+                        Vector3 vec = Quaternion.AngleAxis(randomAngle, Vector3.back) * (Vector3.up * randomWidth);
+                        Vector2 direction = new Vector2(vec.x, vec.y);
+                        Vector2 loc = new Vector2(transform.position.x, transform.position.y) + direction;
+                        moveController.move(loc);
+                        patrolTimer = 10;
+                    }
+                }
+            }
+            else
+            {
+                if (toAttack != null && toAttack.tag == "Player")
+                {
+                    toAttack = whatToAttack();
+
+                }
+                timer -= Time.deltaTime;
+                if (toAttack != null && Vector3.Distance(transform.position, toAttack.transform.position) - 0.1 >= attackRange)
+                {
+                    float distance = Vector3.Distance(transform.position, toAttack.transform.position) - attackRange;
+                    Vector3 direction = (toAttack.transform.position - transform.position).normalized;
+                    moveController.move(transform.position + direction * distance);
+                }
+                else if (timer <= 0)
+                {
+                    moveController.stopMoving();
+                    if (toAttack != null)
+                    {
+                        Vector3 scale = transform.localScale;
+                        if (toAttack.transform.position.x < transform.position.x)
+                        {
+                            scale.x *= scale.x < 0 ? 1 : -1;
+                        }
+                        else
+                        {
+                            scale.x *= scale.x > 0 ? 1 : -1;
+                        }
+                        transform.localScale = scale;
+                        if (toAttack.tag == "Warrior")
+                        {
+                            GetComponent<Animator>().SetTrigger("Attack");
+                            middleOfAttacking = true;
+                            attackAnimCounter = attackAnimDuration;
+                        }
+                        else if (toAttack.tag == "House")
+                        {
+                            GetComponent<Animator>().SetTrigger("Attack");
+                            middleOfAttacking = true;
+                            attackAnimCounter = attackAnimDuration;
+                        }
+                        else if (toAttack.tag == "Player")
+                        {
+                            GetComponent<Animator>().SetTrigger("Attack");
+                            middleOfAttacking = true;
+                            attackAnimCounter = attackAnimDuration;
+                        }
+                    }
+                }
+                else if (timer > 0 && toAttack == null)
+                {
+                    moveController.stopMoving();
+                }
             }
         }
 	}
