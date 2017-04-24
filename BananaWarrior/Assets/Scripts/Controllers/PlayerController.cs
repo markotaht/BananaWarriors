@@ -41,7 +41,10 @@ public class PlayerController : MonoBehaviour {
 	
 	
 	void Update () {
-
+        if(life > 0)
+        {
+            PlayerPrefs.SetFloat("Time", PlayerPrefs.GetFloat("Time") + Time.deltaTime);
+        }
 	}
 
 
@@ -62,7 +65,6 @@ public class PlayerController : MonoBehaviour {
     private void Die()
     {
         //End of game
-
         StartCoroutine(FadeToBlackOverSeconds(4.0f));
         AudioController.Play("gameover");
 

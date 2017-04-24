@@ -42,9 +42,14 @@ public class MenuController : MonoBehaviour{
 
     public void buttonStartLevel()
     {
-        Application.UnloadLevel("Scenes/Main");
+      //  Application.UnloadLevel("Scenes/Main");
         Application.LoadLevel("Scenes/Main");
         Time.timeScale = 1;
+        PlayerPrefs.SetInt("houses", 0);
+        PlayerPrefs.SetInt("warriors", 0);
+        PlayerPrefs.SetFloat("Time", 0);
+        PlayerPrefs.SetInt("Golden", 0);
+        PlayerPrefs.SetInt("bananas", 0);
     }
 
     public void buttonExit()

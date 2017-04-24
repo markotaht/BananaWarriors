@@ -58,10 +58,12 @@ public class InputHandler : MonoBehaviour {
                     indicator.GetComponent<BananaWarriorAI>().changePatrolPlace(point);
                     indicator.GetComponent<MoveController>().enabled = true;
                     indicator.GetComponent<BananaWarriorAI>().setIndicator(false);
+                    PlayerPrefs.SetInt("warriors", PlayerPrefs.GetInt("warriors") + 1);
                 }
                 else if (indicator.tag == "House")
                 {
                     indicator.GetComponent<HouseController>().setIndicator(false);
+                    PlayerPrefs.SetInt("houses", PlayerPrefs.GetInt("houses") + 1);
                 }
                 indicator.GetComponent<RenderOrderSetter>().SetOrder();
                 indicator.GetComponent<Renderer>().material.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1f);
@@ -75,6 +77,22 @@ public class InputHandler : MonoBehaviour {
             else if (playerController != null)
             {
                 playerController.move(point);
+            }
+        }
+
+        if (Input.GetMouseButton(1))
+        {
+            DestroyObject(indicator);
+            indicator = null;
+            if (build)
+            { 
+                build = false;
+                player.useGreen(-player.HOUSE_COST);
+            }
+            if (makeKebab)
+            {
+                player.useYellow(-player.KEBAB_COST);
+                makeKebab = false;
             }
         }
 
