@@ -52,6 +52,11 @@ public class MenuController : MonoBehaviour{
         PlayerPrefs.SetInt("bananas", 0);
     }
 
+    public void buttonTutorial()
+    {
+        Application.LoadLevel("Scenes/Tutorial");
+    }
+
     public void buttonExit()
     {
         Application.Quit();
