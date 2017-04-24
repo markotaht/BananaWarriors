@@ -94,6 +94,7 @@ public class InventoryController : MonoBehaviour {
             {
                 ui.greenButton.sprite = Resources.Load<Sprite>("nupud/maja/majaaktiivne");
             }
+            PlayerPrefs.SetInt("bananas", PlayerPrefs.GetInt("bananas") + 1);
         }
         else if (collision.gameObject.tag == "YellowBanana" && YellowBanana < YELLOWBANANA_MAX)
         {
@@ -103,6 +104,7 @@ public class InventoryController : MonoBehaviour {
             {
                 ui.yellowButton.sprite = Resources.Load<Sprite>("nupud/soldier/soldieraktiivne");
             }
+            PlayerPrefs.SetInt("bananas", PlayerPrefs.GetInt("bananas") + 1);
         }
         else if (collision.gameObject.tag == "GoldenBanana")
             //((100.0f - GOLDENBANANA_HEAL) >= this.gameObject.GetComponent<PlayerController>().Life))
@@ -113,6 +115,8 @@ public class InventoryController : MonoBehaviour {
             {
                 ui.goldenButton.sprite = Resources.Load<Sprite>("nupud/heal/healaktiivne");
             }
+            PlayerPrefs.SetInt("bananas", PlayerPrefs.GetInt("bananas") + 1);
+            PlayerPrefs.SetInt("Golden", PlayerPrefs.GetInt("Golden") + 1);
         }
         else
         {
@@ -130,6 +134,9 @@ public class InventoryController : MonoBehaviour {
             {
                 ui.greenButton.sprite = Resources.Load<Sprite>("nupud/maja/majapuudulik");
             }
+            else {
+                ui.greenButton.sprite = Resources.Load<Sprite>("nupud/maja/majaaktiivne");
+            }
             return true;
 
         }
@@ -145,6 +152,10 @@ public class InventoryController : MonoBehaviour {
             if (yellowBanana < kebab_cost)
             {
                 ui.yellowButton.sprite = Resources.Load<Sprite>("nupud/soldier/soldierpuudulik");
+            }
+            else
+            {
+                ui.yellowButton.sprite = Resources.Load<Sprite>("nupud/soldier/soldieraktiivne");
             }
             return true;
 
@@ -162,6 +173,10 @@ public class InventoryController : MonoBehaviour {
             if (goldenBanana < golden_cost)
             {
                 ui.goldenButton.sprite = Resources.Load<Sprite>("nupud/heal/healpuudulik");
+            }
+            else
+            {
+                ui.goldenButton.sprite = Resources.Load<Sprite>("nupud/heal/healaktiivne");
             }
             return true;
 

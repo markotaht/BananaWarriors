@@ -8,6 +8,11 @@ public class DeathController : MonoBehaviour {
     {
         Application.LoadLevel("Scenes/Main");
         Time.timeScale = 1;
+        PlayerPrefs.SetInt("houses", 0);
+        PlayerPrefs.SetInt("warriors", 0);
+        PlayerPrefs.SetFloat("Start", Time.time);
+        PlayerPrefs.SetInt("Golden", 0);
+        PlayerPrefs.SetInt("bananas", 0);
     }
 
     public void buttonExit()
