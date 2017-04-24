@@ -140,7 +140,7 @@ public class InputHandler : MonoBehaviour {
             return;
         }
         makeKebab = true;
-        indicator = (GameObject)Instantiate(Resources.Load("Warrior/Warrior"),
+        indicator = (GameObject)Instantiate(Resources.Load("Warrior/Warrior 1"),
                 Camera.main.ScreenToWorldPoint(Input.mousePosition),
                  Quaternion.identity);
         currentColor = indicator.GetComponent<Renderer>().material.color;

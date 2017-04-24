@@ -46,7 +46,7 @@ public class DroppedController : MonoBehaviour {
 
         AudioController.Play("gonebad");
 
-        GameObject newRottenBanana = (GameObject)Instantiate(Resources.Load("RottenBanana/RottenBanana 1"),
+        GameObject newRottenBanana = (GameObject)Instantiate(Resources.Load("RottenBanana/RottenBanana 1 1"),
                 transform.position,
                  Quaternion.identity);
         Destroy(gameObject);
