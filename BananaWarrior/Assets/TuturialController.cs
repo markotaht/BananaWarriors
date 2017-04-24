@@ -30,25 +30,11 @@ public class TuturialController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         gameObject.GetComponent<RawImage>().texture = tuts[currentTut];
-        if (currentTut == 0)
-        {
-    //        GameObject.FindGameObjectWithTag("backB").SetActive(false);
-            GameObject.FindGameObjectWithTag("menuB").SetActive(true);
         }
-        else if (currentTut == 5)
-        {
-            GameObject.FindGameObjectWithTag("nextB").SetActive(false);
-            GameObject.FindGameObjectWithTag("startB").SetActive(true);
-        }
-        else
-        {
-            GameObject.FindGameObjectWithTag("nextB").SetActive(true);
-            GameObject.FindGameObjectWithTag("backB").SetActive(true);
-            GameObject.FindGameObjectWithTag("startB").SetActive(false);
-            GameObject.FindGameObjectWithTag("menuB").SetActive(false);
-        }
-	}
+
+	
     public void menuButton()
     {
         Application.LoadLevel("Scenes/MainMenu - Copy");

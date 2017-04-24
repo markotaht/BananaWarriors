@@ -20,6 +20,10 @@ public class BananaWarriorAI : MonoBehaviour {
     private float attackspeed = 2.0f;
     private float attackRange = 1.0f;
 
+    private bool middleOfAttacking = false;
+    private float attackAnimDuration = 0.45f;
+    private float attackAnimCounter;
+
     private GameObject toAttack;
     private float timer;
     
@@ -57,58 +61,71 @@ public class BananaWarriorAI : MonoBehaviour {
         }
 
         //Attacking
-        if (!attacking)
+        if (middleOfAttacking)
         {
-            toAttack = whatToAttack();
-            if (toAttack != null)
+            attackAnimCounter -= Time.deltaTime;
+            if (attackAnimCounter <= 0)
             {
-                moveController.stopMoving();
-                attacking = true;
-                timer = 0;
-            }
-            else if(Vector3.Distance(transform.position, patrolPlace) > 0.01)
-            {
-                moveController.move(patrolPlace);
-            }
-        }
-        else
-        {
-            timer -= Time.deltaTime;
-            if (toAttack != null && Vector2.Distance(transform.position, toAttack.transform.position) - 0.1 >= attackRange)
-            {
-                float distance = Vector3.Distance(transform.position, toAttack.transform.position) - attackRange;
-                Vector3 direction = (toAttack.transform.position - transform.position).normalized;
-                moveController.move(transform.position + direction * distance);
-            }
-            else if (timer <= 0)
-            {
-                moveController.stopMoving();
                 bool killed = true;
-                if (toAttack != null)
-                {
-                    Vector3 scale = transform.localScale;
-                    if (toAttack.transform.position.x < transform.position.x)
-                    {
-                        scale.x *= scale.x < 0 ? 1 : -1;
-                    }
-                    else
-                    {
-                        scale.x *= scale.x > 0 ? 1 : -1;
-                    }
-                    transform.localScale = scale;
-                    killed = toAttack.GetComponent<RottenBananaAI>().onHit();
-                    GetComponent<Animator>().SetTrigger("Attack");
-                }
+                killed = toAttack.GetComponent<RottenBananaAI>().onHit();
                 if (killed)
                 {
                     attacking = false;
                     toAttack = null;
                 }
                 timer = attackspeed;
+                middleOfAttacking = false;
             }
-            else if (timer > 0 && toAttack == null)
+        }
+        else
+        {
+            if (!attacking)
             {
-                moveController.stopMoving();
+                toAttack = whatToAttack();
+                if (toAttack != null)
+                {
+                    moveController.stopMoving();
+                    attacking = true;
+                    timer = 0;
+                }
+                else if (Vector3.Distance(transform.position, patrolPlace) > 0.01)
+                {
+                    moveController.move(patrolPlace);
+                }
+            }
+            else
+            {
+                timer -= Time.deltaTime;
+                if (toAttack != null && Vector2.Distance(transform.position, toAttack.transform.position) - 0.1 >= attackRange)
+                {
+                    float distance = Vector3.Distance(transform.position, toAttack.transform.position) - attackRange;
+                    Vector3 direction = (toAttack.transform.position - transform.position).normalized;
+                    moveController.move(transform.position + direction * distance);
+                }
+                else if (timer <= 0)
+                {
+                    moveController.stopMoving();
+                    if (toAttack != null)
+                    {
+                        Vector3 scale = transform.localScale;
+                        if (toAttack.transform.position.x < transform.position.x)
+                        {
+                            scale.x *= scale.x < 0 ? 1 : -1;
+                        }
+                        else
+                        {
+                            scale.x *= scale.x > 0 ? 1 : -1;
+                        }
+                        transform.localScale = scale;
+                        GetComponent<Animator>().SetTrigger("Attack");
+                        middleOfAttacking = true;
+                        attackAnimCounter = attackAnimDuration;
+                    }
+                }
+                else if (timer > 0 && toAttack == null)
+                {
+                    moveController.stopMoving();
+                }
             }
         }
     }
