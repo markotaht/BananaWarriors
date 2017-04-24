@@ -129,14 +129,16 @@ public class RottenBananaAI : MonoBehaviour {
         GameObject closest = null;
         float distance = Mathf.Infinity;
         Vector3 position = transform.position;
+        Vector3 diff;
+        float curDistance;
         foreach (GameObject house in houses)
         {
             if (!house.GetComponent<HouseController>().isAlive() || house.GetComponent<HouseController>().isIndicator())
             {
                 continue;
             }
-            Vector3 diff = house.transform.position - position;
-            float curDistance = diff.sqrMagnitude;
+            diff = house.transform.position - position;
+            curDistance = diff.sqrMagnitude;
             if (curDistance < distance)
             {
                 closest = house;
@@ -149,19 +151,21 @@ public class RottenBananaAI : MonoBehaviour {
             {
                 continue;
             }
-            Vector3 diff = warrior.transform.position - position;
-            float curDistance = diff.sqrMagnitude;
+            diff = warrior.transform.position - position;
+            curDistance = diff.sqrMagnitude;
             if (curDistance < distance)
             {
                 closest = warrior;
                 distance = curDistance;
             }
         }
-        if (closest == null)
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        diff = player.transform.position - position;
+        curDistance = diff.sqrMagnitude;
+        if (closest == null || distance > sightRange)
         {
-            closest = GameObject.FindGameObjectWithTag("Player");
-            Vector3 diff = closest.transform.position - position;
-            distance = diff.sqrMagnitude;
+            closest = player;
+            distance = curDistance;
         }
         if (distance <= sightRange)
             return closest;
