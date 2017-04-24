@@ -53,7 +53,7 @@ public class RottenBananaAI : MonoBehaviour {
                 if (patrolTimer <= 0)
                 {
                     int randomAngle = (int)Random.Range(0f, 359f);
-                    float randomWidth = Random.Range(2, 10);
+                    float randomWidth = Random.Range(2, 20);
                     Vector3 vec = Quaternion.AngleAxis(randomAngle, Vector3.back) * (Vector3.up * randomWidth);
                     Vector2 direction = new Vector2(vec.x, vec.y);
                     Vector2 loc = new Vector2(transform.position.x, transform.position.y) + direction;
@@ -95,14 +95,17 @@ public class RottenBananaAI : MonoBehaviour {
                     if (toAttack.tag == "Warrior")
                     {
                         killed = toAttack.GetComponent<BananaWarriorAI>().onHit();
+                        GetComponent<Animator>().SetTrigger("Attack");
                     }
                     else if (toAttack.tag == "House")
                     {
                         killed = toAttack.GetComponent<HouseController>().onHit();
+                        GetComponent<Animator>().SetTrigger("Attack");
                     }
                     else if (toAttack.tag == "Player")
                     {
                         killed = toAttack.GetComponent<PlayerController>().onHit();
+                        GetComponent<Animator>().SetTrigger("Attack");
                     }
                 }
                 if (killed)
