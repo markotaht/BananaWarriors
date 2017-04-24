@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 114163092522755366}
   - component: {fileID: 114526078836521740}
   m_Layer: 5
-  m_Name: Game UI 2
+  m_Name: Game UI GoldenBanana
   m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
