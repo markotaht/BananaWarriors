@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class DroppedController : MonoBehaviour {
     private SpriteRenderer spriteRenderer;
-    private float maxLifeTime = 40.0f;
+    private float maxLifeTime = 38.0f;
     private float lifeTime;
 
 	// Use this for initialization
 	void Start ()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        maxLifeTime = maxLifeTime/3 + maxLifeTime*2/3 * GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Life / 100.0f;
         lifeTime = maxLifeTime;
     }
 	
