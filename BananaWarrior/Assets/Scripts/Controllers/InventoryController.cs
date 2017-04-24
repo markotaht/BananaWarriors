@@ -109,6 +109,10 @@ public class InventoryController : MonoBehaviour {
         {
             //this.gameObject.GetComponent<PlayerController>().Life += GOLDENBANANA_HEAL;
             goldenBanana++;
+            if (goldenBanana >= golden_cost)
+            {
+                ui.goldenButton.sprite = Resources.Load<Sprite>("nupud/heal/healaktiivne");
+            }
         }
         else
         {
@@ -155,6 +159,10 @@ public class InventoryController : MonoBehaviour {
         if (GoldenBanana - bananaCountToRemove >= 0)
         {
             GoldenBanana -= bananaCountToRemove;
+            if (goldenBanana < golden_cost)
+            {
+                ui.goldenButton.sprite = Resources.Load<Sprite>("nupud/heal/healpuudulik");
+            }
             return true;
 
         }
