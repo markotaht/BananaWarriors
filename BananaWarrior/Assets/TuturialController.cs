@@ -28,7 +28,7 @@ public class TuturialController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        gameObject.GetComponent<Image>().material = tuts[currentTut];
+        //gameObject.GetComponent<Image>().material = tuts[currentTut];
 	}
 
     public void nextButton()
