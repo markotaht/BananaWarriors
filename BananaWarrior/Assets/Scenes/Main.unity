@@ -715,7 +715,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0235a8f4afdb259428ad28d4bb3f6562, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 10e3104ca948fb941af569855dc98073, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -821,6 +821,8 @@ MonoBehaviour:
   bananaFall: {fileID: 8300000, guid: 0a4c8f8f168be4649bc52c7d9b8306fd, type: 3}
   gameOver: {fileID: 8300000, guid: e8b3b07cac26b6f4c836739127028707, type: 3}
   kingBananaDeath: {fileID: 8300000, guid: e62399e546692a047bbddb3dc9027e36, type: 3}
+  putHouse: {fileID: 8300000, guid: a6c68dcb218e022478c2ac25793a24f9, type: 3}
+  putBanana: {fileID: 8300000, guid: 19cddd795105aea439e1a8f25fbc8a0d, type: 3}
 --- !u!82 &332517121
 AudioSource:
   m_ObjectHideFlags: 0

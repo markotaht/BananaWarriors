@@ -59,11 +59,13 @@ public class InputHandler : MonoBehaviour {
                     indicator.GetComponent<MoveController>().enabled = true;
                     indicator.GetComponent<BananaWarriorAI>().setIndicator(false);
                     PlayerPrefs.SetInt("warriors", PlayerPrefs.GetInt("warriors") + 1);
+                    AudioController.Play("banana");
                 }
                 else if (indicator.tag == "House")
                 {
                     indicator.GetComponent<HouseController>().setIndicator(false);
                     PlayerPrefs.SetInt("houses", PlayerPrefs.GetInt("houses") + 1);
+                    AudioController.Play("banana");
                 }
                 indicator.GetComponent<RenderOrderSetter>().SetOrder();
                 indicator.GetComponent<Renderer>().material.color = new Color(currentColor.r, currentColor.g, currentColor.b, 1f);

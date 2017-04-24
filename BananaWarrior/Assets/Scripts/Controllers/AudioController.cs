@@ -11,6 +11,8 @@ public class AudioController : MonoBehaviour {
     public AudioClip bananaFall;
     public AudioClip gameOver;
     public AudioClip kingBananaDeath;
+    public AudioClip putHouse;
+    public AudioClip putBanana;
 
     private static Dictionary<string, AudioClip> audios;
 
@@ -26,6 +28,8 @@ public class AudioController : MonoBehaviour {
         audios.Add("walk", bananaWalk);
         audios.Add("fall", bananaFall);
         audios.Add("gameover", gameOver);
+        audios.Add("house", putHouse);
+        audios.Add("banana", putBanana);
 
         player = gameObject.GetComponent<AudioSource>();
 	}
