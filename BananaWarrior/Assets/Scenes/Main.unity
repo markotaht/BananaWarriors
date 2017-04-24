@@ -786,6 +786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41afee2552cb639479a6fe86779cdb6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DROP_COOLDOWN: 10
 --- !u!114 &1786219618 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114912121293634942, guid: 15785678b78db544a87db46662bcbea3,

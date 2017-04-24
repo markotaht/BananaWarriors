@@ -7,7 +7,7 @@ public class DropController : MonoBehaviour {
     private const float RATE_GOLDEN = 0.01f;
     private const float RATE_NORMAL = 0.5f;
     private const int ONE_DROP_MAX = 10;
-    public const int DROP_COOLDOWN = 10;
+    public float DROP_COOLDOWN = 10;
     public const float MAX_RANGE_FROM_TREE = 7.0f;
     private bool isOnCoolDown;
 
@@ -30,7 +30,8 @@ public class DropController : MonoBehaviour {
         if (Time.time / 30 > level)
         {
             level++;
-            //DROP_COOLDOWN *= 0.9f;
+            DROP_COOLDOWN *= 0.9f;
+            Debug.Log(level + ", " + DROP_COOLDOWN);
         }
         if (!isOnCoolDown)
         {

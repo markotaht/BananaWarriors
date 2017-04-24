@@ -97,6 +97,7 @@ public class BananaWarriorAI : MonoBehaviour {
                     }
                     transform.localScale = scale;
                     killed = toAttack.GetComponent<RottenBananaAI>().onHit();
+                    GetComponent<Animator>().SetTrigger("Attack");
                 }
                 if (killed)
                 {
