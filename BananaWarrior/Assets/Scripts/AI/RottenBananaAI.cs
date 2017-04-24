@@ -95,6 +95,7 @@ public class RottenBananaAI : MonoBehaviour {
                     if (toAttack.tag == "Warrior")
                     {
                         GetComponent<Animator>().SetTrigger("Attack");
+                        
                         killed = toAttack.GetComponent<BananaWarriorAI>().onHit();
                     }
                     else if (toAttack.tag == "House")

@@ -108,6 +108,11 @@ public class PlayerController : MonoBehaviour {
 
     }
 
+    IEnumerator Flash()
+    {
+
+    }
+
 
 
 }
