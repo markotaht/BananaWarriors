@@ -20,6 +20,7 @@ TagManager:
   - buildSoldierButton
   - SoundSystem
   - deathScreen
+  - Hit
   layers:
   - Default
   - TransparentFX
