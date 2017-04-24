@@ -26,6 +26,7 @@ public class DroppingController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+
         Vector3 center = (start + target) * 0.5f - new Vector3(0,2,0);
 
         Vector3 startRelC = start - center;
@@ -37,6 +38,8 @@ public class DroppingController : MonoBehaviour {
         if(Vector3.Distance(target, transform.position) < 0.1)
         {
             GetComponent<BoxCollider2D>().enabled = true;
+            AudioController.Play("fall");
+            enabled = false;
         }
 	}
 
