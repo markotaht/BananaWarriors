@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TuturialController : MonoBehaviour {
 
@@ -37,11 +38,12 @@ public class TuturialController : MonoBehaviour {
 	
     public void menuButton()
     {
-        Application.LoadLevel("Scenes/MainMenu - Copy");
+        SceneManager.UnloadSceneAsync("Scenes/Tutorial");
+        SceneManager.LoadScene("Scenes/MainMenu - Copy", LoadSceneMode.Additive);
     }
     public void startButton()
     {
-        Application.LoadLevel("Scenes/Main");
+        SceneManager.LoadScene("Scenes/Main");
         Time.timeScale = 1;
         PlayerPrefs.SetInt("houses", 0);
         PlayerPrefs.SetInt("warriors", 0);

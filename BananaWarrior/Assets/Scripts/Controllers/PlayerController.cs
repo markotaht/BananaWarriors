@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent (typeof(MoveController))]
 [RequireComponent (typeof(InventoryController))]
@@ -83,7 +84,8 @@ public class PlayerController : MonoBehaviour {
         yield return new WaitForSeconds(5.0f);
         isWaiting = false;
 
-        Application.LoadLevel("Scenes/DeathScreen");
+        //Application.LoadLevel("Scenes/DeathScreen");
+        SceneManager.LoadScene("Scenes/DeathScreen");
     }
     IEnumerator FadeToBlackOverSeconds(float amountOfSeconds)
     {

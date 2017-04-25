@@ -114,7 +114,8 @@ public class InputHandler : MonoBehaviour {
         if(currentKey == KeyCode.Escape)
         {
             Time.timeScale = 0;
-            Application.LoadLevelAdditive("Scenes/MainMenu - Copy");
+            SceneManager.LoadScene("Scenes/MainMenu - Copy", LoadSceneMode.Additive);
+        //    Application.LoadLevelAdditive("Scenes/MainMenu - Copy");
         }
 	}
 
