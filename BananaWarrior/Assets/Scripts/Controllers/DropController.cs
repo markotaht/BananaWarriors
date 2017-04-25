@@ -27,10 +27,10 @@ public class DropController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Time.time / 30 > level)
+        if (Time.timeSinceLevelLoad / 30 > level)
         {
             level++;
-            DROP_COOLDOWN *= 0.9f;
+            DROP_COOLDOWN = Mathf.Max(DROP_COOLDOWN * 0.9f, 4);
         }
         if (!isOnCoolDown)
         {
