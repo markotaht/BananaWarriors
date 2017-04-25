@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour {
 
-    private int heal_cost = 1;
     //private const float GOLDENBANANA_HEAL = 10.0f; // 10%
     private  int kebab_cost = 2; 
     private  int house_cost = 3;
     private int golden_cost = 1;
 
-    public UIController ui;
-
+    private UIController ui;
+    public UIController UIController
+    {
+        get { return ui; }
+        set { ui = value; }
+    }
 
     public int KEBAB_COST
     {
@@ -53,8 +56,6 @@ public class InventoryController : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-     //   greenBanana = 0; ärge palun de-kommenteerige neid asju 
-     //   yellowbanana = 0;
 	}
 
     private const int yellowbanana_max = 10;
@@ -88,60 +89,35 @@ public class InventoryController : MonoBehaviour {
     {
         if (collision.gameObject.tag == "GreenBanana" && GreenBanana < GREENBANANA_MAX)
         {
-
-            greenBanana = greenBanana + 1;
-            if(greenBanana >= house_cost)
-            {
-                ui.greenButton.sprite = Resources.Load<Sprite>("nupud/maja/majaaktiivne");
-            }
-            PlayerPrefs.SetInt("bananas", PlayerPrefs.GetInt("bananas") + 1);
+            UIController.updateGreenBanana(++greenBanana, GREENBANANA_MAX, greenBanana >= house_cost);
         }
         else if (collision.gameObject.tag == "YellowBanana" && YellowBanana < YELLOWBANANA_MAX)
         {
-
-            yellowBanana = yellowBanana + 1;
-            if (yellowBanana >= kebab_cost)
-            {
-                ui.yellowButton.sprite = Resources.Load<Sprite>("nupud/soldier/soldieraktiivne");
-            }
-            PlayerPrefs.SetInt("bananas", PlayerPrefs.GetInt("bananas") + 1);
+            UIController.updateYellowBanana(++yellowBanana, YELLOWBANANA_MAX, yellowBanana >= kebab_cost);
         }
         else if (collision.gameObject.tag == "GoldenBanana")
-            //((100.0f - GOLDENBANANA_HEAL) >= this.gameObject.GetComponent<PlayerController>().Life))
         {
-            //this.gameObject.GetComponent<PlayerController>().Life += GOLDENBANANA_HEAL;
-            goldenBanana++;
-            if (goldenBanana >= golden_cost)
-            {
-                ui.goldenButton.sprite = Resources.Load<Sprite>("nupud/heal/healaktiivne");
-            }
-            PlayerPrefs.SetInt("bananas", PlayerPrefs.GetInt("bananas") + 1);
+            UIController.updateGoldenBanana(++goldenBanana, GOLDENBANANA_MAX, goldenBanana >= golden_cost);
             PlayerPrefs.SetInt("Golden", PlayerPrefs.GetInt("Golden") + 1);
         }
         else
         {
             return;// liiga palju / nõuded pole täidetud
         }
+        PlayerPrefs.SetInt("bananas", PlayerPrefs.GetInt("bananas") + 1);
         Destroy(collision.gameObject);
 
     }
+
     public bool useGreen(int bananaCountToRemove)
     {
         if(GreenBanana - bananaCountToRemove >= 0)
         {
             GreenBanana -= bananaCountToRemove;
-            if (greenBanana < house_cost)
-            {
-                ui.greenButton.sprite = Resources.Load<Sprite>("nupud/maja/majapuudulik");
-            }
-            else {
-                ui.greenButton.sprite = Resources.Load<Sprite>("nupud/maja/majaaktiivne");
-            }
+            ui.updateGreenBanana(greenBanana, GREENBANANA_MAX, greenBanana >= house_cost);
             return true;
-
         }
         return false;
-        //return (GreenBanana -= bananaCountToRemove) >= 0 ? true : false;
     }
     public bool useYellow(int bananaCountToRemove)
     {
@@ -149,20 +125,11 @@ public class InventoryController : MonoBehaviour {
         if (YellowBanana - bananaCountToRemove >= 0)
         {
             YellowBanana -= bananaCountToRemove;
-            if (yellowBanana < kebab_cost)
-            {
-                ui.yellowButton.sprite = Resources.Load<Sprite>("nupud/soldier/soldierpuudulik");
-            }
-            else
-            {
-                ui.yellowButton.sprite = Resources.Load<Sprite>("nupud/soldier/soldieraktiivne");
-            }
+            ui.updateYellowBanana(YellowBanana, YELLOWBANANA_MAX, yellowBanana >= kebab_cost);
             return true;
 
         }
         return false;
-        // return (YellowBanana -= bananaCountToRemove) >= 0? true : false;
-        //Midagi teha banaanidega
     }
 
     public bool useGolden(int bananaCountToRemove)
@@ -170,14 +137,7 @@ public class InventoryController : MonoBehaviour {
         if (GoldenBanana - bananaCountToRemove >= 0)
         {
             GoldenBanana -= bananaCountToRemove;
-            if (goldenBanana < golden_cost)
-            {
-                ui.goldenButton.sprite = Resources.Load<Sprite>("nupud/heal/healpuudulik");
-            }
-            else
-            {
-                ui.goldenButton.sprite = Resources.Load<Sprite>("nupud/heal/healaktiivne");
-            }
+            ui.updateGoldenBanana(goldenBanana, GOLDENBANANA_MAX, goldenBanana >= golden_cost);
             return true;
 
         }

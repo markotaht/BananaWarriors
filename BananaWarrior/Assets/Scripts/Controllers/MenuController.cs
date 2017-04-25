@@ -35,15 +35,13 @@ public class MenuController : MonoBehaviour{
 
     public void buttonContinue()
     {
-        
-        Application.UnloadLevel("Scenes/MainMenu - Copy");
+        SceneManager.UnloadSceneAsync("Scenes/MainMenu - Copy");
         Time.timeScale = 1;
     }
 
     public void buttonStartLevel()
     {
-      //  Application.UnloadLevel("Scenes/Main");
-        Application.LoadLevel("Scenes/Main");
+        SceneManager.LoadScene("Scenes/Main", LoadSceneMode.Single);
         Time.timeScale = 1;
         PlayerPrefs.SetInt("houses", 0);
         PlayerPrefs.SetInt("warriors", 0);
@@ -54,7 +52,8 @@ public class MenuController : MonoBehaviour{
 
     public void buttonTutorial()
     {
-        Application.LoadLevel("Scenes/Tutorial");
+        SceneManager.UnloadSceneAsync("Scenes/MainMenu - Copy");
+        SceneManager.LoadScene("Scenes/Tutorial", LoadSceneMode.Additive);
     }
 
     public void buttonExit()

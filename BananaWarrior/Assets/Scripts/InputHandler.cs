@@ -114,7 +114,8 @@ public class InputHandler : MonoBehaviour {
         if(currentKey == KeyCode.Escape)
         {
             Time.timeScale = 0;
-            Application.LoadLevelAdditive("Scenes/MainMenu - Copy");
+            SceneManager.LoadScene("Scenes/MainMenu - Copy", LoadSceneMode.Additive);
+        //    Application.LoadLevelAdditive("Scenes/MainMenu - Copy");
         }
 	}
 
@@ -136,7 +137,7 @@ public class InputHandler : MonoBehaviour {
     public void makeBanana()
     {
 
-
+        EventSystem.current.SetSelectedGameObject(null);
         if (!player.useYellow(player.KEBAB_COST))
         {
             return;
@@ -153,6 +154,7 @@ public class InputHandler : MonoBehaviour {
 
     public void heal()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         if (player.useGolden(player.GOLDEN_COST))
         {
             player.gameObject.GetComponent<PlayerController>().Life += bananaHeal;
