@@ -137,7 +137,7 @@ public class InputHandler : MonoBehaviour {
     public void makeBanana()
     {
 
-
+        EventSystem.current.SetSelectedGameObject(null);
         if (!player.useYellow(player.KEBAB_COST))
         {
             return;
@@ -154,6 +154,7 @@ public class InputHandler : MonoBehaviour {
 
     public void heal()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         if (player.useGolden(player.GOLDEN_COST))
         {
             player.gameObject.GetComponent<PlayerController>().Life += bananaHeal;

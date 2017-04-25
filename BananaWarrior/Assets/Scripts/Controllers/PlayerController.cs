@@ -9,8 +9,6 @@ using UnityEngine.SceneManagement;
 [RequireComponent (typeof(InventoryController))]
 public class PlayerController : MonoBehaviour {
 
-    [SerializeField]
-    private MoveController mc;
     private float life = 100.0f;
     private bool isWaiting = false;
 
@@ -20,6 +18,16 @@ public class PlayerController : MonoBehaviour {
         set { life = value; }
     }
 
+    [SerializeField]
+    private UIController uic;
+    public UIController uiController
+    {
+        get { return uic; }
+        set { uic = value; }
+    }
+
+    [SerializeField]
+    private MoveController mc;
     public MoveController movementController
     {
         get { return mc; }
@@ -36,9 +44,7 @@ public class PlayerController : MonoBehaviour {
 
 	
 	void Start () {
-
-    //    mc = GetComponent<MoveController>();
-    //    ic = GetComponent<InventoryController>();
+        ic.UIController = uic;
 	}
 	
 	
@@ -56,6 +62,7 @@ public class PlayerController : MonoBehaviour {
     {
         AudioController.Play("attack");
         life -= 5;
+        uic.updateHealth(life);
         StartCoroutine(Flash());
         if (life <= 0)
         {

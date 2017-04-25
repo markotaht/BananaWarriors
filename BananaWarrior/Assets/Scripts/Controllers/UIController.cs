@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIController : MonoBehaviour {
-
-    [SerializeField]
-    private float fillAmount;
-
     [SerializeField]
     private Image hp;
 
@@ -20,52 +17,42 @@ public class UIController : MonoBehaviour {
     [SerializeField]
     private Text goldenBananaText;
 
-    [SerializeField]
-    private InventoryController inventoryController;
+    public Text survivalTimer;
 
-
-    public Image yellowButton;
-    public Image greenButton;
-    public Image goldenButton;
+    public Button yellowButton;
+    public Button greenButton;
+    public Button goldenButton;
 
 
     // Use this for initialization
     void Start () {
-        fillAmount = 1.0f;	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        handleHP();
-        handleText();
-
+        survivalTimer.text = "Time survived: " + PlayerPrefs.GetFloat("Time");
 	}
 
-    void handleHP()
+    public void updateHealth(float life)
     {
-       
-        hp.fillAmount = GetComponent<PlayerController>().Life / 100.0f;
+        hp.fillAmount = life / 100.0f;
     }
 
-    void handleText()
+    public void updateYellowBanana(int count, int max, bool active)
     {
-        handleYellowText();
-        handleGreenText();
-        handleGoldenText();
+        yellowBananaText.text = count + "/" + max;
+        yellowButton.interactable = active;
     }
 
-    void handleYellowText()
+    public void updateGreenBanana(int count, int max, bool active)
     {
-        yellowBananaText.text = inventoryController.YellowBanana + "/" + inventoryController.YELLOWBANANA_MAX;
-    }
-    
-    void handleGreenText()
-    {
-        greenBananaText.text = inventoryController.GreenBanana + "/" + inventoryController.GREENBANANA_MAX;
+        greenBananaText.text = count + "/" + max;
+        greenButton.interactable = active;
     }
 
-    void handleGoldenText()
+    public void updateGoldenBanana(int count, int max, bool active)
     {
-        goldenBananaText.text = inventoryController.GoldenBanana + "/" + inventoryController.GOLDENBANANA_MAX;
+        goldenBananaText.text = count + "/" + max;
+        goldenButton.interactable = active;
     }
 }
