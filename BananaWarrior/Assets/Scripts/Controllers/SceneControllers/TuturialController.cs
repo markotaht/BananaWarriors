@@ -39,17 +39,12 @@ public class TuturialController : MonoBehaviour {
     public void menuButton()
     {
         SceneManager.UnloadSceneAsync("Scenes/Tutorial");
-        SceneManager.LoadScene("Scenes/MainMenu - Copy", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Scenes/MainMenu", LoadSceneMode.Additive);
     }
     public void startButton()
     {
-        SceneManager.LoadScene("Scenes/Main");
         Time.timeScale = 1;
-        PlayerPrefs.SetInt("houses", 0);
-        PlayerPrefs.SetInt("warriors", 0);
-        PlayerPrefs.SetFloat("Time", 0);
-        PlayerPrefs.SetInt("Golden", 0);
-        PlayerPrefs.SetInt("bananas", 0);
+        SceneManager.LoadScene("Scenes/Main");
     }
     public void nextButton()
     {

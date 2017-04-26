@@ -10,8 +10,6 @@ public class MoveController : MonoBehaviour {
     
     [SerializeField]
     private Animator anim;
-    int idleHash = Animator.StringToHash("idle");
-    int moveHash = Animator.StringToHash("Move");
 
     private SpriteRenderer spriteRenderer;
     private SortingGroup sg;

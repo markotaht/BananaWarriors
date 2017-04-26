@@ -35,24 +35,19 @@ public class MenuController : MonoBehaviour{
 
     public void buttonContinue()
     {
-        SceneManager.UnloadSceneAsync("Scenes/MainMenu - Copy");
         Time.timeScale = 1;
+        SceneManager.UnloadSceneAsync("Scenes/MainMenu");
     }
 
     public void buttonStartLevel()
     {
-        SceneManager.LoadScene("Scenes/Main", LoadSceneMode.Single);
         Time.timeScale = 1;
-        PlayerPrefs.SetInt("houses", 0);
-        PlayerPrefs.SetInt("warriors", 0);
-        PlayerPrefs.SetFloat("Time", 0);
-        PlayerPrefs.SetInt("Golden", 0);
-        PlayerPrefs.SetInt("bananas", 0);
+        SceneManager.LoadScene("Scenes/Main", LoadSceneMode.Single);
     }
 
     public void buttonTutorial()
     {
-        SceneManager.UnloadSceneAsync("Scenes/MainMenu - Copy");
+        SceneManager.UnloadSceneAsync("Scenes/MainMenu");
         SceneManager.LoadScene("Scenes/Tutorial", LoadSceneMode.Additive);
     }
 

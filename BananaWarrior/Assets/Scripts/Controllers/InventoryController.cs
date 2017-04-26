@@ -73,13 +73,6 @@ public class InventoryController : MonoBehaviour {
         get { return greenbanana_max;  }
     }
 
-    private const int goldenbanana_max = 10;
-
-    public int GOLDENBANANA_MAX
-    {
-        get { return goldenbanana_max; }
-    }
-
 	// Update is called once per frame
 	void Update () {
 		
@@ -97,7 +90,7 @@ public class InventoryController : MonoBehaviour {
         }
         else if (collision.gameObject.tag == "GoldenBanana")
         {
-            UIController.updateGoldenBanana(++goldenBanana, GOLDENBANANA_MAX, goldenBanana >= golden_cost);
+            UIController.updateGoldenBanana(++goldenBanana, goldenBanana >= golden_cost);
             PlayerPrefs.SetInt("Golden", PlayerPrefs.GetInt("Golden") + 1);
         }
         else
@@ -137,7 +130,7 @@ public class InventoryController : MonoBehaviour {
         if (GoldenBanana - bananaCountToRemove >= 0)
         {
             GoldenBanana -= bananaCountToRemove;
-            ui.updateGoldenBanana(goldenBanana, GOLDENBANANA_MAX, goldenBanana >= golden_cost);
+            ui.updateGoldenBanana(goldenBanana, goldenBanana >= golden_cost);
             return true;
 
         }

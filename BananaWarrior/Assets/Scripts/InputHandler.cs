@@ -27,6 +27,11 @@ public class InputHandler : MonoBehaviour {
     
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryController>();
+        PlayerPrefs.SetInt("houses", 0);
+        PlayerPrefs.SetInt("warriors", 0);
+        PlayerPrefs.SetFloat("Time", 0);
+        PlayerPrefs.SetInt("Golden", 0);
+        PlayerPrefs.SetInt("bananas", 0);
     }
 	
 	
@@ -114,7 +119,7 @@ public class InputHandler : MonoBehaviour {
         if(currentKey == KeyCode.Escape)
         {
             Time.timeScale = 0;
-            SceneManager.LoadScene("Scenes/MainMenu - Copy", LoadSceneMode.Additive);
+            SceneManager.LoadScene("Scenes/MainMenu", LoadSceneMode.Additive);
         //    Application.LoadLevelAdditive("Scenes/MainMenu - Copy");
         }
 	}

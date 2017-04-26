@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class UIController : MonoBehaviour {
     [SerializeField]
@@ -26,11 +24,14 @@ public class UIController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        updateYellowBanana(0, 10, false);
+        updateGreenBanana(0, 10, false);
+        updateGoldenBanana(0, false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        survivalTimer.text = "Time survived: " + PlayerPrefs.GetFloat("Time");
+        survivalTimer.text = "Time survived: " + Math.Round(Time.timeSinceLevelLoad,1);
 	}
 
     public void updateHealth(float life)
@@ -50,9 +51,9 @@ public class UIController : MonoBehaviour {
         greenButton.interactable = active;
     }
 
-    public void updateGoldenBanana(int count, int max, bool active)
+    public void updateGoldenBanana(int count, bool active)
     {
-        goldenBananaText.text = count + "/" + max;
+        goldenBananaText.text = count.ToString();
         goldenButton.interactable = active;
     }
 }

@@ -49,10 +49,7 @@ public class PlayerController : MonoBehaviour {
 	
 	
 	void Update () {
-        if(life > 0)
-        {
-            PlayerPrefs.SetFloat("Time", PlayerPrefs.GetFloat("Time") + Time.deltaTime);
-        }
+       
 	}
 
 
@@ -66,6 +63,7 @@ public class PlayerController : MonoBehaviour {
         StartCoroutine(Flash());
         if (life <= 0)
         {
+            PlayerPrefs.SetFloat("Time", Time.timeSinceLevelLoad);
             Die();
             return true;
         }
